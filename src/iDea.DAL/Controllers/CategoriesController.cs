@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 
 namespace iDea.DAL.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [RoutePrefix("api/Categories")]
     public class CategoriesController : ApiController
     {
