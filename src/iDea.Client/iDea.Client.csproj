@@ -86,6 +86,14 @@
     <Content Include="modules\idea-controllers\idea-controllers.min.js.gzip">
       <DependentUpon>idea-controllers.min.js</DependentUpon>
     </Content>
+    <Content Include="assets\css\_fonts.scss" />
+    <Content Include="assets\css\_header.scss" />
+    <Content Include="assets\css\_contents.scss" />
+    <Content Include="assets\css\_footer.scss" />
+    <Content Include="assets\css\idea-app.scss" />
+    <Content Include="assets\css\_custom-bt.scss" />
+    <Content Include="assets\css\_variables.scss" />
+    <Content Include="assets\css\_mixins.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -94,6 +102,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\font-awesome.min.css" />
+    <Content Include="assets\css\idea-app.min.css">
+      <DependentUpon>idea-app.scss</DependentUpon>
+    </Content>
     <Content Include="assets\scripts\angular-animate.min.js" />
     <Content Include="assets\scripts\angular-local-storage.min.js" />
     <Content Include="assets\scripts\angular-messages.min.js" />
@@ -137,7 +150,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="assets\css\" />
     <Folder Include="assets\images\" />
   </ItemGroup>
   <PropertyGroup>

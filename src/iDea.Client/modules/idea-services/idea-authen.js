@@ -70,6 +70,8 @@
         service.login = _login;
         service.logOut = _logOut;
         service.authentication = _authentication;
+        service.fillAuthData = _fillAuthData;
+
         return service;
     }]);
 
