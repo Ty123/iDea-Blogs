@@ -1,0 +1,5 @@
+C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Domains\bin\Debug\iDea.Domains.dll
+C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Domains\bin\Debug\iDea.Domains.pdb
+C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Domains\obj\Debug\iDea.Domains.csprojResolveAssemblyReference.cache
+C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Domains\obj\Debug\iDea.Domains.dll
+C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Domains\obj\Debug\iDea.Domains.pdb
