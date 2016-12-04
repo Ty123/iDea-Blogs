@@ -10,7 +10,7 @@ namespace iDea.DAL.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "iDea-DAL Home";
+            ViewBag.Title = "iDea-Blogs Home";
 
             return View();
         }

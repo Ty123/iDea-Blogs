@@ -130,3 +130,8 @@ C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\obj\Debug\iDea.
 C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\obj\Debug\iDea.Auth.dll
 C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\obj\Debug\iDea.Auth.pdb
 C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\obj\Debug\iDea.Auth.csprojResolveAssemblyReference.cache
+C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\bin\System.Web.Cors.dll
+C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\bin\System.Web.Http.Cors.dll
+C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\bin\System.Web.Http.Cors.xml
+C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\bin\Microsoft.Owin.Cors.dll
+C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\bin\Microsoft.Owin.Cors.xml

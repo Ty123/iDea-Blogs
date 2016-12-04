@@ -98,7 +98,6 @@ namespace iDea.Auth
     {
         public async Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
             MailMessage mail = new MailMessage();
             mail.To.Add(message.Destination);
             mail.From = new MailAddress("no-reply@ideablog.net");
@@ -107,12 +106,8 @@ namespace iDea.Auth
             mail.Body = Body;
             mail.IsBodyHtml = true;
             SmtpClient smtp = new SmtpClient();
-            smtp.Host = "smtp.gmail.com";
-            smtp.Port = 587;
-            smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new System.Net.NetworkCredential
-            ("ty.ly81@gmail.com", "tam061981");// Enter seders User name and password  
-            smtp.EnableSsl = true;
+            smtp.Host = "relay-hosting.secureserver.net";
+            smtp.Port = 25;
             try
             {
                 smtp.Send(mail);

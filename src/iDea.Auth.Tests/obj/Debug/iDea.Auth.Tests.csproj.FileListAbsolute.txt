@@ -98,3 +98,5 @@ C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth.Tests\bin\Debug
 C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth.Tests\obj\Debug\iDea.Auth.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth.Tests\obj\Debug\iDea.Auth.Tests.dll
 C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth.Tests\obj\Debug\iDea.Auth.Tests.pdb
+C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth.Tests\bin\Debug\Microsoft.Owin.Cors.dll
+C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth.Tests\bin\Debug\Microsoft.Owin.Cors.xml

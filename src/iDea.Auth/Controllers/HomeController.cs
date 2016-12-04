@@ -10,7 +10,7 @@ namespace iDea.Auth.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "iDea-Blogs";
 
             return View();
         }
