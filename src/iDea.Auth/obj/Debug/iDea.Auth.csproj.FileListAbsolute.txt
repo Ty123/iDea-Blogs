@@ -129,4 +129,3 @@ C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\obj\Debug\iDea.
 C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\obj\Debug\iDea.Auth.csproj.GenerateResource.Cache
 C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\obj\Debug\iDea.Auth.dll
 C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\obj\Debug\iDea.Auth.pdb
-C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\obj\Debug\iDea.Auth.csprojResolveAssemblyReference.cache
