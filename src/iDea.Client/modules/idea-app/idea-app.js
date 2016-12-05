@@ -1,10 +1,20 @@
 ﻿var authenticated = false;
 var serviceBase = 'http://localhost:65189/';
-//var serviceBase = 'http://api-howzit.tyly.co.nz/';
+//var serviceBase = 'http://blog-auth.tyly.co.nz/';
 
 var app = angular.module('howzit', ['ngRoute', 'ngMessages', 'ngAnimate', 'LocalStorageModule', 'ui.bootstrap'])
 // configuration routes
 .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+    // reset pwd route
+    $routeProvider.when("/reset", {
+        controller: "ResetController",
+        templateUrl: "/modules/views/reset.html"
+    });
+    // signup route
+    $routeProvider.when("/signup", {
+        controller: "SignupController",
+        templateUrl: "/modules/views/signup.html"
+    });
     // login route
     $routeProvider.when("/login", {
         controller: "LoginController",
@@ -16,7 +26,7 @@ var app = angular.module('howzit', ['ngRoute', 'ngMessages', 'ngAnimate', 'Local
         templateUrl: "/modules/views/home.html"
     });
     // default route
-    $routeProvider.otherwise({ redirectTo: "/home" });
+    $routeProvider.otherwise({ redirectTo: "/login" });
 
 }])
 // configuring authentication interceptor

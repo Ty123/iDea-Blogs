@@ -1,0 +1,39 @@
+﻿<div class="idea-page">
+    <div class="idea-form-container">
+        <h1 class="title">Admin Sign Up Page</h1>
+        <div data-ng-show="message != '' && savedSuccessfully == false" class="alert alert-danger animated slideInDown idea-alert">
+            <strong>Error!</strong> {{message}}.
+        </div>
+        <div data-ng-show="message != '' && savedSuccessfully" class="alert alert-danger animated slideInDown idea-alert">
+            <strong>Success!</strong> {{message}}.
+        </div>
+        <div class="idea-form-wrap">
+            <form name="signupForm" role="form" class="idea-form" autocomplete="off" novalidate>
+                <div class="form-group" ng-class="{ 'has-error' : loginForm.email.$invalid && !loginForm.email.$pristine }">
+                    <div class="idea-textbox">
+                        <input type="email" name="username" class="form-control" placeholder="Username" ng-model="username" required />
+                    </div>
+                    <div ng-messages="signupForm.username.$error" ng-show="signupForm.username.$touched">
+                        <div ng-message="required" class="required">Email is required</div>
+                        <div ng-message="email" class="required">Not a valid email</div>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : loginForm.email.$invalid && !loginForm.email.$pristine }">
+                    <div class="idea-textbox">
+                        <input type="password" name="password" class="form-control" placeholder="Password" ng-model="password"
+                               ng-pattern="regex" required />
+                    </div>
+                    <div ng-messages="signupForm.password.$error" ng-show="signupForm.password.$touched">
+                        <div ng-message="required" class="required">Password is required</div>
+                        <div ng-message="pattern" class="required">Must contain at least one upper-case, lower-case, letter and number</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn idea-button" type="submit" data-ng-click="signUp()" ng-disabled="signupForm.$invalid">Sign Up</button>
+                </div>
+                <p><a href="#/policy">Privacy policies</a></p>
+                <p>Already registered? <a href="#/login">Go to login</a></p>
+            </form>
+        </div>
+    </div>
+</div>

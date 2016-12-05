@@ -408,6 +408,31 @@ namespace iDea.Auth.Controllers
             return Ok(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
+        // POST api/Account/SendForgetPassword
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("SendForgetPassword")]
+        public IHttpActionResult SendForgotPassword(string email)
+        {
+            if (!String.IsNullOrEmpty(email))
+            {
+                var user = UserManager.FindByName(email);
+                
+                if (user != null)
+                {
+                    // Send an email with this link
+                    string code = UserManager.GeneratePasswordResetToken(user.Id);
+                    var callbackUrl = string.Format("http://www.google.com?userId={0}&code={1}", user.Id, code);
+                    UserManager.SendEmail(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    return Ok(email);
+                }
+
+                return NotFound();
+            }
+
+            return BadRequest();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)

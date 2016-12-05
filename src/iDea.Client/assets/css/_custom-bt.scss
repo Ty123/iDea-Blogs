@@ -27,10 +27,16 @@ a, a:focus, a:active, a:hover {
     color: inherit;
 }
 
+-webkit-input-placeholder {
+    font-family: 'Dorsa', sans-serif;
+    letter-spacing: 1px;
+    font-size: 20px;
+}
+
 ::-webkit-input-placeholder {
     font-family: 'Dorsa', sans-serif;
     letter-spacing: 1px;
-    font-size: 14px;
+    font-size: 20px;
 }
 
 :-moz-placeholder { /* Firefox 18- */
@@ -45,8 +51,12 @@ a, a:focus, a:active, a:hover {
     font-size: 20px;
 }
 
-:-ms-input-placeholder {
+input.form-control:-ms-input-placeholder {
     font-family: 'Dorsa', sans-serif;
     letter-spacing: 1px;
     font-size: 20px;
 }
+
+
+
+
