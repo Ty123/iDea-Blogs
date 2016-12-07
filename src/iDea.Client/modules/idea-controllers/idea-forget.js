@@ -1,5 +1,6 @@
 ﻿(function () {
-    app.controller('ResetController', ['$scope', 'ResetService', '$http', function ($scope, ResetService, $http) {
+    'use strict';
+    app.controller('ForgetController', ['$scope', 'ResetService', '$http', function ($scope, ResetService, $http) {
         $scope.regex = /^(?=.*\d)(?=.*[a-zA-Z]).{6,20}$/i;
 
         $scope.reset = function () {

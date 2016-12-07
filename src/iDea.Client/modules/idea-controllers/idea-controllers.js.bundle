@@ -14,6 +14,7 @@
     <file>/modules/idea-controllers/idea-index.js</file>
     <file>/modules/idea-controllers/idea-login.js</file>
     <file>/modules/idea-controllers/idea-signup.js</file>
+    <file>/modules/idea-controllers/idea-forget.js</file>
     <file>/modules/idea-controllers/idea-reset.js</file>
   </files>
 </bundle>

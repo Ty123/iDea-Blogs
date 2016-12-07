@@ -1,14 +1,24 @@
 ﻿var authenticated = false;
-var serviceBase = 'http://localhost:65189/';
 //var serviceBase = 'http://blog-auth.tyly.co.nz/';
+var serviceBase = 'http://localhost:65189/';
 
 var app = angular.module('howzit', ['ngRoute', 'ngMessages', 'ngAnimate', 'LocalStorageModule', 'ui.bootstrap'])
+// constants
+.constant('ngAuthSettings', {
+    apiServiceBaseUri: serviceBase,
+    clientId: 'ngAuthApp'
+})
 // configuration routes
 .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     // reset pwd route
     $routeProvider.when("/reset", {
         controller: "ResetController",
         templateUrl: "/modules/views/reset.html"
+    });
+    // forget pwd routes
+    $routeProvider.when("/forget", {
+        controller: "ForgetController",
+        templateUrl: "/modules/views/forget.html"
     });
     // signup route
     $routeProvider.when("/signup", {
@@ -30,15 +40,10 @@ var app = angular.module('howzit', ['ngRoute', 'ngMessages', 'ngAnimate', 'Local
 
 }])
 // configuring authentication interceptor
-.config(['$httpProvider',function ($httpProvider) {
+.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.interceptors.push('AuthInterceptorService');
 }])
 // configuring authentication
 .run(['AuthService', function (authService) {
     authService.fillAuthData();
-}])
-// constants
-.constant('ngAuthSettings', {
-    apiServiceBaseUri: serviceBase,
-    clientId: 'ngAuthApp'
-});
+}]);

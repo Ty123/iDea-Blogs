@@ -4,8 +4,24 @@ using Newtonsoft.Json;
 
 namespace iDea.Auth.Models
 {
-    // Models used as parameters to AccountController actions.
+    public class MessageModel
+    {
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        public string Destination { get; set; }
+        [Required]
+        public string Subject { get; set; }
+        [Required]
+        public string Body { get; set; }
+    }
 
+    public class ConfirmEmailModel
+    {
+        [Required]
+        public int UserId { get; set; }
+        [Required]
+        public string Code { get; set; }
+    }
     public class AddExternalLoginBindingModel
     {
         [Required]
@@ -36,6 +52,7 @@ namespace iDea.Auth.Models
     {
         [Required]
         [Display(Name = "Email")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Required]

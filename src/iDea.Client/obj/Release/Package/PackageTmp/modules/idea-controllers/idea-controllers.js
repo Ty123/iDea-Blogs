@@ -55,7 +55,9 @@
 
                 $scope.savedSuccessfully = true;
                 $scope.message = "User has been registered successfully, you will be redicted to login page in 2 seconds.";
-                startTimer($timeout, $location);
+                $timeout(function () {
+                    $location.path('#/login')
+                }, 2000)
 
             }, function (response) {
                 var errors = [];
@@ -70,4 +72,17 @@
             });
         };
     }]);
+})();
+///#source 1 1 /modules/idea-controllers/idea-reset.js
+(function () {
+    app.controller('ResetController', ['$scope', 'ResetService', '$http',function ($scope, ResetService, $http) {
+        $scope.reset = function () {
+            //alert('hello, sending a reset link');
+            ResetService.reset($scope.username).then(function (response) {
+                alert(JSON.stringify(response))
+            }, function (error) {
+                alert(JSON.stringify(error));
+            })
+        }
+    }])
 })();

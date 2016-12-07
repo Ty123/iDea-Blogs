@@ -7,11 +7,11 @@
         </div>
         <div class="idea-form-wrap">
             <form id="idea-form" name="loginForm" role="form" class="idea-form" autocomplete="off" novalidate>
-                <div class="form-group" ng-class="{ 'has-error' : loginForm.email.$invalid && !loginForm.email.$pristine }">
+                <div class="form-group" ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine }">
                     <div class="idea-textbox">
                         <input type="email" name="username" class="form-control" placeholder="Username" ng-model="username" required />
                     </div>
-                    <div ng-if="loginForm.email.$dirty" ng-messages="loginForm.email.$error">
+                    <div ng-if="loginForm.username.$dirty" ng-messages="loginForm.username.$error">
                         <div ng-message="required" class="help-block">Email is required.</div>
                         <div ng-message="email" class="help-block">Not a valid email.</div>
                     </div>
@@ -20,7 +20,7 @@
                     <div class="idea-textbox">
                         <input type="password" name="password" class="form-control" placeholder="Password" ng-model="password" required />
                     </div>
-                    <div ng-if="loginForm.email.$dirty" ng-messages="loginForm.email.$error">
+                    <div ng-if="loginForm.password.$dirty" ng-messages="loginForm.password.$error">
                         <div ng-message="required" class="required">Password is required</div>
                     </div>
                 </div>

@@ -6,7 +6,7 @@
         var _reset = function (obj) {
             var deferred = $q.defer();
 
-            $http.post(url + 'api/Account/ForgetPassword?email=' + obj).success(function (response) {
+            $http.post(url + 'api/Account/SendForgetPassword?email=' + obj).success(function (response) {
                 deferred.resolve(response);
             }).error(function (err, status) {
                 deferred.reject(err);

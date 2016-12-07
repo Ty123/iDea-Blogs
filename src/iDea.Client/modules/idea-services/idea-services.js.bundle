@@ -11,6 +11,7 @@
   <!--The order of the <file> elements determines the order of the files in the bundle.-->
   <files>
     <file>/modules/idea-services/idea-authen.js</file>
+    <file>/modules/idea-services/idea-confirm.js</file>
     <file>/modules/idea-services/idea-interceptor.js</file>
     <file>/modules/idea-services/idea-reset-pwd.js</file>
   </files>

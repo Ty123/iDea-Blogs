@@ -73,16 +73,11 @@
     <Content Include="modules\idea-app\idea-app.min.js.gzip">
       <DependentUpon>idea-app.min.js</DependentUpon>
     </Content>
+    <Content Include="modules\idea-controllers\idea-forget.js" />
     <Content Include="modules\idea-controllers\idea-reset.js" />
     <Content Include="modules\idea-controllers\idea-signup.js" />
+    <Content Include="modules\idea-services\idea-confirm.js" />
     <Content Include="modules\idea-services\idea-reset-pwd.js" />
-    <Content Include="modules\idea-services\idea-services.js.bundle" />
-    <Content Include="modules\idea-services\idea-services.min.js.map">
-      <DependentUpon>idea-services.min.js</DependentUpon>
-    </Content>
-    <Content Include="modules\idea-services\idea-services.min.js.gzip">
-      <DependentUpon>idea-services.min.js</DependentUpon>
-    </Content>
     <Content Include="modules\idea-controllers\idea-controllers.js.bundle" />
     <Content Include="modules\idea-controllers\idea-controllers.min.js.map">
       <DependentUpon>idea-controllers.min.js</DependentUpon>
@@ -98,6 +93,17 @@
     <Content Include="assets\css\_custom-bt.scss" />
     <Content Include="assets\css\_variables.scss" />
     <Content Include="assets\css\_mixins.scss" />
+    <Content Include="modules\idea-services\idea-services.js">
+      <DependentUpon>idea-services.js.bundle</DependentUpon>
+    </Content>
+    <Content Include="modules\idea-services\idea-services.js.bundle" />
+    <Content Include="modules\idea-services\idea-services.min.js.map">
+      <DependentUpon>idea-services.min.js</DependentUpon>
+    </Content>
+    <Content Include="modules\idea-services\idea-services.min.js.gzip">
+      <DependentUpon>idea-services.min.js</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\blog-admin.tyly.co.nz - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\blog-admin.tyly.co.nz - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -141,12 +147,10 @@
     <Content Include="modules\idea-controllers\idea-login.js" />
     <Content Include="modules\idea-services\idea-authen.js" />
     <Content Include="modules\idea-services\idea-interceptor.js" />
-    <Content Include="modules\idea-services\idea-services.js">
-      <DependentUpon>idea-services.js.bundle</DependentUpon>
-    </Content>
     <Content Include="modules\idea-services\idea-services.min.js">
       <DependentUpon>idea-services.js</DependentUpon>
     </Content>
+    <Content Include="modules\views\forget.html" />
     <Content Include="modules\views\home.html" />
     <Content Include="modules\views\login.html" />
     <Content Include="modules\views\reset.html" />

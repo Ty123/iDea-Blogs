@@ -9,7 +9,8 @@
             <form id="idea-form" name="loginForm" role="form" class="idea-form" autocomplete="off" novalidate>
                 <div class="form-group" ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine }">
                     <div class="idea-textbox">
-                        <input type="email" name="username" class="form-control" placeholder="Username" ng-model="username" required />
+                        <input type="email" name="username" class="form-control" placeholder="Username" 
+                               ng-model="username" required />
                     </div>
                     <div ng-if="loginForm.username.$dirty" ng-messages="loginForm.username.$error">
                         <div ng-message="required" class="help-block">Email is required.</div>
@@ -27,7 +28,7 @@
                 <div class="form-group">
                     <button class="btn idea-button" type="submit" data-ng-click="login()" ng-disabled="loginForm.$invalid">Login</button>
                 </div>
-                <p><a href="#/forgetpassword">Forgot password</a></p>
+                <p><a href="#/forget">Forgot password</a></p>
                 <p>Not registered? <a href="#/signup">Create an account</a></p>
             </form>
         </div>

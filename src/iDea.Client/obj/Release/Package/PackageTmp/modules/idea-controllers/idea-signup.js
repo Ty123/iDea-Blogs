@@ -16,7 +16,9 @@
 
                 $scope.savedSuccessfully = true;
                 $scope.message = "User has been registered successfully, you will be redicted to login page in 2 seconds.";
-                startTimer($timeout, $location);
+                $timeout(function () {
+                    $location.path('#/login')
+                }, 2000)
 
             }, function (response) {
                 var errors = [];

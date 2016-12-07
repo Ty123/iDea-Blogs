@@ -16,6 +16,9 @@ using Microsoft.Owin.Security.OAuth;
 using iDea.Auth.Models;
 using iDea.Auth.Providers;
 using iDea.Auth.Results;
+using System.Net.Mail;
+using System.Net;
+using System.Web.Routing;
 
 namespace iDea.Auth.Controllers
 {
@@ -338,24 +341,11 @@ namespace iDea.Auth.Controllers
             }
             else
             {
-                try
-                {
-                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    code = HttpUtility.UrlEncode(code); // encode
-                    var callbackUrl = Url.Link("DefaultApi", new { controller = "Account", action = "ConfirmEmail", userId = user.Id, code = code });
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                    return Ok();
-                }
-                catch (Exception)
-                {
-                    return BadRequest();
-                }
-
+                var userId = user.Id;
+                var code = await UserManager.GenerateEmailConfirmationTokenAsync(userId);
+                code = HttpUtility.UrlEncode(code);
+                return Ok(new ConfirmEmailModel { UserId = userId, Code = code });
             }
-
-
-            return Ok();
         }
 
         // POST api/Account/RegisterExternal
@@ -392,32 +382,31 @@ namespace iDea.Auth.Controllers
         }
 
         // GET api/Account/ConfirmEmail
-        [HttpGet]
-        [AllowAnonymous]
-        [Route("ConfirmEmail")]
-        public async Task<IHttpActionResult> ConfirmEmail(int userId, string code)
-        {
-            if (userId == 0 || code == null)
-            {
-                return BadRequest();
-            }
-
-            code = HttpUtility.UrlDecode(code);
-
-            var result = await UserManager.ConfirmEmailAsync(userId, code);
-            return Ok(result.Succeeded ? "ConfirmEmail" : "Error");
-        }
-
-        // POST api/Account/SendForgetPassword
         [HttpPost]
         [AllowAnonymous]
-        [Route("SendForgetPassword")]
+        [Route("ConfirmEmail")]
+        public async Task<IHttpActionResult> ConfirmEmail(ConfirmEmailModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var code = HttpUtility.UrlDecode(model.Code);
+                var result = await UserManager.ConfirmEmailAsync(model.UserId, model.Code);
+                return Ok(result.Succeeded ? "ConfirmEmail" : "Error");
+            }
+
+            return BadRequest(ModelState);
+        }
+
+        // POST api/Account/ForgetPassword
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("ForgetPassword")]
         public IHttpActionResult SendForgotPassword(string email)
         {
             if (!String.IsNullOrEmpty(email))
             {
                 var user = UserManager.FindByName(email);
-                
+
                 if (user != null)
                 {
                     // Send an email with this link
@@ -433,6 +422,43 @@ namespace iDea.Auth.Controllers
             return BadRequest();
         }
 
+        // POST api/Account/ResetPassword
+        [Route("ResetPassword")]
+        [HttpPost]
+        public IHttpActionResult ResetPassword(int userId, string code, string newPassword)
+        {
+            var user = UserManager.FindById(userId);
+            if (user != null)
+            {
+                UserManager.ResetPassword(userId, code, newPassword);
+                return Ok();
+            }
+
+            return NotFound();
+        }
+
+        // POST api/Acccount/SendEmail 
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("SendEmail")]
+        public IHttpActionResult SendEmail(MessageModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    //SendMailGodaddy(model); // Deploy to Godaddy hosting
+                    SendMailGoogle(model); // Development only
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
+                return Ok();
+            }
+            return BadRequest(ModelState);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)
@@ -445,6 +471,42 @@ namespace iDea.Auth.Controllers
         }
 
         #region Helpers
+
+        public void SendMailGodaddy(MessageModel message)
+        {
+            MailMessage mail = new MailMessage();
+            mail.To.Add(message.Destination);
+            mail.From = new MailAddress("no-reply@ideablog.net");
+            mail.Subject = message.Subject;
+            string Body = message.Body;
+            mail.Body = Body;
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "relay-hosting.secureserver.net";
+            smtp.Port = 25;
+            smtp.Send(mail);
+        }
+
+        public void SendMailGoogle(MessageModel message)
+        {
+
+            MailMessage mail = new MailMessage();
+            SmtpClient smtpClient = new SmtpClient();
+            MailAddress fromAddress = new MailAddress("no-reply@ideablog.net");
+            mail.From = fromAddress;
+            mail.To.Add(message.Destination);
+            mail.Subject = message.Subject;
+            mail.IsBodyHtml = true;
+            mail.Body = message.Body;
+            // We use gmail as our smtp client
+            smtpClient.Host = "smtp.gmail.com";
+            smtpClient.Port = 587;
+            smtpClient.EnableSsl = true;
+            smtpClient.UseDefaultCredentials = true;
+            smtpClient.Credentials = new NetworkCredential("blogtestmail611@gmail.com", "Pa$$W0rd");
+            // Send email
+            smtpClient.Send(mail);
+        }
 
         private IAuthenticationManager Authentication
         {

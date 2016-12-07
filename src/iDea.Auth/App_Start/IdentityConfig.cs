@@ -8,6 +8,7 @@ using System.Net.Mail;
 using System;
 using System.Diagnostics;
 using System.Data.Entity;
+using System.Net;
 
 namespace iDea.Auth
 {
@@ -98,10 +99,16 @@ namespace iDea.Auth
     {
         public async Task SendAsync(IdentityMessage message)
         {
+            //await SendMailGodaddy(message);
+            await SendMailGoogle(message);
+        }
+
+        public async Task SendMailGodaddy(IdentityMessage message)
+        {
             MailMessage mail = new MailMessage();
             mail.To.Add(message.Destination);
             mail.From = new MailAddress("no-reply@ideablog.net");
-            mail.Subject = "Confirm your account";
+            mail.Subject = message.Subject;
             string Body = message.Body;
             mail.Body = Body;
             mail.IsBodyHtml = true;
@@ -117,6 +124,28 @@ namespace iDea.Auth
             {
                 Debug.WriteLine(ex.Message);
             }
+        }
+
+        public async Task SendMailGoogle(IdentityMessage message)
+        {
+
+            MailMessage mail = new MailMessage();
+            SmtpClient smtpClient = new SmtpClient();
+            MailAddress fromAddress = new MailAddress("no-reply@ideablog.net");
+            mail.From = fromAddress;
+            mail.To.Add(message.Destination);
+            mail.Subject = message.Subject;
+            mail.IsBodyHtml = true;
+            mail.Body = message.Body;
+            // We use gmail as our smtp client
+            smtpClient.Host = "smtp.gmail.com";
+            smtpClient.Port = 587;
+            smtpClient.EnableSsl = true;
+            smtpClient.UseDefaultCredentials = true;
+            smtpClient.Credentials = new NetworkCredential("blogtestmail611@gmail.com", "Pa$$W0rd");
+            // Send email
+            smtpClient.Send(mail);
+            await Task.FromResult(1);
         }
     }
 
