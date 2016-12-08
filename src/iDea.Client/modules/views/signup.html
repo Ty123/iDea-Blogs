@@ -22,7 +22,7 @@
                 <div class="form-group" ng-class="{ 'has-error' : signupForm.password.$invalid && !signupForm.password.$pristine }">
                     <div class="idea-textbox">
                         <input type="password" name="password" class="form-control" placeholder="Password" ng-model="password"
-                               ng-pattern="regex" required />
+                               ng-pattern="$parent.regex" required />
                     </div>
                     <div ng-if="signupForm.password.$dirty" ng-messages="signupForm.password.$error">
                         <div ng-message="required" class="help-block">Password is required</div>

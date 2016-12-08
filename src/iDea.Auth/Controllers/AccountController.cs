@@ -19,6 +19,7 @@ using iDea.Auth.Results;
 using System.Net.Mail;
 using System.Net;
 using System.Web.Routing;
+using System.IO;
 
 namespace iDea.Auth.Controllers
 {
@@ -341,10 +342,20 @@ namespace iDea.Auth.Controllers
             }
             else
             {
+                //var apiBaseUrl = Request.RequestUri.GetLeftPart(UriPartial.Authority);
                 var userId = user.Id;
-                var code = await UserManager.GenerateEmailConfirmationTokenAsync(userId);
-                code = HttpUtility.UrlEncode(code);
-                return Ok(new ConfirmEmailModel { UserId = userId, Code = code });
+                //var code = await UserManager.GenerateEmailConfirmationTokenAsync(userId);
+                //string template = string.Empty;
+                //using (StreamReader reader = new StreamReader(HttpContext.Current.Server.MapPath("~/Views/Shared/form-template.html")))
+                //{
+                //    template = reader.ReadToEnd();
+                //}
+
+                //template = template.Replace("{apiBaseUri}", apiBaseUrl);
+                //template = template.Replace("{userId}", Convert.ToString(userId));
+                //template = template.Replace("{code}", code);
+
+                return Ok(new { UserId = userId });
             }
         }
 
@@ -458,6 +469,28 @@ namespace iDea.Auth.Controllers
             }
             return BadRequest(ModelState);
         }
+
+        //// POST api/Acccount/SendEmail 
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[Route("SendEmail")]
+        //public IHttpActionResult SendEmail(MessageModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            //SendMailGodaddy(model); // Deploy to Godaddy hosting
+        //            SendMailGoogle(model); // Development only
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            return BadRequest(ex.Message);
+        //        }
+        //        return Ok();
+        //    }
+        //    return BadRequest(ModelState);
+        //}
 
         protected override void Dispose(bool disposing)
         {

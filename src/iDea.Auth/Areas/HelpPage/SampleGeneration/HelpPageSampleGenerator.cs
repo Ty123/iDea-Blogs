@@ -62,7 +62,7 @@ namespace iDea.Auth.Areas.HelpPage
         public IList<Func<HelpPageSampleGenerator, Type, object>> SampleObjectFactories { get; private set; }
 
         /// <summary>
-        /// Gets the request body samples for a given <see cref="ApiDescription"/>.
+        /// Gets the request template samples for a given <see cref="ApiDescription"/>.
         /// </summary>
         /// <param name="api">The <see cref="ApiDescription"/>.</param>
         /// <returns>The samples keyed by media type.</returns>
@@ -72,7 +72,7 @@ namespace iDea.Auth.Areas.HelpPage
         }
 
         /// <summary>
-        /// Gets the response body samples for a given <see cref="ApiDescription"/>.
+        /// Gets the response template samples for a given <see cref="ApiDescription"/>.
         /// </summary>
         /// <param name="api">The <see cref="ApiDescription"/>.</param>
         /// <returns>The samples keyed by media type.</returns>
@@ -82,7 +82,7 @@ namespace iDea.Auth.Areas.HelpPage
         }
 
         /// <summary>
-        /// Gets the request or response body samples.
+        /// Gets the request or response template samples.
         /// </summary>
         /// <param name="api">The <see cref="ApiDescription"/>.</param>
         /// <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>

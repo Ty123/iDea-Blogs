@@ -4,6 +4,12 @@ using Newtonsoft.Json;
 
 namespace iDea.Auth.Models
 {
+    public class ConfirmModel
+    {
+        [Required]
+        public int UserId { get; set; }
+    }
+
     public class MessageModel
     {
         [Required]

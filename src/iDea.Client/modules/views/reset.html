@@ -10,7 +10,7 @@
                     <div class="idea-textbox">
                         <input type="password" name="password" class="form-control"
                                placeholder="New Password" ng-model="password"
-                               ng-pattern="regex" required />
+                               ng-pattern="$parent.regex" required />
                     </div>
                     <div ng-if="resetForm.password.$dirty" ng-messages="resetForm.password.$error">
                         <div ng-message="required" class="help-block">

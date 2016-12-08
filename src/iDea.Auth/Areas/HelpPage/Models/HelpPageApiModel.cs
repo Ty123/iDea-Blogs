@@ -38,12 +38,12 @@ namespace iDea.Auth.Areas.HelpPage.Models
         public string RequestDocumentation { get; set; }
 
         /// <summary>
-        /// Gets or sets the <see cref="ModelDescription"/> that describes the request body.
+        /// Gets or sets the <see cref="ModelDescription"/> that describes the request template.
         /// </summary>
         public ModelDescription RequestModelDescription { get; set; }
 
         /// <summary>
-        /// Gets the request body parameter descriptions.
+        /// Gets the request template parameter descriptions.
         /// </summary>
         public IList<ParameterDescription> RequestBodyParameters
         {

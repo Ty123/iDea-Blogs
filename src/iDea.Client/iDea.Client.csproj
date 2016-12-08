@@ -73,6 +73,7 @@
     <Content Include="modules\idea-app\idea-app.min.js.gzip">
       <DependentUpon>idea-app.min.js</DependentUpon>
     </Content>
+    <Content Include="modules\idea-controllers\idea-activate.js" />
     <Content Include="modules\idea-controllers\idea-forget.js" />
     <Content Include="modules\idea-controllers\idea-reset.js" />
     <Content Include="modules\idea-controllers\idea-signup.js" />
@@ -150,6 +151,7 @@
     <Content Include="modules\idea-services\idea-services.min.js">
       <DependentUpon>idea-services.js</DependentUpon>
     </Content>
+    <Content Include="modules\views\activate.html" />
     <Content Include="modules\views\forget.html" />
     <Content Include="modules\views\home.html" />
     <Content Include="modules\views\login.html" />
