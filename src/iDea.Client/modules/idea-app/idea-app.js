@@ -10,10 +10,15 @@ var app = angular.module('howzit', ['ngRoute', 'ngMessages', 'ngAnimate', 'Local
 })
 // configuration routes
 .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-    $routeProvider.when('/activate/:userId', {
+    // activate routes
+    $routeProvider.when('/activate/:userId/:code/', {
         templateUrl: '/modules/views/activate.html',
         controller: 'ActivateController'
     });
+    //$routeProvider.when('/activate/:userId', {
+    //    templateUrl: '/modules/views/activate.html',
+    //    controller: 'ActivateController'
+    //});
     // reset pwd route
     $routeProvider.when("/reset", {
         controller: "ResetController",

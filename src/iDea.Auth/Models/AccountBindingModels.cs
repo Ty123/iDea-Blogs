@@ -4,10 +4,17 @@ using Newtonsoft.Json;
 
 namespace iDea.Auth.Models
 {
-    public class ConfirmModel
+    public class ConfirmEmailModel
     {
         [Required]
         public int UserId { get; set; }
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        public string Destination { get; set; }
+        [Required]
+        public string CallbackUrlBase { get; set; }
+        [Required]
+        public string Code { get; set; }
     }
 
     public class MessageModel
@@ -21,13 +28,6 @@ namespace iDea.Auth.Models
         public string Body { get; set; }
     }
 
-    public class ConfirmEmailModel
-    {
-        [Required]
-        public int UserId { get; set; }
-        [Required]
-        public string Code { get; set; }
-    }
     public class AddExternalLoginBindingModel
     {
         [Required]

@@ -77,7 +77,7 @@
     <Content Include="modules\idea-controllers\idea-forget.js" />
     <Content Include="modules\idea-controllers\idea-reset.js" />
     <Content Include="modules\idea-controllers\idea-signup.js" />
-    <Content Include="modules\idea-services\idea-confirm.js" />
+    <Content Include="modules\idea-services\idea-activate.js" />
     <Content Include="modules\idea-services\idea-reset-pwd.js" />
     <Content Include="modules\idea-controllers\idea-controllers.js.bundle" />
     <Content Include="modules\idea-controllers\idea-controllers.min.js.map">
@@ -94,6 +94,7 @@
     <Content Include="assets\css\_custom-bt.scss" />
     <Content Include="assets\css\_variables.scss" />
     <Content Include="assets\css\_mixins.scss" />
+    <Content Include="modules\idea-services\idea-sendemail.js" />
     <Content Include="modules\idea-services\idea-services.js">
       <DependentUpon>idea-services.js.bundle</DependentUpon>
     </Content>

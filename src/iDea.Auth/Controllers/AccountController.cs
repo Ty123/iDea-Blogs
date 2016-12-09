@@ -20,6 +20,8 @@ using System.Net.Mail;
 using System.Net;
 using System.Web.Routing;
 using System.IO;
+using System.Diagnostics;
+using System.Text;
 
 namespace iDea.Auth.Controllers
 {
@@ -342,20 +344,22 @@ namespace iDea.Auth.Controllers
             }
             else
             {
-                //var apiBaseUrl = Request.RequestUri.GetLeftPart(UriPartial.Authority);
                 var userId = user.Id;
-                //var code = await UserManager.GenerateEmailConfirmationTokenAsync(userId);
-                //string template = string.Empty;
-                //using (StreamReader reader = new StreamReader(HttpContext.Current.Server.MapPath("~/Views/Shared/form-template.html")))
-                //{
-                //    template = reader.ReadToEnd();
-                //}
+                string code = await UserManager.GenerateEmailConfirmationTokenAsync(userId);
+                
+                while (true)
+                {
+                    if (code.ToLower().Contains("/"))
+                    {
+                        code = await UserManager.GenerateEmailConfirmationTokenAsync(userId);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
 
-                //template = template.Replace("{apiBaseUri}", apiBaseUrl);
-                //template = template.Replace("{userId}", Convert.ToString(userId));
-                //template = template.Replace("{code}", code);
-
-                return Ok(new { UserId = userId });
+                return Ok(new { UserId = userId, Code= code });
             }
         }
 
@@ -396,16 +400,14 @@ namespace iDea.Auth.Controllers
         [HttpPost]
         [AllowAnonymous]
         [Route("ConfirmEmail")]
-        public async Task<IHttpActionResult> ConfirmEmail(ConfirmEmailModel model)
+        public async Task<IHttpActionResult> ConfirmEmail(int? userId, string code)
         {
-            if (ModelState.IsValid)
+            if (!String.IsNullOrEmpty(code) || userId != null)
             {
-                var code = HttpUtility.UrlDecode(model.Code);
-                var result = await UserManager.ConfirmEmailAsync(model.UserId, model.Code);
-                return Ok(result.Succeeded ? "ConfirmEmail" : "Error");
+                var result = await UserManager.ConfirmEmailAsync(userId.Value, code);
+                return Ok(result.Succeeded ? "OK" : "Error");
             }
-
-            return BadRequest(ModelState);
+            return BadRequest();
         }
 
         // POST api/Account/ForgetPassword
@@ -452,14 +454,25 @@ namespace iDea.Auth.Controllers
         [HttpPost]
         [AllowAnonymous]
         [Route("SendEmail")]
-        public IHttpActionResult SendEmail(MessageModel model)
+        public IHttpActionResult SendEmail(ConfirmEmailModel model)
         {
             if (ModelState.IsValid)
             {
+                var callbackUrl = model.CallbackUrlBase + "" + model.UserId + "/" + HttpUtility.UrlEncode(model.Code);
+                var body = String.Format("Please activate your account by click <a href=\"" + callbackUrl + "\" >this link</a>");
+
                 try
                 {
-                    //SendMailGodaddy(model); // Deploy to Godaddy hosting
-                    SendMailGoogle(model); // Development only
+                    //SendMailGodaddy(new MessageModel { 
+                    //    Destination = model.Destination,
+                    //    Subject = "Confirm your account",
+                    //    Body = body
+                    //}); // Deploy to Godaddy hosting
+                    SendMailGoogle(new MessageModel { 
+                        Destination = model.Destination,
+                        Subject = "Confirm your account",
+                        Body = body
+                    }); // Development only
                 }
                 catch (Exception ex)
                 {
@@ -469,28 +482,6 @@ namespace iDea.Auth.Controllers
             }
             return BadRequest(ModelState);
         }
-
-        //// POST api/Acccount/SendEmail 
-        //[HttpPost]
-        //[AllowAnonymous]
-        //[Route("SendEmail")]
-        //public IHttpActionResult SendEmail(MessageModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            //SendMailGodaddy(model); // Deploy to Godaddy hosting
-        //            SendMailGoogle(model); // Development only
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            return BadRequest(ex.Message);
-        //        }
-        //        return Ok();
-        //    }
-        //    return BadRequest(ModelState);
-        //}
 
         protected override void Dispose(bool disposing)
         {

@@ -1,12 +1,12 @@
 ﻿<div class="idea-page">
     <div class="idea-form-container">
         <h1 class="title">Admin Sign Up Page</h1>
-        <div data-ng-show="message != '' && savedSuccessfully == false" class="alert alert-danger animated slideInDown idea-alert">
+        <div data-ng-show="message != '' && !savedSuccessfully" class="alert alert-danger animated slideInDown idea-alert">
             <strong>Error!</strong> {{message}}.
         </div>
-        <!--<div data-ng-show="message != '' && savedSuccessfully" class="alert alert-success animated slideInDown idea-alert">
+        <div data-ng-show="message != '' && savedSuccessfully" class="alert alert-success animated slideInDown idea-alert">
             <strong>Success!</strong> {{message}}.
-        </div>-->
+        </div>
         <div class="idea-form-wrap">
             <form name="signupForm" role="form" class="idea-form" autocomplete="off" novalidate>
                 <div class="form-group" ng-class="{ 'has-error' : signupForm.username.$invalid && !signupForm.username.$pristine }">

@@ -1,14 +1,19 @@
 ﻿(function () {
-    app.factory('ConfirmService', ['$http', '$q', '$log', 'ngAuthSettings', function ($http, $q, $log, ngAuthSettings) {
+    app.factory('SendEmailService', ['$http', '$q', '$log', 'ngAuthSettings', function ($http, $q, $log, ngAuthSettings) {
         var url = ngAuthSettings.apiServiceBaseUri,
             service = {};
 
         var _send = function (message) {
             var deferred = $q.defer(),
                 data = {
+                    //userId: message.userId,
+                    //callbackUrl: message.callbackUrl,
+                    //code: message.code,
+                    //destination: message.destination
+                    userId: message.userId,
                     destination: message.destination,
-                    subject: message.subject,
-                    body: message.body
+                    callbackUrlBase: message.callbackUrlBase,
+                    code: message.code
                 };
 
             $http.post(url + 'api/Account/SendEmail', data).success(function (response) {
