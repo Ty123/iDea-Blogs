@@ -60,6 +60,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\animate.min.css" />
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\font-awesome.min.css" />
+    <Content Include="assets\css\_contents.scss" />
+    <Content Include="assets\css\_custom-bt.scss" />
+    <Content Include="assets\css\_fonts.scss" />
+    <Content Include="assets\css\_footer.scss" />
+    <Content Include="assets\css\_header.scss" />
+    <Content Include="assets\css\_mixins.scss" />
+    <Content Include="assets\css\_variables.scss" />
+    <Content Include="assets\scripts\angular-animate.min.js" />
+    <Content Include="assets\scripts\angular-local-storage.min.js" />
+    <Content Include="assets\scripts\angular-messages.min.js" />
+    <Content Include="assets\scripts\angular-route.min.js" />
+    <Content Include="assets\scripts\angular.min.js" />
     <Content Include="assets\scripts\idea-angulars.js.bundle" />
     <Content Include="assets\scripts\idea-angulars.min.js.map">
       <DependentUpon>idea-angulars.min.js</DependentUpon>
@@ -67,6 +81,8 @@
     <Content Include="assets\scripts\idea-angulars.min.js.gzip">
       <DependentUpon>idea-angulars.min.js</DependentUpon>
     </Content>
+    <Content Include="assets\scripts\ui-bootstrap-tpls.js" />
+    <Content Include="assets\scripts\ui-bootstrap.min.js" />
     <Content Include="modules\idea-app\idea-app.min.js.map">
       <DependentUpon>idea-app.min.js</DependentUpon>
     </Content>
@@ -74,11 +90,6 @@
       <DependentUpon>idea-app.min.js</DependentUpon>
     </Content>
     <Content Include="modules\idea-controllers\idea-activate.js" />
-    <Content Include="modules\idea-controllers\idea-forget.js" />
-    <Content Include="modules\idea-controllers\idea-reset.js" />
-    <Content Include="modules\idea-controllers\idea-signup.js" />
-    <Content Include="modules\idea-services\idea-activate.js" />
-    <Content Include="modules\idea-services\idea-reset-pwd.js" />
     <Content Include="modules\idea-controllers\idea-controllers.js.bundle" />
     <Content Include="modules\idea-controllers\idea-controllers.min.js.map">
       <DependentUpon>idea-controllers.min.js</DependentUpon>
@@ -86,14 +97,17 @@
     <Content Include="modules\idea-controllers\idea-controllers.min.js.gzip">
       <DependentUpon>idea-controllers.min.js</DependentUpon>
     </Content>
-    <Content Include="assets\css\_fonts.scss" />
-    <Content Include="assets\css\_header.scss" />
-    <Content Include="assets\css\_contents.scss" />
-    <Content Include="assets\css\_footer.scss" />
     <Content Include="assets\css\idea-app.scss" />
-    <Content Include="assets\css\_custom-bt.scss" />
-    <Content Include="assets\css\_variables.scss" />
-    <Content Include="assets\css\_mixins.scss" />
+    <Content Include="modules\idea-controllers\idea-forget.js" />
+    <Content Include="modules\idea-controllers\idea-home.js" />
+    <Content Include="modules\idea-controllers\idea-index.js" />
+    <Content Include="modules\idea-controllers\idea-login.js" />
+    <Content Include="modules\idea-controllers\idea-reset.js" />
+    <Content Include="modules\idea-controllers\idea-signup.js" />
+    <Content Include="modules\idea-services\idea-activate.js" />
+    <Content Include="modules\idea-services\idea-authen.js" />
+    <Content Include="modules\idea-services\idea-interceptor.js" />
+    <Content Include="modules\idea-services\idea-reset-pwd.js" />
     <Content Include="modules\idea-services\idea-sendemail.js" />
     <Content Include="modules\idea-services\idea-services.js">
       <DependentUpon>idea-services.js.bundle</DependentUpon>
@@ -115,24 +129,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\css\bootstrap.min.css" />
-    <Content Include="assets\css\font-awesome.min.css" />
     <Content Include="assets\css\idea-app.min.css">
       <DependentUpon>idea-app.scss</DependentUpon>
     </Content>
-    <Content Include="assets\scripts\angular-animate.min.js" />
-    <Content Include="assets\scripts\angular-local-storage.min.js" />
-    <Content Include="assets\scripts\angular-messages.min.js" />
-    <Content Include="assets\scripts\angular-route.min.js" />
-    <Content Include="assets\scripts\angular.min.js" />
     <Content Include="assets\scripts\idea-angulars.js">
       <DependentUpon>idea-angulars.js.bundle</DependentUpon>
     </Content>
     <Content Include="assets\scripts\idea-angulars.min.js">
       <DependentUpon>idea-angulars.js</DependentUpon>
     </Content>
-    <Content Include="assets\scripts\ui-bootstrap-tpls.js" />
-    <Content Include="assets\scripts\ui-bootstrap.min.js" />
     <Content Include="index.html" />
     <Content Include="modules\idea-app\idea-app.js" />
     <Content Include="modules\idea-app\idea-app.min.js">
@@ -144,11 +149,6 @@
     <Content Include="modules\idea-controllers\idea-controllers.min.js">
       <DependentUpon>idea-controllers.js</DependentUpon>
     </Content>
-    <Content Include="modules\idea-controllers\idea-home.js" />
-    <Content Include="modules\idea-controllers\idea-index.js" />
-    <Content Include="modules\idea-controllers\idea-login.js" />
-    <Content Include="modules\idea-services\idea-authen.js" />
-    <Content Include="modules\idea-services\idea-interceptor.js" />
     <Content Include="modules\idea-services\idea-services.min.js">
       <DependentUpon>idea-services.js</DependentUpon>
     </Content>

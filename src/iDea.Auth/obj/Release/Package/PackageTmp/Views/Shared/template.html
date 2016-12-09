@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.min.js"></script>
+</head>
+<body ng-app="App">
+    <form ng-controller="ConfirmController">
+        <input type="hidden" name="userId" ng-model="userId" ng-init="userId='{userId}'" />
+        <input type="hidden" name="code" ng-model="code" ng-init="code='{code}'" />
+        <label>Please confirm your account by click the : </label>
+        <input type="submit" value="link" ng-click="submit()" />
+    </form>
+    <script>
+            (function () {
+                angular.module('App', ['ngRoute'])
+                       .controller('ConfirmController', ['$http', '$scope', '$window', function ($http, $scope, $window) {
+                           var url = "{apiBaseUri}" + "api/Account/ConfirmEmail",
+                               path = "{path}",
+                               data = {
+                                   userId: $scope.userId,
+                                   code: $scope.code
+                               };
+
+                           $scope.submit = function () {
+                               alert('Hello world!')
+                               $http.post(url, data).then(function (response) {
+                                   $window.open(path);
+                               }, function (error) {
+                                   alert("Oops.. unable to confirm your account!");
+                               })
+                           }
+                       }]);
+            })();
+    </script>
+</body>
+</html>

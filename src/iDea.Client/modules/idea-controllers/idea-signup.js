@@ -8,28 +8,11 @@
         $scope.signUp = function () {
             $scope.$parent.loading();
             AuthService.saveRegistration({ email: $scope.username, password: $scope.password, confirmPassword: $scope.password }).then(function (response) {
-                //var userId = response.data.userId,
-                //    code = response.data.code,
-                //    url = 'http://localhost:53017/#/activate/' + userId + '/' + code;
-                //    body = '<p>Please activate your account by click this <a href="' + url + '" target="_blank">activate link</a></p>',
-                //    message = {
-                //        destination: $scope.username,
-                //        subject: 'Verify your account',
-                //        body: body
-                //    };
-                //    console.log(code);
-                //var userId = response.data.userId,
-                //    url = $location.url(),
-                //    body = '<p>Please activate your account by click this <a href="http://localhost:53017/#/activate/2" target="_blank">activate link</a></p>',
-                //    message = {
-                //        destination: $scope.username,
-                //        subject: 'Verify your account',
-                //        body: body
-                //    };
 
                 var userId = response.data.userId,
                     code = response.data.code,
                     callbackUrlBase = 'http://localhost:53017/#/activate/',
+                    //callbackUrlBase = 'http://blog-admin.tyly.co.nz/#/activate/',
                     destination = $scope.username;
 
                 var message = {

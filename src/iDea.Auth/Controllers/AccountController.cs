@@ -414,7 +414,7 @@ namespace iDea.Auth.Controllers
         [HttpPost]
         [AllowAnonymous]
         [Route("ForgetPassword")]
-        public IHttpActionResult SendForgotPassword(string email)
+        public async Task<IHttpActionResult> ForgotPassword(string email)
         {
             if (!String.IsNullOrEmpty(email))
             {
@@ -422,11 +422,23 @@ namespace iDea.Auth.Controllers
 
                 if (user != null)
                 {
-                    // Send an email with this link
-                    string code = UserManager.GeneratePasswordResetToken(user.Id);
-                    var callbackUrl = string.Format("http://www.google.com?userId={0}&code={1}", user.Id, code);
-                    UserManager.SendEmail(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    return Ok(email);
+                    string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                    //var callbackUrl = string.Format("http://www.google.com?userId={0}&code={1}", user.Id, code);
+                    //UserManager.SendEmail(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    while (true)
+                    {
+                        if (code.ToLower().Contains("/"))
+                        {
+                            code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+                    return Ok(new { UserId = user.Id, Code = code });
                 }
 
                 return NotFound();
@@ -463,12 +475,14 @@ namespace iDea.Auth.Controllers
 
                 try
                 {
-                    //SendMailGodaddy(new MessageModel { 
+                    //SendMailGodaddy(new MessageModel
+                    //{
                     //    Destination = model.Destination,
                     //    Subject = "Confirm your account",
                     //    Body = body
                     //}); // Deploy to Godaddy hosting
-                    SendMailGoogle(new MessageModel { 
+                    SendMailGoogle(new MessageModel
+                    {
                         Destination = model.Destination,
                         Subject = "Confirm your account",
                         Body = body

@@ -18,6 +18,135 @@ body {
     padding-bottom: 40px;
 }
 
+#idea-loading {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100vh;
+    background-color: $green-color;
+    z-index: -1;
+
+    &.animated {
+        &.fadeIn {
+            display: inline-block;
+            z-index: 99999;
+        }
+    }
+}
+
+.loader {
+    color: #ffffff;
+    font-size: 11px;
+    text-indent: -99999em;
+    margin: 55px auto;
+    position: relative;
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1em;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+
+    &:before, &:after {
+        position: absolute;
+        content: '';
+            border-radius: 50%;
+    }
+
+    &:before {
+        width: 5.2em;
+        height: 10.2em;
+        background: $green-color;
+        border-radius: 10.2em 0 0 10.2em;
+        top: -0.1em;
+        left: -0.1em;
+        -webkit-transform-origin: 5.2em 5.1em;
+        -moz-transform-origin: 5.2em 5.1em;
+        -ms-transform-origin: 5.2em 5.1em;
+        -o-transform-origin: 5.2em 5.1em;
+        transform-origin: 5.2em 5.1em;
+        -webkit-animation: load 2s infinite ease 1.5s;
+        -moz-animation: load 2s infinite ease 1.5s;
+        -o-animation: load 2s infinite ease 1.5s;
+        animation: load 2s infinite ease 1.5s;
+    }
+
+    &:after {
+        width: 5.2em;
+        height: 10.2em;
+        background: $green-color;
+        border-radius: 0 10.2em 10.2em 0;
+        top: -0.1em;
+        left: 5.1em;
+        -moz-transform-origin: 0 5.1em;
+        -ms-transform-origin: 0 5.1em;
+        -o-transform-origin: 0 5.1em;
+        -webkit-transform-origin: 0 5.1em;
+        transform-origin: 0 5.1em;
+        -webkit-animation: load 2s infinite ease;
+        -moz-animation: load 2s infinite ease;
+        -o-animation: load 2s infinite ease;
+        animation: load 2s infinite ease;
+    }
+}
+
+@-webkit-keyframes load {
+    0% {
+        -webkit-transform: rotate(0);
+        -moz-transform: rotate(0);
+        -ms-transform: rotate(0);
+        -o-transform: rotate(0);
+        transform: rotate(0);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes load {
+    0% {
+        -webkit-transform: rotate(0);
+        -moz-transform: rotate(0);
+        -ms-transform: rotate(0);
+        -o-transform: rotate(0);
+        transform: rotate(0);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes load {
+    0% {
+        -webkit-transform: rotate(0);
+        -moz-transform: rotate(0);
+        -ms-transform: rotate(0);
+        -o-transform: rotate(0);
+        transform: rotate(0);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
 .form-group {
 
     .idea-textbox {
@@ -63,7 +192,7 @@ body {
     @include animation-duration('1s');
 }
 
-// login page
+// page & forms
 .idea-page {
     display: table;
     position: absolute;
@@ -110,49 +239,3 @@ body {
         }
     }
 }
-/*#idea-login-page {
-    display: table;
-    position: absolute;
-    top: 0;
-    height: 100vh;
-    width: 100%;
-    background: $green-color;
-
-    #idea-login-form-container {
-        display: table-cell;
-        vertical-align: middle;
-
-        #idea-login-form-wrap {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 40px 40px 10px;
-            text-align: center;
-            width: 400px;
-            background-color: #ffffff;
-            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-
-            #idea-login-form {
-                text-align: left;
-                padding: 0 20px;
-            }
-
-            p {
-                margin: 10px 0;
-                font-family: 'Reem Kufi';
-
-                a {
-                    color: $green-color;
-                }
-            }
-        }
-
-        .title {
-            font-family: 'Dorsa', sans-serif;
-            font-size: 100px;
-            color: #fff;
-            letter-spacing: 1px;
-            text-align: center;
-        }
-    }
-}*/

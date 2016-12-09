@@ -3,3 +3,4 @@ C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Client\bin\iDea.Clie
 C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Client\bin\iDea.Client.pdb
 C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Client\obj\Release\iDea.Client.dll
 C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Client\obj\Release\iDea.Client.pdb
+C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Client\obj\Release\iDea.Client.csprojResolveAssemblyReference.cache
