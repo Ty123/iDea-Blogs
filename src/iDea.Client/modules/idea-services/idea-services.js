@@ -115,14 +115,14 @@
 })();
 ///#source 1 1 /modules/idea-services/idea-reset-pwd.js
 (function () {
-    app.factory('ResetService', ['$http', '$q', 'ngAuthSettings', function ($http, $q, ngAuthSettings) {
+    app.factory('ResetPwdService', ['$http', '$q', 'ngAuthSettings', function ($http, $q, ngAuthSettings) {
         var url = ngAuthSettings.apiServiceBaseUri;
         var service = {};
 
-        var _reset = function (obj) {
+        var _reset = function (data) {
             var deferred = $q.defer();
 
-            $http.post(url + 'api/Account/ForgetPassword?email=' + obj).success(function (response) {
+            $http.post(url + 'api/Account/ResetPassword', data).success(function (response) {
                 deferred.resolve(response);
             }).error(function (err, status) {
                 deferred.reject(err);
@@ -146,14 +146,12 @@
         var _send = function (message) {
             var deferred = $q.defer(),
                 data = {
-                    //userId: message.userId,
-                    //callbackUrl: message.callbackUrl,
-                    //code: message.code,
-                    //destination: message.destination
                     userId: message.userId,
                     destination: message.destination,
                     callbackUrlBase: message.callbackUrlBase,
-                    code: message.code
+                    code: message.code,
+                    body: message.body,
+                    subject: message.subject
                 };
 
             $http.post(url + 'api/Account/SendEmail', data).success(function (response) {
@@ -192,4 +190,28 @@
 
         return service;
     }])
+})();
+///#source 1 1 /modules/idea-services/idea-forget-pwd.js
+(function () {
+    app.factory('ForgetPwdService', ['$http', '$q', 'ngAuthSettings', function ($http, $q, ngAuthSettings) {
+        var url = ngAuthSettings.apiServiceBaseUri;
+        var service = {};
+
+        var _reset = function (email) {
+            var deferred = $q.defer();
+
+            $http.post(url + 'api/Account/ForgetPassword?email=' + email).success(function (response) {
+                deferred.resolve(response);
+            }).error(function (err, status) {
+                deferred.reject(err);
+            });
+
+            return deferred.promise;
+        }
+
+        service.reset = _reset;
+
+        return service;
+
+    }]);
 })();

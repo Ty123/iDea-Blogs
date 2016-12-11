@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using iDea.Auth.Models;
@@ -103,11 +102,11 @@ namespace iDea.Auth
             await SendMailGoogle(message);
         }
 
-        public async Task SendMailGodaddy(IdentityMessage message)
+        private async Task SendMailGodaddy(IdentityMessage message)
         {
             MailMessage mail = new MailMessage();
             mail.To.Add(message.Destination);
-            mail.From = new MailAddress("no-reply@ideablog.net");
+            mail.From = new MailAddress("support@tyly.co.nz");
             mail.Subject = message.Subject;
             string Body = message.Body;
             mail.Body = Body;
@@ -115,6 +114,7 @@ namespace iDea.Auth
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "relay-hosting.secureserver.net";
             smtp.Port = 25;
+
             try
             {
                 smtp.Send(mail);
@@ -126,7 +126,7 @@ namespace iDea.Auth
             }
         }
 
-        public async Task SendMailGoogle(IdentityMessage message)
+        private async Task SendMailGoogle(IdentityMessage message)
         {
 
             MailMessage mail = new MailMessage();
@@ -147,6 +147,7 @@ namespace iDea.Auth
             smtpClient.Send(mail);
             await Task.FromResult(1);
         }
+
     }
 
     public class SmsService : IIdentityMessageService

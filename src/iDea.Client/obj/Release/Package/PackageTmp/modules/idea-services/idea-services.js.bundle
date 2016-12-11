@@ -15,5 +15,6 @@
     <file>/modules/idea-services/idea-reset-pwd.js</file>
     <file>/modules/idea-services/idea-sendemail.js</file>
     <file>/modules/idea-services/idea-activate.js</file>
+    <file>/modules/idea-services/idea-forget-pwd.js</file>
   </files>
 </bundle>

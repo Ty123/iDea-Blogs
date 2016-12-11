@@ -10,7 +10,7 @@
             };
 
             ActivateService.activate(data).then(function (response) {
-                $scope.$parent.unload();
+                $scope.$parent.unload();             
                 $window.location.href = ('#/login');
             }, function (error) {
                 $scope.$parent.unload();

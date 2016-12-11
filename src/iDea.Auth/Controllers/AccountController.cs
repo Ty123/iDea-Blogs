@@ -346,10 +346,10 @@ namespace iDea.Auth.Controllers
             {
                 var userId = user.Id;
                 string code = await UserManager.GenerateEmailConfirmationTokenAsync(userId);
-                
+
                 while (true)
                 {
-                    if (code.ToLower().Contains("/"))
+                    if (code.ToLower().Contains("/") || code.ToLower().Contains("+"))
                     {
                         code = await UserManager.GenerateEmailConfirmationTokenAsync(userId);
                     }
@@ -359,7 +359,7 @@ namespace iDea.Auth.Controllers
                     }
                 }
 
-                return Ok(new { UserId = userId, Code= code });
+                return Ok(new { UserId = userId, Code = code });
             }
         }
 
@@ -404,8 +404,13 @@ namespace iDea.Auth.Controllers
         {
             if (!String.IsNullOrEmpty(code) || userId != null)
             {
+                //code = HttpUtility.UrlDecode(code);
                 var result = await UserManager.ConfirmEmailAsync(userId.Value, code);
-                return Ok(result.Succeeded ? "OK" : "Error");
+                if (result.Succeeded)
+                {
+                    return Ok();
+                }
+                return GetErrorResult(result);
             }
             return BadRequest();
         }
@@ -423,12 +428,9 @@ namespace iDea.Auth.Controllers
                 if (user != null)
                 {
                     string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                    //var callbackUrl = string.Format("http://www.google.com?userId={0}&code={1}", user.Id, code);
-                    //UserManager.SendEmail(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
                     while (true)
                     {
-                        if (code.ToLower().Contains("/"))
+                        if (code.ToLower().Contains("/") || code.ToLower().Contains("+"))
                         {
                             code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
                         }
@@ -437,10 +439,8 @@ namespace iDea.Auth.Controllers
                             break;
                         }
                     }
-
                     return Ok(new { UserId = user.Id, Code = code });
                 }
-
                 return NotFound();
             }
 
@@ -448,45 +448,44 @@ namespace iDea.Auth.Controllers
         }
 
         // POST api/Account/ResetPassword
-        [Route("ResetPassword")]
         [HttpPost]
-        public IHttpActionResult ResetPassword(int userId, string code, string newPassword)
+        [AllowAnonymous]
+        [Route("ResetPassword")]
+        public async Task<IHttpActionResult> ResetPassword(ResetPasswordModel model)
         {
-            var user = UserManager.FindById(userId);
-            if (user != null)
+            if (ModelState.IsValid)
             {
-                UserManager.ResetPassword(userId, code, newPassword);
-                return Ok();
+                var user = await UserManager.FindByIdAsync(model.UserId);
+                if (user == null)
+                {
+                    return NotFound();
+                }
+
+                IdentityResult result = await UserManager.ResetPasswordAsync(model.UserId, model.Code, model.NewPassword);
+                if (result.Succeeded)
+                {
+                    return Ok();
+                }
+                return GetErrorResult(result);
             }
 
-            return NotFound();
+            return BadRequest(ModelState);
         }
 
         // POST api/Acccount/SendEmail 
         [HttpPost]
         [AllowAnonymous]
         [Route("SendEmail")]
-        public IHttpActionResult SendEmail(ConfirmEmailModel model)
+        public async Task<IHttpActionResult> SendEmail(ConfirmEmailModel model)
         {
             if (ModelState.IsValid)
             {
-                var callbackUrl = model.CallbackUrlBase + "" + model.UserId + "/" + HttpUtility.UrlEncode(model.Code);
-                var body = String.Format("Please activate your account by click <a href=\"" + callbackUrl + "\" >this link</a>");
+                var callbackUrl = model.CallbackUrlBase + "" + model.UserId + "/" + model.Code;
+                var body = String.Format(model.Body, callbackUrl);
 
                 try
                 {
-                    //SendMailGodaddy(new MessageModel
-                    //{
-                    //    Destination = model.Destination,
-                    //    Subject = "Confirm your account",
-                    //    Body = body
-                    //}); // Deploy to Godaddy hosting
-                    SendMailGoogle(new MessageModel
-                    {
-                        Destination = model.Destination,
-                        Subject = "Confirm your account",
-                        Body = body
-                    }); // Development only
+                    await UserManager.SendEmailAsync(model.UserId, model.Subject, body);
                 }
                 catch (Exception ex)
                 {
@@ -509,42 +508,6 @@ namespace iDea.Auth.Controllers
         }
 
         #region Helpers
-
-        public void SendMailGodaddy(MessageModel message)
-        {
-            MailMessage mail = new MailMessage();
-            mail.To.Add(message.Destination);
-            mail.From = new MailAddress("no-reply@ideablog.net");
-            mail.Subject = message.Subject;
-            string Body = message.Body;
-            mail.Body = Body;
-            mail.IsBodyHtml = true;
-            SmtpClient smtp = new SmtpClient();
-            smtp.Host = "relay-hosting.secureserver.net";
-            smtp.Port = 25;
-            smtp.Send(mail);
-        }
-
-        public void SendMailGoogle(MessageModel message)
-        {
-
-            MailMessage mail = new MailMessage();
-            SmtpClient smtpClient = new SmtpClient();
-            MailAddress fromAddress = new MailAddress("no-reply@ideablog.net");
-            mail.From = fromAddress;
-            mail.To.Add(message.Destination);
-            mail.Subject = message.Subject;
-            mail.IsBodyHtml = true;
-            mail.Body = message.Body;
-            // We use gmail as our smtp client
-            smtpClient.Host = "smtp.gmail.com";
-            smtpClient.Port = 587;
-            smtpClient.EnableSsl = true;
-            smtpClient.UseDefaultCredentials = true;
-            smtpClient.Credentials = new NetworkCredential("blogtestmail611@gmail.com", "Pa$$W0rd");
-            // Send email
-            smtpClient.Send(mail);
-        }
 
         private IAuthenticationManager Authentication
         {

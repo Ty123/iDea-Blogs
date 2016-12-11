@@ -12,9 +12,9 @@
             document.getElementById('idea-loading').classList.remove('fadeIn');
         }
 
-        $scope.logOut = function () {
+        $scope.logout = function () {
             AuthService.logOut();
-            $location.path('#/home')
+            $location.path('#/login')
         }
     }])
 })();

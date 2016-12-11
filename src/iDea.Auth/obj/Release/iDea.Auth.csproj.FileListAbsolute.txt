@@ -69,3 +69,4 @@ C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\obj\Release\iDe
 C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\obj\Release\iDea.Auth.csproj.GenerateResource.Cache
 C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\obj\Release\iDea.Auth.dll
 C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\obj\Release\iDea.Auth.pdb
+C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\bin\SendGrid.CSharp.HTTP.Client.dll

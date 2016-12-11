@@ -1,4 +1,52 @@
-﻿<div class="idea-page">
+﻿<nav class="navbar navbar-default idea-navbar">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand idea-brand" href="#/home"><span>i</span>Dea-Blogs</a>
+        </div>
+        <ul class="nav navbar-nav idea-nav pull-right">
+            <li>
+                <div uib-dropdown on-toggle="toggled(open)">
+                    <a href="" id="idea-notification" class="idea-dropdown" uib-dropdown-toggle>
+                        <span class="badge idea-badge">5</span><i class="fa fa-bell"></i>
+                    </a>
+                    <ul id="idea-notification-menu" class="dropdown-menu pull-right" 
+                        uib-dropdown-menu aria-labelledby="idea-notification">
+                        <li>
+                            <a href="#">Notification <span class="badge">5</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Comments <span class="badge">10</span></a>
+                        </li>
+                        <li>
+                            <a href="#">New Mails <span class="badge">10</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div uib-dropdown on-toggle="toggled(open)">
+                    <a href="" id="idea-dropdown" class="idea-dropdown" uib-dropdown-toggle>
+                        <i class="fa fa-user-circle"></i>
+                    </a>
+                    <ul id="idea-action-menu" class="dropdown-menu pull-right" 
+                        uib-dropdown-menu aria-labelledby="idea-dropdown">
+                        <li>
+                            <a href="#">Profile</a>
+                        </li>
+                        <li>
+                            <a href="#">Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a ng-click="$parent.logout()">Log out</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="idea-page">
     <div class="idea-form-container">
         <h1 class="title">Welcome To iDea-Blogs</h1>
     </div>

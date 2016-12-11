@@ -15,19 +15,15 @@ var app = angular.module('howzit', ['ngRoute', 'ngMessages', 'ngAnimate', 'Local
         templateUrl: '/modules/views/activate.html',
         controller: 'ActivateController'
     });
-    //$routeProvider.when('/activate/:userId', {
-    //    templateUrl: '/modules/views/activate.html',
-    //    controller: 'ActivateController'
-    //});
     // reset pwd route
-    $routeProvider.when("/reset", {
+    $routeProvider.when("/reset/:userId/:code", {
         controller: "ResetController",
         templateUrl: "/modules/views/reset.html"
     });
     // forget pwd routes
     $routeProvider.when("/forget", {
         controller: "ForgetController",
-        templateUrl: "/modules/views/forget.html"
+        templateUrl: "/modules/views/send-forget.html"
     });
     // signup route
     $routeProvider.when("/signup", {

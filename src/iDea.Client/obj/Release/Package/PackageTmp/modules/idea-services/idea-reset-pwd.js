@@ -1,12 +1,12 @@
 ﻿(function () {
-    app.factory('ResetService', ['$http', '$q', 'ngAuthSettings', function ($http, $q, ngAuthSettings) {
+    app.factory('ResetPwdService', ['$http', '$q', 'ngAuthSettings', function ($http, $q, ngAuthSettings) {
         var url = ngAuthSettings.apiServiceBaseUri;
         var service = {};
 
-        var _reset = function (obj) {
+        var _reset = function (data) {
             var deferred = $q.defer();
 
-            $http.post(url + 'api/Account/ForgetPassword?email=' + obj).success(function (response) {
+            $http.post(url + 'api/Account/ResetPassword', data).success(function (response) {
                 deferred.resolve(response);
             }).error(function (err, status) {
                 deferred.reject(err);

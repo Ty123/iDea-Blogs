@@ -3,10 +3,10 @@
         <div data-ng-show="message != '' && savedSuccessfully == false" class="alert alert-danger animated slideInDown idea-alert">
             <strong>Error!</strong> {{message}}.
         </div>
-        <div data-ng-show="message != '' && savedSuccessfully" class="alert alert-sucess animated slideInDown idea-alert">
+        <div data-ng-show="message != '' && savedSuccessfully" class="alert alert-success animated slideInDown idea-alert">
             <strong>Success!</strong> {{message}}.
         </div>
-        <h1 class="title">Send Reset Password!</h1>
+        <h1 class="title">Password Recovery!</h1>
         <div class="idea-form-wrap">
             <form name="forgetForm" role="form" class="idea-form" autocomplete="off" novalidate>
                 <div class="form-group" ng-class="{ 'has-error' : forgetForm.username.$invalid && !forgetForm.username.$pristine }">

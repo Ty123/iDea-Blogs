@@ -135,3 +135,4 @@ C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\bin\System.Web.
 C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\bin\System.Web.Http.Cors.xml
 C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\bin\Microsoft.Owin.Cors.dll
 C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\bin\Microsoft.Owin.Cors.xml
+C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Auth\bin\SendGrid.CSharp.HTTP.Client.dll

@@ -106,6 +106,7 @@
     <Content Include="modules\idea-controllers\idea-signup.js" />
     <Content Include="modules\idea-services\idea-activate.js" />
     <Content Include="modules\idea-services\idea-authen.js" />
+    <Content Include="modules\idea-services\idea-forget-pwd.js" />
     <Content Include="modules\idea-services\idea-interceptor.js" />
     <Content Include="modules\idea-services\idea-reset-pwd.js" />
     <Content Include="modules\idea-services\idea-sendemail.js" />
@@ -153,7 +154,7 @@
       <DependentUpon>idea-services.js</DependentUpon>
     </Content>
     <Content Include="modules\views\activate.html" />
-    <Content Include="modules\views\forget.html" />
+    <Content Include="modules\views\send-forget.html" />
     <Content Include="modules\views\home.html" />
     <Content Include="modules\views\login.html" />
     <Content Include="modules\views\reset.html" />

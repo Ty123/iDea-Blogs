@@ -4,6 +4,16 @@ using Newtonsoft.Json;
 
 namespace iDea.Auth.Models
 {
+    public class ResetPasswordModel
+    {
+        [Required]
+        public int UserId { get; set; }
+        [Required]
+        public string Code { get; set; }
+        [Required]
+        public string NewPassword { get; set; }
+    }
+
     public class ConfirmEmailModel
     {
         [Required]
@@ -15,6 +25,10 @@ namespace iDea.Auth.Models
         public string CallbackUrlBase { get; set; }
         [Required]
         public string Code { get; set; }
+        [Required]
+        public string Subject { get; set; }
+        [Required]
+        public string Body { get; set; }
     }
 
     public class MessageModel

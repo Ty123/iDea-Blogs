@@ -59,7 +59,6 @@
 
                 var userId = response.data.userId,
                     code = response.data.code,
-                    //callbackUrlBase = 'http://localhost:53017/#/activate/',
                     callbackUrlBase = 'http://blog-admin.tyly.co.nz/#/activate/',
                     destination = $scope.username;
 
@@ -67,7 +66,9 @@
                     userId: userId,
                     callbackUrlBase: callbackUrlBase,
                     code: code,
-                    destination: destination
+                    destination: destination,
+                    subject: 'Confirm your account',
+                    body: '<p> Please confirm your account by clicking the <a href="{0}">this link</a>'
                 };
 
                 SendEmailService.send(message).then(function (response) {
@@ -99,24 +100,60 @@
 ///#source 1 1 /modules/idea-controllers/idea-forget.js
 (function () {
     'use strict';
-    app.controller('ForgetController', ['$scope', 'ResetService', '$http', function ($scope, ResetService, $http) {
-        $scope.regex = /^(?=.*\d)(?=.*[a-zA-Z]).{6,20}$/i;
+    app.controller('ForgetController', ['$scope', 'ForgetPwdService', 'SendEmailService', function ($scope, ForgetPwdService, SendEmailService) {
+        $scope.savedSuccessfully == false;
 
         $scope.reset = function () {
-            ResetService.reset($scope.username).then(function (response) {
+            $scope.$parent.loading(); // display loading page.
+            ForgetPwdService.reset($scope.username).then(function (response) {
+                console.log((response));
+                var message = {
+                    userId: response.userId,
+                    destination: $scope.username,
+                    callbackUrlBase : 'http://blog-admin.tyly.co.nz/#/reset/',
+                    code: response.code,
+                    subject: 'Reset your password',
+                    body: '<p> Please reset your password by clicking the <a href="{0}">this link</a>'
+                };
+
+                SendEmailService.send(message).then(function (response) {
+                    $scope.message = " Please check your email [ " + $scope.username + " ] to reset your password";
+                    $scope.savedSuccessfully = true;
+                    $scope.username = undefined;
+                    $scope.forgetForm.$setValidity();
+                    $scope.forgetForm.$setPristine();
+                    $scope.forgetForm.$setUntouched();
+                    $scope.$parent.unload();
+                }, function (error) {
+                    $scope.$parent.unload();
+                });
             }, function (error) {
-                alert(JSON.stringify(error));
+                var errors = [];
+                for (var key in error.data.modelState) {
+                    for (var i = 0; i < response.data.modelState[key].length; i++) {
+                        errors.push(response.data.modelState[key][i]);
+                    }
+                }
+
+                $scope.message = "" + errors.join(' ');
             })
         }
     }])
 })();
 ///#source 1 1 /modules/idea-controllers/idea-reset.js
 (function () {
-    app.controller('ResetController', ['$scope', 'ResetService', '$http', function ($scope, ResetService, $http) {
-        $scope.regex = /^(?=.*\d)(?=.*[a-zA-Z]).{6,20}$/i;
+    app.controller('ResetController', ['$scope', 'ResetPwdService', '$routeParams', '$window', function ($scope, ResetPwdService, $routeParams, $window) {
 
         $scope.reset = function () {
-            ResetService.reset($scope.username).then(function (response) {
+            var data = {
+                userId: $routeParams.userId,
+                code: $routeParams.code,
+                newPassword: $scope.password
+            }
+            $scope.$parent.loading();
+            ResetPwdService.reset(data).then(function (response) {
+                $scope.$parent.unload();
+                $window.location.href = ('#/login');
             }, function (error) {
                 alert(JSON.stringify(error));
             })
@@ -136,7 +173,7 @@
             };
 
             ActivateService.activate(data).then(function (response) {
-                $scope.$parent.unload();
+                $scope.$parent.unload();             
                 $window.location.href = ('#/login');
             }, function (error) {
                 $scope.$parent.unload();

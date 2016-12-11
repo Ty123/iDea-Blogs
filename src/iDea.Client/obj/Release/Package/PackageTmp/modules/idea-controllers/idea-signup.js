@@ -11,7 +11,6 @@
 
                 var userId = response.data.userId,
                     code = response.data.code,
-                    //callbackUrlBase = 'http://localhost:53017/#/activate/',
                     callbackUrlBase = 'http://blog-admin.tyly.co.nz/#/activate/',
                     destination = $scope.username;
 
@@ -19,7 +18,9 @@
                     userId: userId,
                     callbackUrlBase: callbackUrlBase,
                     code: code,
-                    destination: destination
+                    destination: destination,
+                    subject: 'Confirm your account',
+                    body: '<p> Please confirm your account by clicking the <a href="{0}">this link</a>'
                 };
 
                 SendEmailService.send(message).then(function (response) {

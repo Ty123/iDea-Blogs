@@ -1,9 +1,16 @@
 ﻿(function () {
-    app.controller('ResetController', ['$scope', 'ResetService', '$http', function ($scope, ResetService, $http) {
-        $scope.regex = /^(?=.*\d)(?=.*[a-zA-Z]).{6,20}$/i;
+    app.controller('ResetController', ['$scope', 'ResetPwdService', '$routeParams', '$window', function ($scope, ResetPwdService, $routeParams, $window) {
 
         $scope.reset = function () {
-            ResetService.reset($scope.username).then(function (response) {
+            var data = {
+                userId: $routeParams.userId,
+                code: $routeParams.code,
+                newPassword: $scope.password
+            }
+            $scope.$parent.loading();
+            ResetPwdService.reset(data).then(function (response) {
+                $scope.$parent.unload();
+                $window.location.href = ('#/login');
             }, function (error) {
                 alert(JSON.stringify(error));
             })
