@@ -1,15 +1,22 @@
 ﻿var authenticated = false;
-//var serviceBase = 'http://blog-auth.tyly.co.nz/';
-var serviceBase = 'http://localhost:65189/';
+//var serviceBase = 'http://blog-auth.tyly.co.nz/', dalUrlBase = 'http://blog-resources.tyly.co.nz/';
+var serviceBase = 'http://localhost:65189/', dalUrlBase = 'http://localhost:53453/';
+
 
 var app = angular.module('howzit', ['ngRoute', 'ngMessages', 'ngAnimate', 'LocalStorageModule', 'ui.bootstrap'])
 // constants
 .constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,
+    apiDalBaseUri: dalUrlBase,
     clientId: 'ngAuthApp'
 })
 // configuration routes
 .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+    // post routes
+    $routeProvider.when('/posts', {
+        templateUrl: '/modules/views/post.html',
+        controller: 'PostController'
+    });
     // activate routes
     $routeProvider.when('/activate/:userId/:code/', {
         templateUrl: '/modules/views/activate.html',

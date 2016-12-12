@@ -4,25 +4,28 @@ using System.Linq;
 using Microsoft.Owin;
 using Owin;
 using Microsoft.Owin.Security.OAuth;
+using System.Web.Http;
 
 [assembly: OwinStartup(typeof(iDea.DAL.Startup))]
 namespace iDea.DAL
 {
     public class Startup
     {
-        public static string PublicClientId { get; private set; }
+        public static OAuthBearerAuthenticationOptions OAuthBearerOptions { get; private set; }
 
         public void Configuration(IAppBuilder app)
         {
-            app.UseOAuthBearerTokens(new OAuthAuthorizationServerOptions
-            {
-                //TokenEndpointPath = new PathString("/Token"),
-                //Provider = new ApplicationOAuthProvider(PublicClientId),
-                //AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
-                //AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
-                //// In production mode set AllowInsecureHttp = false
-                //AllowInsecureHttp = true
-            });
+            HttpConfiguration config = new HttpConfiguration();
+            ConfigureOAuth(app);
+            WebApiConfig.Register(config);
+            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+        }
+
+        private void ConfigureOAuth(IAppBuilder app)
+        {
+            OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
+            //Token Consumption
+            app.UseOAuthBearerAuthentication(OAuthBearerOptions);
         }
     }
 }

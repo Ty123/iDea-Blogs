@@ -13,14 +13,14 @@ using System.Text.RegularExpressions;
 
 namespace iDea.DAL.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [RoutePrefix("api/Posts")]
     public class PostsController : ApiController
     {
 
         private readonly IUnitOfWork _uow;
 
-        public PostsController(IRepository<Post> repos, IRepository<Category> catRep, IRepository<Tag> tagRep, IUnitOfWork uow)
+        public PostsController(IUnitOfWork uow)
         {
             _uow = uow;
         }

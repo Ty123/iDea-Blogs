@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace iDea.DAL.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [RoutePrefix("api/Contacts")]
     public class ContactsController : ApiController
     {

@@ -3,8 +3,6 @@
     'use strict';
     app.controller('HomeController', ['$scope', 'AuthService', function ($scope, AuthService) {
         $scope.authentication = AuthService.authentication;
-
-        console.log($scope.authentication);
     }]);
 })();
 ///#source 1 1 /modules/idea-controllers/idea-index.js
@@ -183,5 +181,25 @@
                 alert(JSON.stringify(error));
             })
         }
+    }])
+})();
+///#source 1 1 /modules/idea-controllers/idea-posts.js
+(function () {
+    app.controller('PostController', ['$scope', 'PostService', function ($scope, PostService) {
+        //$scope.on("$routeChangeSuccess", function () {
+        //    PostService.allPosts().then(function (response) {
+        //        console.log(response);
+        //    }, function (error) {
+
+        //    })
+        //});
+
+        (function (PS) {
+            PS.allPosts().then(function (response) {
+                console.log(response);
+            }, function (error) {
+
+            })
+        })(PostService);
     }])
 })();

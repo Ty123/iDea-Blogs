@@ -17,5 +17,6 @@
     <file>/modules/idea-controllers/idea-forget.js</file>
     <file>/modules/idea-controllers/idea-reset.js</file>
     <file>/modules/idea-controllers/idea-activate.js</file>
+    <file>/modules/idea-controllers/idea-posts.js</file>
   </files>
 </bundle>

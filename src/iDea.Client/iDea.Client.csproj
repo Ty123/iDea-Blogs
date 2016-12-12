@@ -90,7 +90,9 @@
       <DependentUpon>idea-app.min.js</DependentUpon>
     </Content>
     <Content Include="modules\idea-controllers\idea-activate.js" />
-    <Content Include="modules\idea-controllers\idea-controllers.js.bundle" />
+    <Content Include="modules\idea-controllers\idea-controllers.js.bundle">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="modules\idea-controllers\idea-controllers.min.js.map">
       <DependentUpon>idea-controllers.min.js</DependentUpon>
     </Content>
@@ -102,12 +104,14 @@
     <Content Include="modules\idea-controllers\idea-home.js" />
     <Content Include="modules\idea-controllers\idea-index.js" />
     <Content Include="modules\idea-controllers\idea-login.js" />
+    <Content Include="modules\idea-controllers\idea-posts.js" />
     <Content Include="modules\idea-controllers\idea-reset.js" />
     <Content Include="modules\idea-controllers\idea-signup.js" />
     <Content Include="modules\idea-services\idea-activate.js" />
     <Content Include="modules\idea-services\idea-authen.js" />
     <Content Include="modules\idea-services\idea-forget-pwd.js" />
     <Content Include="modules\idea-services\idea-interceptor.js" />
+    <Content Include="modules\idea-services\idea-posts.js" />
     <Content Include="modules\idea-services\idea-reset-pwd.js" />
     <Content Include="modules\idea-services\idea-sendemail.js" />
     <Content Include="modules\idea-services\idea-services.js">
@@ -154,6 +158,7 @@
       <DependentUpon>idea-services.js</DependentUpon>
     </Content>
     <Content Include="modules\views\activate.html" />
+    <Content Include="modules\views\post.html" />
     <Content Include="modules\views\send-forget.html" />
     <Content Include="modules\views\home.html" />
     <Content Include="modules\views\login.html" />
