@@ -1,5 +1,6 @@
 ﻿var authenticated = false;
-var serviceBase = 'http://blog-auth.tyly.co.nz/';
+//var serviceBase = 'http://blog-auth.tyly.co.nz/';
+var serviceBase = 'http://localhost:65189/';
 
 var app = angular.module('howzit', ['ngRoute', 'ngMessages', 'ngAnimate', 'LocalStorageModule', 'ui.bootstrap'])
 // constants

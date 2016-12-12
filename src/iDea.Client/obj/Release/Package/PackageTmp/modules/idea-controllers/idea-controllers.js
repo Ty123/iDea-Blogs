@@ -3,8 +3,9 @@
     'use strict';
     app.controller('HomeController', ['$scope', 'AuthService', function ($scope, AuthService) {
         $scope.authentication = AuthService.authentication;
-    }]);
 
+        console.log($scope.authentication);
+    }]);
 })();
 ///#source 1 1 /modules/idea-controllers/idea-index.js
 (function () {
@@ -21,9 +22,9 @@
             document.getElementById('idea-loading').classList.remove('fadeIn');
         }
 
-        $scope.logOut = function () {
+        $scope.logout = function () {
             AuthService.logOut();
-            $location.path('#/home')
+            $location.path('#/login')
         }
     }])
 })();
@@ -59,7 +60,8 @@
 
                 var userId = response.data.userId,
                     code = response.data.code,
-                    callbackUrlBase = 'http://blog-admin.tyly.co.nz/#/activate/',
+                    callbackUrlBase = 'http://localhost:53017/#/activate/',
+                    //callbackUrlBase = 'http://blog-admin.tyly.co.nz/#/activate/',
                     destination = $scope.username;
 
                 var message = {
@@ -110,7 +112,8 @@
                 var message = {
                     userId: response.userId,
                     destination: $scope.username,
-                    callbackUrlBase : 'http://blog-admin.tyly.co.nz/#/reset/',
+                    callbackUrlBase: 'http://localhost:53017/#/reset/',
+                    //callbackUrlBase : 'http://blog-admin.tyly.co.nz/#/reset/',
                     code: response.code,
                     subject: 'Reset your password',
                     body: '<p> Please reset your password by clicking the <a href="{0}">this link</a>'

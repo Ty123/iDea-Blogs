@@ -1,2 +1,75 @@
 ﻿@import "bootstrap.min.css";
-@import "animate.min.css";
+
+.idea-navbar {
+    position: fixed;
+    width: 100%;
+    border: none !important;
+    background-color: transparent !important;
+    z-index: 99999;
+
+    .idea-brand {
+        font-family: 'Fjalla One', sans-serif;
+        color: #ffffff;
+        font-size: 25px;
+
+        &:focus, &:hover {
+            color: #ffffff;
+        }
+
+        span {
+            font-family: 'Alex Brush', cursive;
+            font-size: 45px;
+            color: #ff0000;
+        }
+    }
+
+    .idea-nav {
+
+        li {
+            a {
+                color: #ffffff;
+                cursor: pointer;
+                font-size: 25px;
+
+                &:focus, &:hover {
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+}
+
+.idea-badge {
+    position:absolute !important;
+    top: 9px;
+    font-size: 9px;
+    padding: 3px 8px 7px !important;
+    background-color: #ff0000;
+    border-color: #ff0000;
+    border-radius: 50% !important;
+    box-shadow: none;
+}
+
+#idea-dropdown, #idea-notification {
+    height: 50px;
+    line-height: 50px;
+    background-color: transparent;
+
+    &:focus, &:hover {
+        background-color: transparent;
+    }
+
+    i {
+        margin: 14px 10px;
+    }
+}
+
+#idea-action-menu, #idea-notification-menu {
+    background: #ffffff !important;
+
+    a {
+        font-size: 16px;
+        color: #000000;
+        cursor: pointer;
+    }
+}

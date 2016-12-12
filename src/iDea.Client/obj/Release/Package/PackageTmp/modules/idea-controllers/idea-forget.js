@@ -10,7 +10,8 @@
                 var message = {
                     userId: response.userId,
                     destination: $scope.username,
-                    callbackUrlBase : 'http://blog-admin.tyly.co.nz/#/reset/',
+                    callbackUrlBase: 'http://localhost:53017/#/reset/',
+                    //callbackUrlBase : 'http://blog-admin.tyly.co.nz/#/reset/',
                     code: response.code,
                     subject: 'Reset your password',
                     body: '<p> Please reset your password by clicking the <a href="{0}">this link</a>'
