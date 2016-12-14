@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="IIS Web Application Name" description="" value="blog-resources.tyly.co.nz" tags="IisApp">
-    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Ty\ Ly\\Documents\\iDea-Blogs-Git\\iDea-Blogs\\src\\iDea\.DAL\\obj\\Release\\Package\\PackageTmp$" />
-    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Ty\ Ly\\Documents\\iDea-Blogs-Git\\iDea-Blogs\\src\\iDea\.DAL\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Ty\ Ly\\Documents\\GitRepo\\iDea-Blogs\\src\\iDea\.DAL\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Ty\ Ly\\Documents\\GitRepo\\iDea-Blogs\\src\\iDea\.DAL\\obj\\Release\\Package\\PackageTmp$" />
   </parameter>
   <parameter name="ResourceConnection-Web.config Connection String" description="" value="Data Source=148.72.232.167;Initial Catalog=blog-res;Persist Security Info=True;User ID=tyly83-res;Password=L0ginPa$$!;MultipleActiveResultSets=True" tags="">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Ty\ Ly\\Documents\\iDea-Blogs-Git\\iDea-Blogs\\src\\iDea\.DAL\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ResourceConnection']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Ty\ Ly\\Documents\\GitRepo\\iDea-Blogs\\src\\iDea\.DAL\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ResourceConnection']/@connectionString" />
   </parameter>
 </parameters>

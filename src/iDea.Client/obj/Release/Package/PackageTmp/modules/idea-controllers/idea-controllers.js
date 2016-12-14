@@ -3,8 +3,6 @@
     'use strict';
     app.controller('HomeController', ['$scope', 'AuthService', function ($scope, AuthService) {
         $scope.authentication = AuthService.authentication;
-
-        console.log($scope.authentication);
     }]);
 })();
 ///#source 1 1 /modules/idea-controllers/idea-index.js
@@ -60,8 +58,8 @@
 
                 var userId = response.data.userId,
                     code = response.data.code,
-                    callbackUrlBase = 'http://localhost:53017/#/activate/',
-                    //callbackUrlBase = 'http://blog-admin.tyly.co.nz/#/activate/',
+                    //callbackUrlBase = 'http://localhost:53017/#/activate/',
+                    callbackUrlBase = 'http://blog-admin.tyly.co.nz/#/activate/',
                     destination = $scope.username;
 
                 var message = {
@@ -112,8 +110,8 @@
                 var message = {
                     userId: response.userId,
                     destination: $scope.username,
-                    callbackUrlBase: 'http://localhost:53017/#/reset/',
-                    //callbackUrlBase : 'http://blog-admin.tyly.co.nz/#/reset/',
+                    //callbackUrlBase: 'http://localhost:53017/#/reset/',
+                    callbackUrlBase : 'http://blog-admin.tyly.co.nz/#/reset/',
                     code: response.code,
                     subject: 'Reset your password',
                     body: '<p> Please reset your password by clicking the <a href="{0}">this link</a>'
@@ -183,5 +181,18 @@
                 alert(JSON.stringify(error));
             })
         }
+    }])
+})();
+///#source 1 1 /modules/idea-controllers/idea-posts.js
+(function () {
+    app.controller('PostController', ['$scope', 'PostService', function ($scope, PostService) {
+        $scope.$on("$routeChangeSuccess", function () {
+            PostService.allPosts().then(function (response) {
+                $scope.posts = response;
+                console.log($scope.posts);
+            }, function (error) {
+
+            })
+        });
     }])
 })();

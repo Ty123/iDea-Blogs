@@ -2,3 +2,7 @@ C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Domains\bin\Release\
 C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Domains\bin\Release\iDea.Domains.pdb
 C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Domains\obj\Release\iDea.Domains.dll
 C:\Users\Ty Ly\Documents\iDea-Blogs-Git\iDea-Blogs\src\iDea.Domains\obj\Release\iDea.Domains.pdb
+C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.Domains\bin\Release\iDea.Domains.dll
+C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.Domains\bin\Release\iDea.Domains.pdb
+C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.Domains\obj\Release\iDea.Domains.dll
+C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.Domains\obj\Release\iDea.Domains.pdb

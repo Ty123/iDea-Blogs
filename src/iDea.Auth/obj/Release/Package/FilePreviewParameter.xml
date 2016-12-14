@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="IIS Web Application Name" description="" value="blog-auth.tyly.co.nz" tags="IisApp">
-    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Ty\ Ly\\Documents\\iDea-Blogs-Git\\iDea-Blogs\\src\\iDea\.Auth\\obj\\Release\\Package\\PackageTmp$" />
-    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Ty\ Ly\\Documents\\iDea-Blogs-Git\\iDea-Blogs\\src\\iDea\.Auth\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Ty\ Ly\\Documents\\GitRepo\\iDea-Blogs\\src\\iDea\.Auth\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Ty\ Ly\\Documents\\GitRepo\\iDea-Blogs\\src\\iDea\.Auth\\obj\\Release\\Package\\PackageTmp$" />
   </parameter>
   <parameter name="AuthConnection-Web.config Connection String" description="AuthConnection Connection String used in web.config by the application to access the database." value="Data Source=148.72.232.167;Initial Catalog=blog-auth;Persist Security Info=True;MultipleActiveResultSets=True;User ID=tyly83;Password=Pa$$W0rd!" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Ty\ Ly\\Documents\\iDea-Blogs-Git\\iDea-Blogs\\src\\iDea\.Auth\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='AuthConnection']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Ty\ Ly\\Documents\\GitRepo\\iDea-Blogs\\src\\iDea\.Auth\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='AuthConnection']/@connectionString" />
   </parameter>
 </parameters>

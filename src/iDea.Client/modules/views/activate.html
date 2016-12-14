@@ -1,17 +1,13 @@
-﻿<div class="idea-page">
-    <div class="idea-form-container">
-        <div data-ng-show="message != '' && savedSuccessfully == false" class="alert alert-danger animated slideInDown idea-alert">
-            <strong>Error!</strong> {{message}}.
+﻿<div data-ng-show="message != '' && savedSuccessfully == false" class="alert alert-danger animated slideInDown idea-alert">
+    <strong>Error!</strong> {{message}}.
+</div>
+<h1 class="title">Activate Your Account!</h1>
+<div class="idea-form-wrap">
+    <form name="activateForm" role="form" class="idea-form" autocomplete="off" novalidate>
+        <div class="form-group">
+            <button class="btn idea-button" type="submit" data-ng-click="activate()">
+                Activate
+            </button>
         </div>
-        <h1 class="title">Activate Your Account!</h1>
-        <div class="idea-form-wrap">
-            <form name="activateForm" role="form" class="idea-form" autocomplete="off" novalidate>
-                <div class="form-group">
-                    <button class="btn idea-button" type="submit" data-ng-click="activate()">
-                        Activate
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
+    </form>
 </div>

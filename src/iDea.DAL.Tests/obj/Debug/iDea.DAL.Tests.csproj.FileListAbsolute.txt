@@ -76,9 +76,7 @@ C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL.Tests\bin\Debug\Microso
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL.Tests\bin\Debug\WebActivatorEx.dll
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL.Tests\bin\Debug\System.Web.Http.Owin.dll
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL.Tests\bin\Debug\Microsoft.Owin.Security.OAuth.dll
-C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL.Tests\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL.Tests\bin\Debug\Microsoft.Owin.Security.dll
-C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.dll
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL.Tests\bin\Debug\iDea.DAL.pdb
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL.Tests\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL.Tests\bin\Debug\System.Net.Http.Formatting.xml
@@ -98,9 +96,7 @@ C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL.Tests\bin\Debug\Ninject
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL.Tests\bin\Debug\Microsoft.Owin.xml
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL.Tests\bin\Debug\System.Web.Http.Owin.xml
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL.Tests\bin\Debug\Microsoft.Owin.Security.OAuth.xml
-C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL.Tests\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL.Tests\bin\Debug\Microsoft.Owin.Security.xml
-C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL.Tests\obj\Debug\iDea.DAL.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL.Tests\obj\Debug\iDea.DAL.Tests.dll
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL.Tests\obj\Debug\iDea.DAL.Tests.pdb

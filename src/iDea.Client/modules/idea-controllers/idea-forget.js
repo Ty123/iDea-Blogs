@@ -30,13 +30,16 @@
                 });
             }, function (error) {
                 var errors = [];
-                for (var key in error.data.modelState) {
-                    for (var i = 0; i < response.data.modelState[key].length; i++) {
-                        errors.push(response.data.modelState[key][i]);
+                if (error.data.modelState) {
+                    for (var key in error.data.modelState) {
+                        for (var i = 0; i < response.data.modelState[key].length; i++) {
+                            errors.push(response.data.modelState[key][i]);
+                        }
                     }
+                    $scope.message = "" + errors.join(' ');
+                } else {
+                    $scope.message = error.error_description;
                 }
-
-                $scope.message = "" + errors.join(' ');
             })
         }
     }])

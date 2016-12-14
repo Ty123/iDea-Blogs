@@ -17,5 +17,6 @@
     <file>/modules/idea-services/idea-activate.js</file>
     <file>/modules/idea-services/idea-forget-pwd.js</file>
     <file>/modules/idea-services/idea-posts.js</file>
+    <file>/modules/idea-services/idea-categories.js</file>
   </files>
 </bundle>

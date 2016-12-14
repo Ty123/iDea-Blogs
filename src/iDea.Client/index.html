@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" ng-app="howzit" ng-controller="IndexController" ng-cloak>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>iDea-Blogs</title>
     <link href="assets/css/idea-app.min.css" rel="stylesheet" />
 </head>
-<body>
+<body ng-app="idea-blog" ng-controller="IndexController" ng-cloak>
     <div id="idea-loading" class="animated">
         <div class="idea-page">
             <div class="idea-form-container">
@@ -13,7 +13,65 @@
             </div>
         </div>
     </div>
-    <div ng-view></div>
+    <!--navigation bar-->
+    <div ng-show="authentication.isAuth">
+        <nav class="navbar navbar-default idea-navbar">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand idea-brand" href="#/home"><span>i</span>Dea-Blogs</a>
+                </div>
+                <ul class="nav navbar-nav idea-nav pull-right">
+                    <li>
+                        <div uib-dropdown on-toggle="toggled(open)">
+                            <a href="" id="idea-notification" class="idea-dropdown" uib-dropdown-toggle>
+                                <span class="badge idea-badge">5</span><i class="fa fa-bell"></i>
+                            </a>
+                            <ul id="idea-notification-menu" class="dropdown-menu pull-right"
+                                uib-dropdown-menu aria-labelledby="idea-notification">
+                                <li>
+                                    <a href="#">Notification <span class="badge">5</span></a>
+                                </li>
+                                <li>
+                                    <a href="#">Comments <span class="badge">10</span></a>
+                                </li>
+                                <li>
+                                    <a href="#">New Mails <span class="badge">10</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div uib-dropdown on-toggle="toggled(open)">
+                            <a href="" id="idea-dropdown" class="idea-dropdown" uib-dropdown-toggle>
+                                <i class="fa fa-user-circle"></i>
+                            </a>
+                            <ul id="idea-action-menu" class="dropdown-menu pull-right"
+                                uib-dropdown-menu aria-labelledby="idea-dropdown">
+                                <li>
+                                    <a href="#">Profile</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a ng-click="logout()">Log out</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!--/navigation bar-->
+    <!--page content-->
+    <div class="idea-page">
+        <div class="idea-form-container">
+            <div ui-view></div>
+        </div>
+    </div>
+    <!--/page content-->
     <script src="assets/scripts/idea-angulars.min.js"></script>
     <script src="modules/idea-app/idea-app.min.js"></script>
     <script src="modules/idea-controllers/idea-controllers.min.js"></script>

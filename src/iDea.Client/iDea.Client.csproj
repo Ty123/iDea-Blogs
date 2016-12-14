@@ -73,6 +73,8 @@
     <Content Include="assets\scripts\angular-local-storage.min.js" />
     <Content Include="assets\scripts\angular-messages.min.js" />
     <Content Include="assets\scripts\angular-route.min.js" />
+    <Content Include="assets\scripts\angular-sanitize.min.js" />
+    <Content Include="assets\scripts\angular-ui-router.min.js" />
     <Content Include="assets\scripts\angular.min.js" />
     <Content Include="assets\scripts\idea-angulars.js.bundle" />
     <Content Include="assets\scripts\idea-angulars.min.js.map">
@@ -90,6 +92,7 @@
       <DependentUpon>idea-app.min.js</DependentUpon>
     </Content>
     <Content Include="modules\idea-controllers\idea-activate.js" />
+    <Content Include="modules\idea-controllers\idea-categories.js" />
     <Content Include="modules\idea-controllers\idea-controllers.js.bundle">
       <SubType>Designer</SubType>
     </Content>
@@ -109,6 +112,7 @@
     <Content Include="modules\idea-controllers\idea-signup.js" />
     <Content Include="modules\idea-services\idea-activate.js" />
     <Content Include="modules\idea-services\idea-authen.js" />
+    <Content Include="modules\idea-services\idea-categories.js" />
     <Content Include="modules\idea-services\idea-forget-pwd.js" />
     <Content Include="modules\idea-services\idea-interceptor.js" />
     <Content Include="modules\idea-services\idea-posts.js" />
@@ -158,9 +162,12 @@
       <DependentUpon>idea-services.js</DependentUpon>
     </Content>
     <Content Include="modules\views\activate.html" />
-    <Content Include="modules\views\post.html" />
-    <Content Include="modules\views\send-forget.html" />
+    <Content Include="modules\views\categories.html" />
+    <Content Include="modules\views\category-add.html" />
+    <Content Include="modules\views\category-edit.html" />
     <Content Include="modules\views\home.html" />
+    <Content Include="modules\views\post.html" />
+    <Content Include="modules\views\forget.html" />
     <Content Include="modules\views\login.html" />
     <Content Include="modules\views\reset.html" />
     <Content Include="modules\views\signup.html" />

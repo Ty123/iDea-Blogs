@@ -1,10 +1,10 @@
 ﻿(function () {
-    app.controller('ResetController', ['$scope', 'ResetPwdService', '$routeParams', '$window', function ($scope, ResetPwdService, $routeParams, $window) {
+    app.controller('ResetController', ['$scope', 'ResetPwdService', '$stateParams', '$window', function ($scope, ResetPwdService, $stateParams, $window) {
 
         $scope.reset = function () {
             var data = {
-                userId: $routeParams.userId,
-                code: $routeParams.code,
+                userId: $stateParams.userId,
+                code: $stateParams.code,
                 newPassword: $scope.password
             }
             $scope.$parent.loading();

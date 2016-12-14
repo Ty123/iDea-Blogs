@@ -18,5 +18,6 @@
     <file>/modules/idea-controllers/idea-reset.js</file>
     <file>/modules/idea-controllers/idea-activate.js</file>
     <file>/modules/idea-controllers/idea-posts.js</file>
+    <file>/modules/idea-controllers/idea-categories.js</file>
   </files>
 </bundle>
