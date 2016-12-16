@@ -1,13 +1,17 @@
 ﻿(function () {
     'use strict';
-    app.controller('HomeController', ['$scope', 'AuthService', function ($scope, AuthService) {
-        //$scope.authentication = AuthService.authentication;
-        $scope.loading = function () {
-            $scope.$parent.loading();
-        }
+    app.controller('HomeController', ['$rootScope', '$scope', '$state', 'HomeServices', function ($rootScope, $scope, $state, HomeServices) {
 
-        $scope.unload = function () {
-            $scope.$parent.unload();
-        }
+        $rootScope.$on('$viewContentLoading', function (event, viewName, viewContent) {
+            HomeServices.posts().then(function (response) {
+                $scope.posts = response;
+            }, function (error) { });
+            HomeServices.categories().then(function (response) {
+                $scope.categories = response;
+            }, function (error) {});
+            HomeServices.tags().then(function (response) {
+                $scope.tags = response;
+            }, function (error) { })
+        });
     }]);
 })();

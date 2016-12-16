@@ -1,16 +1,11 @@
 ﻿(function () {
-    app.controller('PostController', ['$scope', 'PostService', function ($scope, PostService) {
-        $scope.$on("$routeChangeSuccess", function () {
-            PostService.allPosts().then(function (response) {
+    app.controller('PostController', ['$rootScope', '$scope', 'PostService', function ($rootScope, $scope, PostService) {
+        $rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
+            PostService.posts().then(function (response) {
                 $scope.posts = response;
-                console.log($scope.posts);
             }, function (error) {
-
+                alert(error.error_description);
             })
         });
-
-        $scope.addPost = function () {
-
-        }
     }])
 })();

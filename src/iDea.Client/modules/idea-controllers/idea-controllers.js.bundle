@@ -12,12 +12,16 @@
   <files>
     <file>/modules/idea-controllers/idea-home.js</file>
     <file>/modules/idea-controllers/idea-index.js</file>
-    <file>/modules/idea-controllers/idea-login.js</file>
+    <!--<file>/modules/idea-controllers/idea-login.js</file>
     <file>/modules/idea-controllers/idea-signup.js</file>
     <file>/modules/idea-controllers/idea-forget.js</file>
     <file>/modules/idea-controllers/idea-reset.js</file>
-    <file>/modules/idea-controllers/idea-activate.js</file>
+    <file>/modules/idea-controllers/idea-activate.js</file>-->
     <file>/modules/idea-controllers/idea-posts.js</file>
     <file>/modules/idea-controllers/idea-categories.js</file>
+    <file>/modules/idea-controllers/idea-category-details.js</file>
+    <!--<file>/modules/idea-controllers/idea-admin.js</file>
+    <file>/modules/idea-controllers/idea-dashboard.js</file>-->
+    <file>/modules/idea-controllers/idea-post-detail.js</file>
   </files>
 </bundle>

@@ -13,7 +13,6 @@ using System.Text.RegularExpressions;
 
 namespace iDea.DAL.Controllers
 {
-    [Authorize]
     [RoutePrefix("api/Posts")]
     public class PostsController : ApiController
     {
@@ -32,7 +31,7 @@ namespace iDea.DAL.Controllers
         [Route("")]
         public IHttpActionResult Get()
         {
-            var entities = _uow.PostRepository.GetAll();
+            var entities = _uow.PostRepository.GetAll().OrderByDescending(p => p.PostedOn);
 
             if (entities == null || entities.Count() == 0)
             {
@@ -43,7 +42,6 @@ namespace iDea.DAL.Controllers
 
             foreach (var entity in entities)
             {
-
                 var tags = entity.Tags.Select(t => new TagDetail
                 {
                     Id = t.Id,
@@ -69,7 +67,8 @@ namespace iDea.DAL.Controllers
                     Meta = entity.Meta,
                     UrlSlug = entity.UrlSlug,
                     Category = category,
-                    Tags = tags
+                    Tags = tags,
+                    PostDate = entity.PostedOn
                 });
             }
 
@@ -137,6 +136,7 @@ namespace iDea.DAL.Controllers
         /// <summary>
         /// Delete a tag
         /// </summary>
+        [Authorize]
         [HttpDelete]
         [Route("Delete/{id:int}")]
         public IHttpActionResult Delete(int? id)
@@ -210,6 +210,7 @@ namespace iDea.DAL.Controllers
         /// <summary>
         /// Edit the tag
         /// </summary>
+        [Authorize]
         [HttpPost]
         [Route("Edit")]
         public IHttpActionResult Edit(PostModel model)
@@ -239,7 +240,7 @@ namespace iDea.DAL.Controllers
                         tags.Add(tag);
                 }
 
-                var urlSlug = String.Format(Constants.urlSlugFormat, "Posts",Regex.Replace(model.Title, " ", "_"));
+                var urlSlug = String.Format(Constants.urlSlugFormat, "Posts", Regex.Replace(model.Title, " ", "_"));
 
                 entity.Title = model.Title;
                 entity.ShortDescription = model.ShortDescription;
@@ -261,6 +262,7 @@ namespace iDea.DAL.Controllers
         /// <summary>
         /// Add a new tag
         /// </summary>
+        [Authorize]
         [HttpPost]
         [Route("Add")]
         public IHttpActionResult Add(PostModel model)

@@ -11,7 +11,7 @@
   <!--The order of the <file> elements determines the order of the files in the bundle.-->
   <files>
     <file>/assets/scripts/angular.min.js</file>
-    <file>/assets/scripts/angular-route.min.js</file>
+    <file>/assets/scripts/angular-ui-router.min.js</file>>
     <file>/assets/scripts/angular-animate.min.js</file>
     <file>/assets/scripts/angular-messages.min.js</file>
     <file>/assets/scripts/angular-local-storage.min.js</file>

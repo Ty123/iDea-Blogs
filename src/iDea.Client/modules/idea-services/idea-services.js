@@ -113,149 +113,89 @@
         return service;
     }]);
 })();
-///#source 1 1 /modules/idea-services/idea-reset-pwd.js
-(function () {
-    app.factory('ResetPwdService', ['$http', '$q', 'ngAuthSettings', function ($http, $q, ngAuthSettings) {
-        var url = ngAuthSettings.apiServiceBaseUri;
-        var service = {};
-
-        var _reset = function (data) {
-            var deferred = $q.defer();
-
-            $http.post(url + 'api/Account/ResetPassword', data).success(function (response) {
-                deferred.resolve(response);
-            }).error(function (err, status) {
-                deferred.reject(err);
-            });
-
-            return deferred.promise;
-        }
-
-        service.reset = _reset;
-
-        return service;
-
-    }]);
-})();
-///#source 1 1 /modules/idea-services/idea-sendemail.js
-(function () {
-    app.factory('SendEmailService', ['$http', '$q', '$log', 'ngAuthSettings', function ($http, $q, $log, ngAuthSettings) {
-        var url = ngAuthSettings.apiServiceBaseUri,
-            service = {};
-
-        var _send = function (message) {
-            var deferred = $q.defer(),
-                data = {
-                    userId: message.userId,
-                    destination: message.destination,
-                    callbackUrlBase: message.callbackUrlBase,
-                    code: message.code,
-                    body: message.body,
-                    subject: message.subject
-                };
-
-            $http.post(url + 'api/Account/SendEmail', data).success(function (response) {
-                deferred.resolve(response);
-            }).error(function (err, status) {
-                deferred.reject(err);
-            });
-
-            return deferred.promise;
-        }
-
-        service.send = _send;
-
-        return service;
-    }])
-})();
-///#source 1 1 /modules/idea-services/idea-activate.js
-(function () {
-    app.factory('ActivateService', ['$http', '$q', '$log', 'ngAuthSettings', function ($http, $q, $log, ngAuthSettings) {
-        var url = ngAuthSettings.apiServiceBaseUri,
-            service = {};
-
-        var _activate = function (data) {
-            var deferred = $q.defer();
-
-            $http.post(url + 'api/Account/ConfirmEmail?userId='+ data.userId + '&code=' + data.code).success(function (response) {
-                deferred.resolve(response);
-            }).error(function (err, status) {
-                deferred.reject(err);
-            });
-
-            return deferred.promise;
-        }
-
-        service.activate = _activate;
-
-        return service;
-    }])
-})();
-///#source 1 1 /modules/idea-services/idea-forget-pwd.js
-(function () {
-    app.factory('ForgetPwdService', ['$http', '$q', 'ngAuthSettings', function ($http, $q, ngAuthSettings) {
-        var url = ngAuthSettings.apiServiceBaseUri;
-        var service = {};
-
-        var _reset = function (email) {
-            var deferred = $q.defer();
-
-            $http.post(url + 'api/Account/ForgetPassword?email=' + email).success(function (response) {
-                deferred.resolve(response);
-            }).error(function (err, status) {
-                deferred.reject(err);
-            });
-
-            return deferred.promise;
-        }
-
-        service.reset = _reset;
-
-        return service;
-
-    }]);
-})();
 ///#source 1 1 /modules/idea-services/idea-posts.js
 (function () {
     app.factory('PostService', ['$http', '$q', '$log', 'ngAuthSettings', function ($http, $q, $log, ngAuthSettings) {
         var service = {},
             url = ngAuthSettings.apiDalBaseUri;
 
-        var _allPosts = function () {
+        service.delete = function (id) {
             var deferred = $q.defer();
-            $http.get(url + 'api/Posts/').success(function (response) {
+            $http.delete(url + 'api/Posts/Delete/' + id).success(function (response) {
                 deferred.resolve(response);
-            }).error(function (err, status) {
-                deferred.reject(err);
+            }).error(function (error) {
+                deferred.reject(error);
             });
 
             return deferred.promise;
         }
 
-        var _addPost = function (data) {
+        service.getByName = function (name) {
+            var deferred = $q.defer();
+            $http.get(url + 'api/Posts/Search?title=' + name)
+                .success(function (response) {
+                    deferred.resolve(response);
+                }).error(function (error) {
+                    deferred.reject(error);
+                });
+
+            return deferred.promise;
+        }
+
+        service.getById = function (id) {
+            var deferred = $q.defer();
+            $http.get(url + 'api/Posts/Details/' + id).success(function (response) {
+                deferred.resolve(response);
+            }).error(function (error) {
+                deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
+
+        service.edit = function (data) {
+            var deferred = $q.defer();
+            $http.post(url + 'api/Posts/Edit', data).success(function (response) {
+                deferred.resolve(response);
+            }).error(function (error) {
+                deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
+
+        service.add = function (data) {
             var deferred = $q.defer();
             $http.post(url + 'api/Posts/Add', data).success(function (response) {
                 deferred.resolve(response);
-            }).error(function (err, status) {
-                deferred.reject(err);
+            }).error(function (error) {
+                deferred.reject(error);
             });
 
             return deferred.promise;
         }
 
-        service.allPosts = _allPosts;
-        service.addPost = _addPost;
+        service.posts = function () {
+            var deferred = $q.defer();
+            $http.get(url + 'api/Posts/').success(function (response) {
+                deferred.resolve(response);
+            }).error(function (error) {
+                deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
 
         return service;
     }])
 })();
 ///#source 1 1 /modules/idea-services/idea-categories.js
 (function () {
-    app.factory('CategoriesService', ['$http', '$q', '$log', 'ngAuthSettings', function ($http, $q, $log, ngAuthSettings) {
+    app.factory('CategorieService', ['$http', '$q', '$log', 'ngAuthSettings', function ($http, $q, $log, ngAuthSettings) {
         var service = {},
             url = ngAuthSettings.apiDalBaseUri;
 
-        var _categories = function () {
+        service.categories = function () {
             var deferred = $q.defer();
             $http.get(url + 'api/Categories').success(function (response) {
                 deferred.resolve(response);
@@ -266,7 +206,7 @@
             return deferred.promise;
         }
 
-        var _add = function (data) {
+        service.add = function (data) {
             var deferred = $q.defer();
             $http.post(url + 'api/Categories/Add', data).success(function (response) {
                 deferred.resolve(response);
@@ -277,7 +217,7 @@
             return deferred.promise;
         }
 
-        var _edit = function (data) {
+        service.edit = function (data) {
             var deferred = $q.defer();
 
             $http.post(url + 'api/Categories/Edit', data).success(function (response) {
@@ -289,10 +229,69 @@
             return deferred.promise;
         }
 
-        service.edit = _edit;
-        service.add = _add;
-        service.categories = _categories;
+        service.delete = function (id) {
+            var deferred = $q.defer();
 
+            $http.delete(url + 'api/Categories/Delete/' + id).success(function (response) {
+                deferred.resolve(response);
+            }).error(function (err, status) {
+                deferred.reject(err);
+            });
+
+            return deferred.promise;
+        }
+
+        service.getById = function (id) {
+            var deferred = $q.defer();
+
+            $http.get(url + 'api/Categories/Details/' + id).success(function (response) {
+                deferred.resolve(response);
+            }).error(function (err, status) {
+                deferred.reject(err);
+            });
+
+            return deferred.promise;
+        }
+
+        return service;
+    }])
+})();
+///#source 1 1 /modules/idea-services/idea-home.js
+(function () {
+    app.factory('HomeServices', ['$http', '$q', '$log', 'ngAuthSettings', function ($http, $q, $log, ngAuthSettings) {
+        var url = ngAuthSettings.apiDalBaseUri,
+            service = {
+                posts: function () {
+                    var deferred = $q.defer();
+                    $http.get(url + 'api/Posts').success(function (response) {
+                        deferred.resolve(response);
+                    }).error(function (err, status) {
+                        deferred.reject(err);
+                    });
+
+                    return deferred.promise;
+                },
+                categories: function () {
+                    var deferred = $q.defer();
+                    $http.get(url + 'api/Categories').success(function (response) {
+                        deferred.resolve(response);
+                    }).error(function (err, status) {
+                        deferred.reject(err);
+                    });
+
+                    return deferred.promise;
+                },
+                tags: function () {
+                    var deferred = $q.defer();
+                    $http.get(url + 'api/Tags').success(function (response) {
+                        deferred.resolve(response);
+                    }).error(function (err, status) {
+                        deferred.reject(err);
+                    });
+
+                    return deferred.promise;
+                }
+            };
         return service;
     }])
 })();

@@ -12,7 +12,6 @@ using System.Text.RegularExpressions;
 
 namespace iDea.DAL.Controllers
 {
-    [Authorize]
     [RoutePrefix("api/Tags")]
     public class TagsController : ApiController
     {
@@ -44,7 +43,8 @@ namespace iDea.DAL.Controllers
             {
                 if (entity != null)
                 {
-                    var posts = entity.Posts.Select(p => new PostDetail { 
+                    var posts = entity.Posts.Select(p => new PostDetail
+                    {
                         Id = p.Id,
                         Title = p.Title,
                         ShortDescription = p.ShortDescription
@@ -117,6 +117,7 @@ namespace iDea.DAL.Controllers
         /// <summary>
         /// Delete a tag
         /// </summary>
+        [Authorize]
         [HttpDelete]
         [Route("Delete/{id:int}")]
         public IHttpActionResult Delete(int? id)
@@ -178,6 +179,7 @@ namespace iDea.DAL.Controllers
         /// <summary>
         /// Edit the tag
         /// </summary>
+        [Authorize]
         [HttpPost]
         [Route("Edit")]
         public IHttpActionResult Edit(TagModel model)
@@ -209,13 +211,14 @@ namespace iDea.DAL.Controllers
         /// <summary>
         /// Add a new tag
         /// </summary>
+        [Authorize]
         [HttpPost]
         [Route("Add")]
         public IHttpActionResult Add(TagModel model)
         {
             if (ModelState.IsValid)
             {
-                var urlSlug = String.Format(Constants.urlSlugFormat, "Tags", Regex.Replace(model.Name," ","_"));
+                var urlSlug = String.Format(Constants.urlSlugFormat, "Tags", Regex.Replace(model.Name, " ", "_"));
 
                 _uow.TagRepository.Add(new Tag(model.Name, urlSlug, model.Description));
                 _uow.Save();

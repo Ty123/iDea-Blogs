@@ -11,81 +11,129 @@ var app = angular.module('idea-blog', ['ui.router', 'ngMessages', 'ngAnimate', '
     })
     //route configurations
     .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider
+            //.when('/admin', '/admin/dashboard')
+            .otherwise('/home');
+
         $stateProvider
+            // about me state
+            .state('about-me', {
+                url: '/about-me',
+                templateUrl: '/modules/views/about-me.html'
+            })
+            // contact state
+            .state('contact', {
+                url: '/contacts',
+                templateUrl: '/modules/views/contact.html'
+            })
+            // categories state
+            .state('categories', {
+                url: '/categories',
+                templateUrl: '/modules/views/categories.html',
+                controller: 'CategorieController'
+            })
+            // categorie details
+            .state('categorie-details', {
+                url: '/categorie/details/:id',
+                templateUrl: '/modules/views/category-details.html',
+                controller: 'CategoryDetailController'
+            })
+            // posts state
+            .state('posts', {
+                url: '/posts',
+                templateUrl: '/modules/views/posts.html',
+                controller: 'PostController'
+            })
+            // post details state
+            .state('post-details', {
+                url: '/posts/details/:id',
+                templateUrl: '/modules/views/post-details.html',
+                controller: 'PostDetailController'
+            })
             // home state
             .state('home', {
                 url: '/home',
-                controller: 'HomeController',
                 views: {
                     '': {
-                        templateUrl: '/modules/views/home.html'
+                        templateUrl: '/modules/views/home.html',
+                        controller: 'HomeController',
                     },
-                    'login@home': {
-                        templateUrl: '/modules/views/login.html',
-                        controller: 'LoginController'
+                    'content@home': {
+                        templateUrl: '/modules/views/home-content.html',
+                        controller: 'HomeController',
+                    },
+                    'sidebar@home': {
+                        templateUrl: '/modules/views/home-sidebar.html',
+                        controller: 'HomeController',
                     }
                 }
-            })
-            // sign up state
-            .state('signup', {
-                url: '/signup',
-                templateUrl: '/modules/views/signup.html',
-                controller: 'SignupController'
-            })
-            // activate state
-            .state('activate', {
-                url: '/activate/{userId: int}/{code}',
-                templateUrl: '/modules/views/activate.html',
-                controller: 'ActivateController'
-            })
-            // forget pwd state
-            .state('forget', {
-                url: '/forget',
-                templateUrl: '/modules/views/forget.html',
-                controller: 'ForgetController'
-            })
-            // reset pwd state
-            .state('reset', {
-                url: '/reset/{userId: int}/{code}',
-                templateUrl: '/modules/views/reset.html',
-                controller: 'ResetController'
             });
-
-        //$stateProvider
-        //    // home states
-        //    .state('home', {
-        //        //abstract: true,
-        //        url: '/home',
-        //        controller: 'HomeController',
-        //        views: {
-        //            '': {
-        //                templateUrl: '/modules/views/home.html',
-        //            },
-        //            'nav@': {
-        //                templateUrl: '/modules/views/home-nav.html'
-        //            }
+        //// login state
+        //.state('login', {
+        //    url: '/login',
+        //    templateUrl: '/modules/views/login.html',
+        //    controller: 'LoginController'
+        //})
+        //// forget pwd state
+        //.state('forget', {
+        //    url: '/forget',
+        //    templateUrl: '/modules/views/forget.html',
+        //    controller: 'ForgetController'
+        //})
+        //// sign up state
+        //.state('signup', {
+        //    url: '/signup',
+        //    templateUrl: '/modules/views/signup.html',
+        //    controller: 'SignupController'
+        //})
+        //// activate state
+        //.state('activate', {
+        //    url: '/activate/{userId: int}/{code}',
+        //    templateUrl: '/modules/views/activate.html',
+        //    controller: 'ActivateController'
+        //})
+        //// reset pwd state
+        //.state('reset', {
+        //    url: '/reset/{userId: int}/{code}',
+        //    templateUrl: '/modules/views/reset.html',
+        //    controller: 'ResetController'
+        //})
+        //// admin state
+        //.state('admin', {
+        //    url: '/admin',
+        //    views: {
+        //        '': {
+        //            templateUrl: '/modules/views/admin.html',
+        //            controller: 'AdminController'
+        //        },
+        //        'sidenav@admin': {
+        //            templateUrl: '/modules/views/admin-sidenav.html'
         //        }
-        //    })
-        //    // home.login states
-        //    .state('home.login', {
-        //        url: '/login',
-        //        templateUrl: '/modules/views/login.html',
-        //        controller: 'LoginController'
-        //    })
-        //    // home.signup states
-        //    .state('home.signup', {
-        //        url: '/signup',
-        //        templateUrl: '/modules/views/signup.html',
-        //        controller: 'SignupController'
-        //    })
-        //    // forget states
-        //    .state('forget', {
-        //        url: '/forget',
-        //        templateUrl: '/modules/views/forget.html',
-        //        controller: 'ForgetController'
-        //    });
-
-        $urlRouterProvider.otherwise('/home');
+        //    }
+        //})
+        //// dashboard nested state
+        //.state('admin.dashboard', {
+        //    url: '/dashboard',
+        //    templateUrl: '/modules/views/dashboard.html',
+        //    controller: 'DashboardController'
+        //})
+        //// category nested state
+        //.state('admin.categories', {
+        //    url: '/categories',
+        //    templateUrl: '/modules/views/categories.html',
+        //    controller: 'CategoriesController'
+        //})
+        //// tag nested state
+        //.state('admin.tags', {
+        //    url: '/tags',
+        //    templateUrl: '/modules/views/tags.html'
+        //})
+        //// post nested state
+        //.state('admin.posts', {
+        //    url: '/posts',
+        //    templateUrl: '/modules/views/posts.html',
+        //    controller: 'PostsController'
+        //});
     }])
 //// route configurations
 //.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {

@@ -1,145 +1,20 @@
-﻿<nav class="navbar navbar-default idea-navbar">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand idea-brand" href="#/home"><span>i</span>Dea-Blogs</a>
+﻿<div class="container">
+    <div class="row">
+        <div class="col-lg-5 col-md-5 idea-text">
+            <h3>Let's see what to put here</h3>
+            <p>
+                <strong>How about? Lorem Ipsum</strong>
+                is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            </p>
+            <p id="signup" ng-show="!$parent.authentication.isAuth">
+                <span>Do Not Register? </span>
+                <a ui-sref="signup" class="">Sign Up Now</a>
+            </p>
         </div>
-        <ul class="nav navbar-nav idea-nav pull-right">
-            <li>
-                <div uib-dropdown on-toggle="toggled(open)">
-                    <a href="" id="idea-notification" class="idea-dropdown" uib-dropdown-toggle>
-                        <span class="badge idea-badge">5</span><i class="fa fa-bell"></i>
-                    </a>
-                    <ul id="idea-notification-menu" class="dropdown-menu pull-right"
-                        uib-dropdown-menu aria-labelledby="idea-notification">
-                        <li>
-                            <a href="#">Notification <span class="badge">5</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Comments <span class="badge">10</span></a>
-                        </li>
-                        <li>
-                            <a href="#">New Mails <span class="badge">10</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <div uib-dropdown on-toggle="toggled(open)">
-                    <a href="" id="idea-dropdown" class="idea-dropdown" uib-dropdown-toggle>
-                        <i class="fa fa-user-circle"></i>
-                    </a>
-                    <ul id="idea-action-menu" class="dropdown-menu pull-right"
-                        uib-dropdown-menu aria-labelledby="idea-dropdown">
-                        <li>
-                            <a href="#">Profile</a>
-                        </li>
-                        <li>
-                            <a href="#">Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a ng-click="$parent.logout()">Log out</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-    </div>
-</nav>
-<div class="idea-page">
-    <div class="idea-form-container">
-        <h1 class="title">Welcome To iDea-Blogs</h1>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-comments fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
-                                    <div>New Posts!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#/posts">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-tasks fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">12</div>
-                                    <div>New Messages!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-shopping-cart fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
-                                    <div>New Requests!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-support fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">13</div>
-                                    <div>User Rates!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <div class="col-lg-7 col-md-7" ng-show="!$parent.authentication.isAuth">
+            <div ui-view="login"></div>
         </div>
     </div>
 </div>

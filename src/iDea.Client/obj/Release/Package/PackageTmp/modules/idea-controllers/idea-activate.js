@@ -1,7 +1,7 @@
 ﻿(function () {
-    app.controller('ActivateController', ['$scope', '$routeParams', 'ActivateService', '$window', function ($scope, $routeParams, ActivateService, $window) {
-        $scope.userId = $routeParams.userId;
-        $scope.code = $routeParams.code;
+    app.controller('ActivateController', ['$scope', '$stateParams', 'ActivateService', '$window', function ($scope, $stateParams, ActivateService, $window) {
+        $scope.userId = $stateParams.userId;
+        $scope.code = $stateParams.code;
         $scope.activate = function () {
             $scope.$parent.loading();
             var data = {

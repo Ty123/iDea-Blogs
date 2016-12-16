@@ -11,7 +11,6 @@ using System.Text.RegularExpressions;
 
 namespace iDea.DAL.Controllers
 {
-    [Authorize]
     [RoutePrefix("api/Categories")]
     public class CategoriesController : ApiController
     {
@@ -112,7 +111,7 @@ namespace iDea.DAL.Controllers
 
             return Ok(models);
         }
-        
+
         /// <summary>
         /// Search a category by id
         /// </summary>
@@ -153,6 +152,7 @@ namespace iDea.DAL.Controllers
         /// <summary>
         /// Delete a category
         /// </summary>
+        [Authorize]
         [HttpDelete]
         [Route("Delete/{id:int}")]
         public IHttpActionResult Delete(int? id)
@@ -215,6 +215,7 @@ namespace iDea.DAL.Controllers
         /// <summary>
         /// Edit Category
         /// </summary>
+        [Authorize]
         [HttpPost]
         [Route("Edit")]
         public IHttpActionResult Edit(CategoryModel model)
@@ -245,13 +246,14 @@ namespace iDea.DAL.Controllers
         /// <summary>
         /// Add New Category
         /// </summary>
+        [Authorize]
         [HttpPost]
         [Route("Add")]
         public IHttpActionResult Add(CategoryModel model)
         {
             if (ModelState.IsValid)
             {
-                var urlSlug = "/Categories/Search?name=" +  Regex.Replace(model.Name, " ", "_");
+                var urlSlug = "/Categories/Search?name=" + Regex.Replace(model.Name, " ", "_");
                 _uow.CategoryRepository.Add(new Category(model.Name, urlSlug, model.Description));
                 _uow.Save();
 

@@ -202,7 +202,6 @@ C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.Auth\bin\Microsoft.Owin.Sec
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.Auth\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.Auth\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.Auth\bin\System.Web.Http.Owin.xml
-C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.Auth\obj\Debug\iDea.Auth.csprojResolveAssemblyReference.cache
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.Auth\obj\Debug\iDea.Auth.Migrations.InitialCreate.resources
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.Auth\obj\Debug\iDea.Auth.Migrations._initialCreate.resources
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.Auth\obj\Debug\iDea.Auth.csproj.GenerateResource.Cache

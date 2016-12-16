@@ -148,8 +148,8 @@ C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL\bin\Microsoft.Owin.Secu
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL\bin\System.Web.Http.Owin.xml
-C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL\obj\Debug\iDea.DAL.csprojResolveAssemblyReference.cache
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL\obj\Debug\iDea.DAL.Migrations._initialCreate.resources
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL\obj\Debug\iDea.DAL.csproj.GenerateResource.Cache
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL\obj\Debug\iDea.DAL.dll
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL\obj\Debug\iDea.DAL.pdb
+C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.DAL\obj\Debug\iDea.DAL.csprojResolveAssemblyReference.cache

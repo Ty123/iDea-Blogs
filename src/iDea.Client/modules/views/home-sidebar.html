@@ -1,0 +1,17 @@
+﻿<form id="idea-form" name="searchForm" role="form" class="idea-form" autocomplete="off" novalidate>
+    <div class="form-group">
+        <div class="idea-textbox">
+            <input type="text" name="username" class="form-control" placeholder="Search"
+                   ng-model="username"/>
+        </div>
+    </div>
+</form>
+    
+<h2 class="idea-small-title"><a ui-sref="categories">Category</a></h2>
+<div ng-repeat="category in categories">
+    <p><a class="idea-menu-item" ui-sref="">{{category.name}}</a></p>
+</div>
+<h2 class="idea-small-title">Tags</h2>
+<div ng-repeat="tag in tags">
+    <p><a class="idea-menu-item" ui-sref="">{{tag.name}}</a></p>
+</div>

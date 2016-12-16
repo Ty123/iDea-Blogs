@@ -8,5 +8,9 @@
 
             })
         });
+
+        $scope.addPost = function () {
+
+        }
     }])
 })();

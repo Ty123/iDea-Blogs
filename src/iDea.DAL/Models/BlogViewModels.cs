@@ -24,6 +24,8 @@ namespace iDea.DAL.Models
         public CategoryDetail Category { get; set; }
 
         public List<TagDetail> Tags { get; set; }
+
+        public DateTime PostDate { get; set; }
     }
 
     public class TagDetail

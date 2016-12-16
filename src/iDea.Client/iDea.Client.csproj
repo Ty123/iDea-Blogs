@@ -91,8 +91,8 @@
     <Content Include="modules\idea-app\idea-app.min.js.gzip">
       <DependentUpon>idea-app.min.js</DependentUpon>
     </Content>
-    <Content Include="modules\idea-controllers\idea-activate.js" />
     <Content Include="modules\idea-controllers\idea-categories.js" />
+    <Content Include="modules\idea-controllers\idea-category-details.js" />
     <Content Include="modules\idea-controllers\idea-controllers.js.bundle">
       <SubType>Designer</SubType>
     </Content>
@@ -103,21 +103,15 @@
       <DependentUpon>idea-controllers.min.js</DependentUpon>
     </Content>
     <Content Include="assets\css\idea-app.scss" />
-    <Content Include="modules\idea-controllers\idea-forget.js" />
     <Content Include="modules\idea-controllers\idea-home.js" />
     <Content Include="modules\idea-controllers\idea-index.js" />
-    <Content Include="modules\idea-controllers\idea-login.js" />
+    <Content Include="modules\idea-controllers\idea-post-detail.js" />
     <Content Include="modules\idea-controllers\idea-posts.js" />
-    <Content Include="modules\idea-controllers\idea-reset.js" />
-    <Content Include="modules\idea-controllers\idea-signup.js" />
-    <Content Include="modules\idea-services\idea-activate.js" />
     <Content Include="modules\idea-services\idea-authen.js" />
     <Content Include="modules\idea-services\idea-categories.js" />
-    <Content Include="modules\idea-services\idea-forget-pwd.js" />
+    <Content Include="modules\idea-services\idea-home.js" />
     <Content Include="modules\idea-services\idea-interceptor.js" />
     <Content Include="modules\idea-services\idea-posts.js" />
-    <Content Include="modules\idea-services\idea-reset-pwd.js" />
-    <Content Include="modules\idea-services\idea-sendemail.js" />
     <Content Include="modules\idea-services\idea-services.js">
       <DependentUpon>idea-services.js.bundle</DependentUpon>
     </Content>
@@ -161,16 +155,15 @@
     <Content Include="modules\idea-services\idea-services.min.js">
       <DependentUpon>idea-services.js</DependentUpon>
     </Content>
-    <Content Include="modules\views\activate.html" />
+    <Content Include="modules\views\about-me.html" />
     <Content Include="modules\views\categories.html" />
-    <Content Include="modules\views\category-add.html" />
-    <Content Include="modules\views\category-edit.html" />
+    <Content Include="modules\views\category-details.html" />
+    <Content Include="modules\views\contact.html" />
+    <Content Include="modules\views\home-content.html" />
+    <Content Include="modules\views\home-sidebar.html" />
     <Content Include="modules\views\home.html" />
-    <Content Include="modules\views\post.html" />
-    <Content Include="modules\views\forget.html" />
-    <Content Include="modules\views\login.html" />
-    <Content Include="modules\views\reset.html" />
-    <Content Include="modules\views\signup.html" />
+    <Content Include="modules\views\post-details.html" />
+    <Content Include="modules\views\posts.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

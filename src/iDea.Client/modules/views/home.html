@@ -1,20 +1,8 @@
-﻿<div class="container">
-    <div class="row">
-        <div class="col-lg-5 col-md-5 idea-text">
-            <h3>Let's see what to put here</h3>
-            <p>
-                <strong>How about? Lorem Ipsum</strong>
-                is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-            </p>
-            <p id="signup" ng-show="!$parent.authentication.isAuth">
-                <span>Do Not Register? </span>
-                <a ui-sref="signup" class="">Sign Up Now</a>
-            </p>
-        </div>
-        <div class="col-lg-7 col-md-7" ng-show="!$parent.authentication.isAuth">
-            <div ui-view="login"></div>
-        </div>
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+        <div ui-view="content"></div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div ui-view="sidebar"></div>
     </div>
 </div>

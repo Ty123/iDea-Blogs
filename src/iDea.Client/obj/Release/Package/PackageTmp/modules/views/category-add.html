@@ -1,0 +1,35 @@
+﻿<div class="idea-page">
+    <div class="idea-form-container">
+        <!--<div data-ng-hide="message != ''" class="alert alert-danger animated slideInDown idea-alert">
+            <strong>Error!</strong> {{message}}.
+        </div>-->
+        <h1 class="title">Add New Category</h1>
+        <div class="idea-form-wrap">
+            <form id="idea-form" name="addCategoryForm" role="form" class="idea-form" autocomplete="off" novalidate>
+                <div class="form-group" ng-class="{ 'has-error' : addCategoryForm.category.$invalid && !addCategoryForm.category.$pristine }">
+                    <div class="idea-textbox">
+                        <input type="text" name="category" class="form-control" placeholder="Category name"
+                               ng-model="category" required />
+                    </div>
+                    <div ng-if="addCategoryForm.category.$dirty" ng-messages="addCategoryForm.category.$error">
+                        <div ng-message="required" class="help-block">Category name required.</div>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : addCategoryForm.description.$invalid && !addCategoryForm.description.$pristine }">
+                    <div class="idea-textbox">
+                        <textarea name="description" class="form-control" placeholder="Description" 
+                                  ng-model="description" maxlength="1000" required></textarea>
+                    </div>
+                    <div ng-if="addCategoryForm.description.$dirty" ng-messages="addCategoryForm.description.$error">
+                        <div ng-message="required" class="help-block">Password is required</div>
+                        <div ng-message="maxlength" class="help-block">Length should not be over 1000</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn idea-button" type="submit" 
+                            data-ng-click="add()" ng-disabled="addCategoryForm.$invalid">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

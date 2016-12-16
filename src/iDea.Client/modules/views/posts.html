@@ -1,0 +1,14 @@
+﻿
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <a ui-sref="home"><i class="fa fa-home"></i></a>/
+        <span class="idea-title-active">Posts</span>
+    </div>
+</div>
+<div class="row">
+    <h1 class="idea-small-title">Recent Posts</h1>
+    <hr />
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-repeat="post in posts">
+        <h3 class="idea-small-title"><a ui-sref="details({id: post.id})">{{post.title}}</a></h3>
+    </div>
+</div>

@@ -40,12 +40,16 @@
             }, function (response) {
                 $scope.$parent.unload();
                 var errors = [];
-                for (var key in response.data.modelState) {
-                    for (var i = 0; i < response.data.modelState[key].length; i++) {
-                        errors.push(response.data.modelState[key][i]);
+                if (response.data.modelState) {
+                    for (var key in response.data.modelState) {
+                        for (var i = 0; i < response.data.modelState[key].length; i++) {
+                            errors.push(response.data.modelState[key][i]);
+                        }
                     }
+                    $scope.message = "" + errors.join(' ');
+                } else {
+                    $scope.message = response.error_description;
                 }
-                $scope.message = "" + errors.join(' ');
             });
         };
     }]);

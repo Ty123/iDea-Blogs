@@ -12,11 +12,12 @@
   <files>
     <file>/modules/idea-services/idea-authen.js</file>
     <file>/modules/idea-services/idea-interceptor.js</file>
-    <file>/modules/idea-services/idea-reset-pwd.js</file>
+    <!--<file>/modules/idea-services/idea-reset-pwd.js</file>
     <file>/modules/idea-services/idea-sendemail.js</file>
     <file>/modules/idea-services/idea-activate.js</file>
-    <file>/modules/idea-services/idea-forget-pwd.js</file>
+    <file>/modules/idea-services/idea-forget-pwd.js</file>-->
     <file>/modules/idea-services/idea-posts.js</file>
     <file>/modules/idea-services/idea-categories.js</file>
+    <file>/modules/idea-services/idea-home.js</file>
   </files>
 </bundle>

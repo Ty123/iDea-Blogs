@@ -1,0 +1,19 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <a ui-sref="home"><i class="fa fa-home"></i></a>/
+        <a ui-sref="categories">Categories</a>/
+        <span class="idea-title-active">Details</span>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <h3 class="idea-small-title">{{category.name}}</h3>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <p>{{category.description}}</p>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <h4 class="idea-small-title">Related Post: </h4>
+        <h6 ng-repeat="post in category.posts" class="idea-small-title">
+            <a ui-sref="post-details({id:post.id})">{{post.title}}</a>
+        </h6>
+    </div>
+</div>

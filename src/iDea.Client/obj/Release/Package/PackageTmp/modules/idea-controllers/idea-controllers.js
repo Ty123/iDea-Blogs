@@ -2,13 +2,22 @@
 (function () {
     'use strict';
     app.controller('HomeController', ['$scope', 'AuthService', function ($scope, AuthService) {
-        $scope.authentication = AuthService.authentication;
+        //$scope.authentication = AuthService.authentication;
+        $scope.loading = function () {
+            $scope.$parent.loading();
+        }
+
+        $scope.unload = function () {
+            $scope.$parent.unload();
+        }
     }]);
 })();
 ///#source 1 1 /modules/idea-controllers/idea-index.js
 (function () {
     'use strict';
     app.controller('IndexController', ['$scope', 'AuthService', '$location', '$timeout', function ($scope, AuthService, $location, $timeout) {
+
+        $scope.authentication = AuthService.authentication;
 
         $scope.regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
 
@@ -29,19 +38,22 @@
 ///#source 1 1 /modules/idea-controllers/idea-login.js
 (function () {
     'use strict';
-    app.controller('LoginController', ['$scope', '$window', '$timeout', 'AuthService', 'localStorageService', function ($scope, $window, $timeout, AuthService) {
+    app.controller('LoginController', ['$scope', '$window', '$timeout', 'AuthService', '$state', function ($scope, $window, $timeout, AuthService, $state) {
+
         $scope.message = "";
+
         $scope.login = function () {
             $scope.$parent.loading();
             AuthService.login({ userName: $scope.username, password: $scope.password })
                 .then(function (response) {
                     $scope.$parent.unload();
-                    $window.location.href = ('#/home');
+                    $state.go('admin');
                 }, function (err) {
                     $scope.$parent.unload();
                     $scope.message = err.error_description;
                 });
         };
+
     }]);
 })();
 ///#source 1 1 /modules/idea-controllers/idea-signup.js
@@ -130,25 +142,28 @@
                 });
             }, function (error) {
                 var errors = [];
-                for (var key in error.data.modelState) {
-                    for (var i = 0; i < response.data.modelState[key].length; i++) {
-                        errors.push(response.data.modelState[key][i]);
+                if (error.data.modelState) {
+                    for (var key in error.data.modelState) {
+                        for (var i = 0; i < response.data.modelState[key].length; i++) {
+                            errors.push(response.data.modelState[key][i]);
+                        }
                     }
+                    $scope.message = "" + errors.join(' ');
+                } else {
+                    $scope.message = error.error_description;
                 }
-
-                $scope.message = "" + errors.join(' ');
             })
         }
     }])
 })();
 ///#source 1 1 /modules/idea-controllers/idea-reset.js
 (function () {
-    app.controller('ResetController', ['$scope', 'ResetPwdService', '$routeParams', '$window', function ($scope, ResetPwdService, $routeParams, $window) {
+    app.controller('ResetController', ['$scope', 'ResetPwdService', '$stateParams', '$window', function ($scope, ResetPwdService, $stateParams, $window) {
 
         $scope.reset = function () {
             var data = {
-                userId: $routeParams.userId,
-                code: $routeParams.code,
+                userId: $stateParams.userId,
+                code: $stateParams.code,
                 newPassword: $scope.password
             }
             $scope.$parent.loading();
@@ -163,9 +178,9 @@
 })();
 ///#source 1 1 /modules/idea-controllers/idea-activate.js
 (function () {
-    app.controller('ActivateController', ['$scope', '$routeParams', 'ActivateService', '$window', function ($scope, $routeParams, ActivateService, $window) {
-        $scope.userId = $routeParams.userId;
-        $scope.code = $routeParams.code;
+    app.controller('ActivateController', ['$scope', '$stateParams', 'ActivateService', '$window', function ($scope, $stateParams, ActivateService, $window) {
+        $scope.userId = $stateParams.userId;
+        $scope.code = $stateParams.code;
         $scope.activate = function () {
             $scope.$parent.loading();
             var data = {
@@ -194,5 +209,79 @@
 
             })
         });
+
+        $scope.addPost = function () {
+
+        }
+    }])
+})();
+///#source 1 1 /modules/idea-controllers/idea-categories.js
+(function () {
+    app.controller('CategoriesController', ['$scope', 'CategoriesService', '$window', '$timeout', function ($scope, CategoriesService, $window, $timeout) {
+        $scope.categories = [];
+        $scope.savedSuccessfully = false;
+        $scope.message = "";
+
+        $scope.$on('$routeChangeSuccess', function () {
+
+            CategoriesService.categories().then(function (response) {
+                $scope.categories = response;
+            }, function (error) {
+
+            });
+        });
+
+        $scope.add = function () {
+            var data = {
+                name: $scope.category,
+                description: $scope.description
+            }
+
+            $scope.$parent.loading();
+
+            CategoriesService.add(data).then(function (response) {
+                $window.location.href = '#/categories';
+                $scope.$parent.unload();
+            }, function (error) {
+                $scope.$parent.unload();
+                var errors = [];
+                if (error.data.modelState) {
+                    for (var key in error.data.modelState) {
+                        for (var i = 0; i < response.data.modelState[key].length; i++) {
+                            errors.push(response.data.modelState[key][i]);
+                        }
+                    }
+                    $scope.message = "" + errors.join(' ');
+                } else {
+                    $scope.message = error.error_description;
+                }
+            });
+        }
+
+        $scope.edit = function () {
+            var data = {
+                id: $scope.id,
+                name: $scope.category,
+                description: $scope.description
+            }
+
+            CategoriesService.edit(data).then(function (response) {
+                $window.location.href = '#/categories';
+                $scope.$parent.unload();
+            }, function (error) {
+                $scope.$parent.unload();
+                var errors = [];
+                if (response.data.modelState) {
+                    for (var key in response.data.modelState) {
+                        for (var i = 0; i < response.data.modelState[key].length; i++) {
+                            errors.push(response.data.modelState[key][i]);
+                        }
+                    }
+                    $scope.message = "" + errors.join(' ');
+                } else {
+                    $scope.message = error.error_description;
+                }
+            })
+        }
     }])
 })();

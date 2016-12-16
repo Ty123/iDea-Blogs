@@ -1,6 +1,6 @@
 ﻿(function () {
     'use strict';
-    app.controller('IndexController', ['$scope', 'AuthService', '$location', '$timeout', function ($scope, AuthService, $location, $timeout) {
+    app.controller('IndexController', ['$rootScope', '$scope', 'AuthService', '$timeout', '$state', function ($rootScope, $scope, AuthService, $location, $timeout, $state) {
 
         $scope.authentication = AuthService.authentication;
 
@@ -16,7 +16,19 @@
 
         $scope.logout = function () {
             AuthService.logOut();
-            $location.path('#/login')
+            $state.go('home.login');
         }
+
+        $rootScope.$on('$viewContentLoading', function (event, viewName, viewContent) {
+            $scope.loading();
+        });
+
+        $rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
+            (function(){
+                setTimeout(function () {
+                    $scope.unload();
+                }, 1500);
+            })()
+        });
     }])
 })();
