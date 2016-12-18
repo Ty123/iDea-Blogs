@@ -1,0 +1,40 @@
+﻿<p>
+    <a ui-sref="home" class="idea-menu-item"><i class="fa fa-home"></i></a>
+    <a ui-sref="posts" class="idea-menu-item">/ Posts /</a>
+    <span class="idea-menu-item idea-title-active">Search /</span> 
+    <span class="idea-menu-item idea-title-active">{{title}}</span>
+</p>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <h3 class="idea-small-title">Results : </h3>
+        <hr />
+        <div class="row">
+            <div ng-repeat="post in posts" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h4><a ui-sref="post-details({id: post.id})" class="idea-menu-item">{{post.title}}</a></h4>
+                <p><em>Date</em> : {{post.postDate}}</p>
+                <p>{{post.shortDescription}}</p>
+                <br />
+            </div>
+        </div>
+        <div class="row">
+            <div ng-if="posts == undefine" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h4 class="idea-menu-item">No Result</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <h3 class="idea-small-title">New Search</h3>
+        <form id="idea-form" name="searchForm" role="form" class="idea-form" autocomplete="off" novalidate>
+            <div class="form-group">
+                <div class="idea-textbox">
+                    <input type="text" name="username" class="form-control" placeholder="Search"
+                           ng-model="title" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="button" class="btn idea-button" value="Search" ng-click="search()" 
+                       ng-disabled="searchForm.$invalid" />
+            </div>
+        </form>
+    </div>
+</div>

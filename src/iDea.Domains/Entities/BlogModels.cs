@@ -164,8 +164,7 @@ namespace iDea.Domains.Entities
         [Required, EmailAddress]
         public string Email { get; set; }
 
-        [Url]
-        public string Website { get; set; }
+        public String Website { get; set; }
 
         [Required]
         public string Subject { get; set; }

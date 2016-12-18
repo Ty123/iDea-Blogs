@@ -7,8 +7,14 @@
     border-color: none !important;
 }
 
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+    cursor: pointer;
+}
+
 body {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Lora', serif;
     height: 100%;
     width: 100%;
 }
@@ -24,10 +30,11 @@ body {
 
 #idea-loading {
     position: fixed;
+    top: 0;
     display: none;
     width: 100%;
     height: 100vh;
-    background-color: $green-color;
+    background: $green-color;
     z-index: -1;
 
     &.animated {
@@ -154,8 +161,8 @@ body {
 .form-group {
 
     .idea-textbox {
-        padding: 10px 6px;
-        background-color: #f2f2f2;
+        padding: 5px;
+        border: 1px solid #000000;
 
         input, textarea {
             width: 100%;
@@ -178,12 +185,9 @@ body {
 }
 
 .idea-button {
-    font-family: "Raleway", sans-serif;
+    font-family: "Coustard",serif;
     color: #ffffff;
-    font-size: 20px;
-    letter-spacing: 2px;
     text-transform: uppercase;
-    width: 100% !important;
     border-radius: 0;
     background-color: $green-color;
     border: transparent;
@@ -207,36 +211,10 @@ body {
     top: 0;
     height: 100vh;
     width: 100%;
-    background: $green-color;
 
     .idea-form-container {
         display: table-cell;
         vertical-align: middle;
-
-        .idea-form-wrap {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 40px 40px 10px;
-            text-align: center;
-            width: 400px;
-            background-color: #ffffff;
-            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-
-            .idea-form {
-                text-align: left;
-                padding: 0 20px;
-            }
-
-            p {
-                font-family: "Raleway", sans-serif;
-                margin: 10px 0;
-
-                a {
-                    color: $green-color;
-                }
-            }
-        }
 
         .title {
             font-family: 'Dorsa', sans-serif;
@@ -248,9 +226,105 @@ body {
     }
 }
 
-// signup title 
+// signup title
 #signup {
     font-family: "Dorsa",sans-serif;
     font-size: 24px;
     letter-spacing: 1px;
+}
+
+// admin
+.idea-content {
+    height: 100vh;
+    width: 100%;
+
+    .idea-section-top {
+        position: absolute;
+        top: 0;
+        height: 15vh;
+        width: 100%;
+        background: transparent;
+
+        ul {
+            position: absolute;
+            bottom: 10px;
+            list-style-type: none;
+            padding-left: 0;
+
+            li {
+                color: #ffffff !important;
+                float: left;
+            }
+        }
+    }
+
+    .idea-section-bottom {
+        position: absolute;
+        bottom: 0;
+        height: $admin-height;
+        width: 100%;
+        background: #ffffff;
+
+        .idea-container {
+            margin-top: 10px;
+            min-height: 80vh;
+            background-color: $grey-color;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+    }
+}
+
+//
+.idea-sidenav {
+    padding-top: 20px;
+    height: $admin-height;
+    background: $grey-color;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+
+    ul {
+
+        li {
+            color: #ffffff;
+            border: none !important;
+            border-top-left-radius: 0 !important;
+            border-top-right-radius: 0 !important;
+            cursor: pointer;
+            background: $grey-color;
+        }
+    }
+}
+
+#wrapper {
+    width: 100%;
+    height: 100vh;
+    display: table;
+}
+
+#main {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.idea-form-wrap {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 400px;
+    background-color: #ffffff;
+
+    .idea-form {
+        text-align: left;
+        padding: 0 20px;
+    }
+
+    p {
+        font-family: "Raleway", sans-serif;
+        margin: 10px 0;
+
+        a {
+            color: $green-color;
+        }
+    }
 }

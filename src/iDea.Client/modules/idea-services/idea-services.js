@@ -256,42 +256,147 @@
         return service;
     }])
 })();
-///#source 1 1 /modules/idea-services/idea-home.js
+///#source 1 1 /modules/idea-services/idea-tags.js
 (function () {
-    app.factory('HomeServices', ['$http', '$q', '$log', 'ngAuthSettings', function ($http, $q, $log, ngAuthSettings) {
-        var url = ngAuthSettings.apiDalBaseUri,
-            service = {
-                posts: function () {
-                    var deferred = $q.defer();
-                    $http.get(url + 'api/Posts').success(function (response) {
-                        deferred.resolve(response);
-                    }).error(function (err, status) {
-                        deferred.reject(err);
-                    });
+    app.factory('TagService', ['$http', '$q', '$log', 'ngAuthSettings', function ($http, $q, $log, ngAuthSettings) {
 
-                    return deferred.promise;
-                },
-                categories: function () {
-                    var deferred = $q.defer();
-                    $http.get(url + 'api/Categories').success(function (response) {
-                        deferred.resolve(response);
-                    }).error(function (err, status) {
-                        deferred.reject(err);
-                    });
+        var service = {}, url = ngAuthSettings.apiDalBaseUri;
 
-                    return deferred.promise;
-                },
-                tags: function () {
-                    var deferred = $q.defer();
-                    $http.get(url + 'api/Tags').success(function (response) {
-                        deferred.resolve(response);
-                    }).error(function (err, status) {
-                        deferred.reject(err);
-                    });
+        service.tags = function () {
+            var deferred = $q.defer();
+            $http.get(url + 'api/Tags').success(function (response) {
+                deferred.resolve(response);
+            }).error(function (err, status) {
+                deferred.reject(err);
+            });
 
-                    return deferred.promise;
-                }
-            };
+            return deferred.promise;
+        }
+
+        service.add = function (data) {
+            var deferred = $q.defer();
+
+            $http.post(url + 'api/Tags/Add', data).success(function (response) {
+                deferred.resolve(response);
+            }).error(function (err, status) {
+                deferred.reject(err);
+            });
+
+            return deferred.promise;
+        }
+
+        service.edit = function (data) {
+            var deferred = $q.defer();
+
+            $http.post(url + 'api/Tags/Edit', data).success(function (response) {
+                deferred.resolve(response);
+            }).error(function (err, status) {
+                deferred.reject(err);
+            });
+
+            return deferred.promise;
+        }
+
+        service.delete = function (id) {
+            var deferred = $q.defer();
+
+            $http.delete(url + 'api/Tags/Delete/' + id).success(function (response) {
+                deferred.resolve(response);
+            }).error(function (err, status) {
+                deferred.reject(err);
+            });
+
+            return deferred.promise;
+        }
+
+        service.getById = function (id) {
+            var deferred = $q.defer();
+
+            $http.get(url + 'api/Tags/Details/' + id).success(function (response) {
+                deferred.resolve(response);
+            }).error(function (err, status) {
+                deferred.reject(err);
+            });
+
+            return deferred.promise;
+        }
+
         return service;
     }])
 })();
+///#source 1 1 /modules/idea-services/idea-contacts.js
+(function (app) {
+    'use strict';
+    app.factory('ContactService', ['$http', '$q', '$log', 'ngAuthSettings', function ($http, $q, $log, ngAuthSettings) {
+        var url = ngAuthSettings.apiDalBaseUri, service = {};
+
+        service.delete = function (id) {
+            var deferred = $q.defer();
+            $http.delete(url + 'api/Contacts/Delete/' + id).success(function (response) {
+                deferred.resolve(response);
+            }).error(function (error) {
+                deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
+
+        service.getByName = function (name) {
+            var deferred = $q.defer();
+            $http.get(url + 'api/Contacts/Search?title=' + name)
+                .success(function (response) {
+                    deferred.resolve(response);
+                }).error(function (error) {
+                    deferred.reject(error);
+                });
+
+            return deferred.promise;
+        }
+
+        service.getById = function (id) {
+            var deferred = $q.defer();
+            $http.get(url + 'api/Contacts/Details/' + id).success(function (response) {
+                deferred.resolve(response);
+            }).error(function (error) {
+                deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
+
+        service.edit = function (data) {
+            var deferred = $q.defer();
+            $http.post(url + 'api/Contacts/Edit', data).success(function (response) {
+                deferred.resolve(response);
+            }).error(function (error) {
+                deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
+
+        service.add = function (data) {
+            var deferred = $q.defer();
+            $http.post(url + 'api/Contacts/Add', data).success(function (response) {
+                deferred.resolve(response);
+            }).error(function (error) {
+                deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
+
+        service.posts = function () {
+            var deferred = $q.defer();
+            $http.get(url + 'api/Contacts/').success(function (response) {
+                deferred.resolve(response);
+            }).error(function (error) {
+                deferred.reject(error);
+            });
+
+            return deferred.promise;
+        }
+
+        return service;
+    }])
+})(app)

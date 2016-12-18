@@ -1,0 +1,14 @@
+﻿<h3 class="idea-small-title">New Search</h3>
+<form id="idea-form" name="searchForm" role="form" class="idea-form" autocomplete="off" novalidate>
+    <div class="form-group">
+        <div class="idea-textbox">
+            <input type="text" name="username" class="form-control" placeholder="Search"
+                   ng-model="title" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="button" class="btn idea-button" value="Search" ng-click="search()"
+               ng-disabled="searchForm.$invalid" />
+    </div>
+</form>
+

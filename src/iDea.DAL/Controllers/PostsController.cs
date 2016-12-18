@@ -87,9 +87,10 @@ namespace iDea.DAL.Controllers
                 return BadRequest();
             }
 
-            string tle = Regex.Replace(title, "_", " ");
+            title = Regex.Replace(title, "_", " ");
 
-            var entities = _uow.PostRepository.Get(p => p.Title == tle).ToList();
+            var entities = _uow.PostRepository
+                               .Get(p => p.Title.Contains(title)).ToList();
 
             if (entities == null || entities.Count() == 0)
             {
@@ -114,7 +115,7 @@ namespace iDea.DAL.Controllers
                     Id = c.Id,
                     Name = c.Name,
                     Description = c.Description,
-                    UrlSlug = c.UrlSlug
+                    UrlSlug = c.UrlSlug,
                 }).FirstOrDefault();
 
                 models.Add(new PostDetail
@@ -126,7 +127,8 @@ namespace iDea.DAL.Controllers
                     Meta = entity.Meta,
                     UrlSlug = entity.UrlSlug,
                     Category = category,
-                    Tags = tags
+                    Tags = tags,
+                    PostDate = entity.PostedOn
                 });
             }
 

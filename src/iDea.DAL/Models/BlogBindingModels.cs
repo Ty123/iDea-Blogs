@@ -45,7 +45,6 @@ namespace iDea.DAL.Models
         [Required, EmailAddress]
         public string Email { get; set; }
 
-        [Url]
         public string Website { get; set; }
 
         [Required]

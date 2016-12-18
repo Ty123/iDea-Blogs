@@ -1,23 +1,48 @@
-﻿<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <a ui-sref="home"><i class="fa fa-home"></i></a>/
-        <a ui-sref="posts">Posts</a>/
-        <span class="idea-title-active">Details</span>
-    </div>
+﻿
+<p>
+    <a ui-sref="home" class="idea-menu-item"><i class="fa fa-home"></i></a>/
+    <a ui-sref="posts" class="idea-menu-item">Posts</a>/
+    <span class="idea-menu-item idea-title-active">Details</span>
+</p>
+<div class="row">
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
         <h3 class="idea-small-title">{{post.title}}</h3>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-        <p>Category: <a class="idea-title-active" ui-sref=""><em>{{post.category.name}}</em></a> </p>
+        <p>Category: <a class="idea-title-active" ui-sref="category-details({id:post.category.id})"><em>{{post.category.name}}</em></a></p>
         <p>
             Tags:
             <label ng-repeat="tag in post.tags" style="padding-right: 5px;">
-                <a class="idea-title-active" ui-sref=""><span class="badge">{{tag.name}}</span></a>
+                <a class="idea-title-active" ui-sref="tag-details({id:tag.id})"><span class="badge">{{tag.name}}</span></a>
             </label>
         </p>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <p>{{post.description}}</p>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <!--<h3 class="idea-small-title">New Search</h3>
+        <form id="idea-form" name="searchForm" role="form" class="idea-form" autocomplete="off" novalidate>
+            <div class="form-group">
+                <div class="idea-textbox">
+                    <input type="text" name="username" class="form-control" placeholder="Search"
+                           ng-model="title" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="button" class="btn idea-button" value="Search" ng-click="search()"
+                       ng-disabled="searchForm.$invalid" />
+            </div>
+        </form>
+        <br />-->
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div ui-view="search"></div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h5 class="idea-small-title">Other Posts</h5>
+                <hr />
+                <h6 ng-repeat="post in posts" ng-if="post.id != postId">
+                    <a ui-sref="post-details({id: post.id})" class="idea-menu-item">{{post.title}}</a>
+                </h6>
+            </div>
+        </div>
     </div>
 </div>
 

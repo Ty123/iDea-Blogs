@@ -1,11 +1,19 @@
 ﻿(function () {
-    app.controller('AdminController', ['$scope', '$rootScope', 'CategoriesService', function ($scope, $rootScope, CategoriesService) {
-        $scope.loading = function () {
-            $scope.$parent.loading();
-        }
+    app.controller('AdminController', ['$rootScope', '$scope', '$state', 'PostService', 'CategorieService', 'TagService', function ($rootScope, $scope, $state, PostService, CategorieService, TagService) {
 
-        $scope.unload = function () {
-            $scope.$parent.unload();
-        }
+        $rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
+            PostService.posts().then(function (respone) {
+                $scope.posts = respone;
+            });
+
+            CategorieService.categories().then(function (response) {
+                $scope.categories = response;
+            });
+
+            TagService.tags().then(function (response) {
+                $scope.tags = response;
+            })
+        });
+            
     }]);
 })();

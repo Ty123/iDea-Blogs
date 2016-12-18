@@ -69,6 +69,7 @@
     <Content Include="assets\css\_header.scss" />
     <Content Include="assets\css\_mixins.scss" />
     <Content Include="assets\css\_variables.scss" />
+    <Content Include="assets\images\abt-me.jpg" />
     <Content Include="assets\scripts\angular-animate.min.js" />
     <Content Include="assets\scripts\angular-local-storage.min.js" />
     <Content Include="assets\scripts\angular-messages.min.js" />
@@ -91,8 +92,10 @@
     <Content Include="modules\idea-app\idea-app.min.js.gzip">
       <DependentUpon>idea-app.min.js</DependentUpon>
     </Content>
+    <Content Include="modules\idea-controllers\idea-admin.js" />
     <Content Include="modules\idea-controllers\idea-categories.js" />
     <Content Include="modules\idea-controllers\idea-category-details.js" />
+    <Content Include="modules\idea-controllers\idea-contacts.js" />
     <Content Include="modules\idea-controllers\idea-controllers.js.bundle">
       <SubType>Designer</SubType>
     </Content>
@@ -105,11 +108,22 @@
     <Content Include="assets\css\idea-app.scss" />
     <Content Include="modules\idea-controllers\idea-home.js" />
     <Content Include="modules\idea-controllers\idea-index.js" />
-    <Content Include="modules\idea-controllers\idea-post-detail.js" />
+    <Content Include="modules\idea-controllers\idea-login.js" />
+    <Content Include="modules\idea-controllers\idea-post-details.js" />
     <Content Include="modules\idea-controllers\idea-posts.js" />
+    <Content Include="modules\idea-controllers\idea-search.js" />
+    <Content Include="modules\idea-controllers\idea-tag-details.js" />
+    <Content Include="modules\idea-controllers\idea-tags.js" />
+    <Content Include="modules\idea-directives\idea-directives.js">
+      <DependentUpon>idea-directives.js.bundle</DependentUpon>
+    </Content>
+    <Content Include="modules\idea-directives\idea-directives.min.js">
+      <DependentUpon>idea-directives.js</DependentUpon>
+    </Content>
+    <Content Include="modules\idea-directives\idea-loading.js" />
     <Content Include="modules\idea-services\idea-authen.js" />
     <Content Include="modules\idea-services\idea-categories.js" />
-    <Content Include="modules\idea-services\idea-home.js" />
+    <Content Include="modules\idea-services\idea-contacts.js" />
     <Content Include="modules\idea-services\idea-interceptor.js" />
     <Content Include="modules\idea-services\idea-posts.js" />
     <Content Include="modules\idea-services\idea-services.js">
@@ -122,8 +136,16 @@
     <Content Include="modules\idea-services\idea-services.min.js.gzip">
       <DependentUpon>idea-services.min.js</DependentUpon>
     </Content>
+    <Content Include="modules\idea-directives\idea-directives.js.bundle" />
+    <Content Include="modules\idea-directives\idea-directives.min.js.map">
+      <DependentUpon>idea-directives.min.js</DependentUpon>
+    </Content>
+    <Content Include="modules\idea-directives\idea-directives.min.js.gzip">
+      <DependentUpon>idea-directives.min.js</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\blog-admin.tyly.co.nz - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\blog-admin.tyly.co.nz - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\idea-blog.tyly.co.nz - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -155,23 +177,29 @@
     <Content Include="modules\idea-services\idea-services.min.js">
       <DependentUpon>idea-services.js</DependentUpon>
     </Content>
+    <Content Include="modules\idea-services\idea-tags.js" />
     <Content Include="modules\views\about-me.html" />
+    <Content Include="modules\views\admin.html" />
     <Content Include="modules\views\categories.html" />
     <Content Include="modules\views\category-details.html" />
     <Content Include="modules\views\contact.html" />
     <Content Include="modules\views\home-content.html" />
     <Content Include="modules\views\home-sidebar.html" />
     <Content Include="modules\views\home.html" />
+    <Content Include="modules\views\loading.html" />
+    <Content Include="modules\views\login.html" />
+    <Content Include="modules\views\new-search.html" />
     <Content Include="modules\views\post-details.html" />
     <Content Include="modules\views\posts.html" />
+    <Content Include="modules\views\search.html" />
+    <Content Include="modules\views\tag-details.html" />
+    <Content Include="modules\views\tags.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="assets\images\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

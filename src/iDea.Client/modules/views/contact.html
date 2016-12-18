@@ -1,1 +1,89 @@
-﻿<h1>Contact Me</h1>
+﻿<p>
+    <a ui-sref="home" class="idea-menu-item"><i class="fa fa-home"></i></a>/
+    <span class="idea-menu-item idea-title-active">Contact</span>
+</p>
+<h1 class="idea-small-title">Say Hello!</h1>
+<hr />
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5" style="padding-right: 50px;">
+        <p>
+            Suspendisse elit turpis, posuere eu facilisis vitae, venenatis at turpis.
+            Phasellus orci sem, auctor et sem vel, ultricies egestas arcu.
+            Pellentesque lacinia quis justo elementum luctus. Cras viverra porta augue,
+            vel accumsan est venenatis fermentum.
+        </p>
+        <ul class="icons-ul">
+            <li><strong>Email </strong> contact@idea-blog.net</li>
+            <li><strong>Phone: </strong> 000-000-0000</li>
+            <li><strong>Website: </strong> www.ideablogs.net</li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7" style="border-left: solid 1px #000000; padding-left: 50px;">
+        <form name="contactForm" role="form" novalidate autocomplete="off">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group" ng-class="{ 'has-error' : contactForm.fullName.$invalid && !contactForm.fullName.$pristine }">
+                        <div class="idea-textbox">
+                            <input type="text" name="fullName" class="form-control" placeholder="Enter full name"
+                                   ng-model="fullName" required />
+                        </div>
+                        <div ng-if="contactForm.fullName.$dirty" ng-messages="contactForm.fullName.$error">
+                            <div ng-message="required" class="help-block">Full name is required.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group" ng-class="{ 'has-error' : contactForm.contactEmail.$invalid && !contactForm.contactEmail.$pristine }">
+                        <div class="idea-textbox">
+                            <input type="email" name="contactEmail" class="form-control" placeholder="Enter your email"
+                                   ng-model="contactEmail" required />
+                        </div>
+                        <div ng-if="contactForm.contactEmail.$dirty" ng-messages="contactForm.contactEmail.$error">
+                            <div ng-message="required" class="help-block">Email is required.</div>
+                            <div ng-message="email" class="help-block">Not a valid email.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group" ng-class="{ 'has-error' : contactForm.subject.$invalid && !contactForm.subject.$pristine }">
+                        <div class="idea-textbox">
+                            <input type="text" name="subject" class="form-control" placeholder="Enter subject"
+                                   ng-model="subject" required />
+                        </div>
+                        <div ng-if="contactForm.subject.$dirty" ng-messages="contactForm.subject.$error">
+                            <div ng-message="required" class="help-block">This field is required.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <div class="idea-textbox">
+                            <input type="text" name="website" class="form-control" placeholder="Enter your website url"
+                                   ng-model="website" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="form-group" ng-class="{ 'has-error' : contactForm.message.$invalid && !contactForm.message.$pristine }">
+                        <div class="idea-textbox">
+                            <textarea name="message" class="form-control"
+                                      placeholder="Enter your message" ng-model="message"
+                                      required></textarea>
+                        </div>
+                        <div ng-if="contactForm.message.$dirty" ng-messages="contactForm.message.$error">
+                            <div ng-message="required" class="help-block">Message is required.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="form-group">
+                        <button class="btn idea-button" type="submit" data-ng-click="submit()"
+                                ng-disabled="contactForm.$invalid">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

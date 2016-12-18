@@ -1,1 +1,9 @@
-﻿<h1>Tag List</h1>
+﻿<p>
+    <a ui-sref="home" class="idea-menu-item"><i class="fa fa-home"></i></a>/
+    <span class="idea-menu-item idea-title-active">Categories</span>
+</p>
+<h1 class="idea-small-title">Recent Tags</h1>
+<hr />
+<h4 ng-repeat="tag in tags">
+    <a ui-sref="tag-details({id: tag.id})" class="idea-menu-item">{{tag.name}}</a>
+</h4>

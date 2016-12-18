@@ -1,0 +1,32 @@
+﻿<form id="idea-form" name="searchForm" role="form" class="idea-form" autocomplete="off" novalidate>
+    <div class="form-group">
+        <div class="idea-textbox">
+            <input type="text" name="username" class="form-control" placeholder="Search"
+                   ng-model="title" required/>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="button" class="btn idea-button"
+               value="Search" ng-click="search()" ng-disabled="searchForm.$invalid" />
+    </div>
+</form>
+<br />
+<h4 class="idea-small-title">
+    <a ui-sref="categories">Category</a>
+</h4>
+<hr />
+<div ng-repeat="category in categories">
+    <p>
+        <a class="idea-menu-item" ui-sref="category-details({id:category.id})">{{category.name}}</a>
+    </p>
+</div>
+<br />
+<h4 class="idea-small-title">
+    <a ui-sref="tags">Tags</a>
+</h4>
+<hr />
+<div ng-repeat="tag in tags">
+    <p>
+        <a class="badge" ui-sref="tag-details({id:tag.id})">{{tag.name}}</a>
+    </p>
+</div>

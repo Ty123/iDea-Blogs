@@ -1,19 +1,23 @@
-﻿<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <a ui-sref="home"><i class="fa fa-home"></i></a>/
-        <a ui-sref="categories">Categories</a>/
-        <span class="idea-title-active">Details</span>
-    </div>
+﻿
+<p>
+    <a ui-sref="home" class="idea-menu-item"><i class="fa fa-home"></i></a>/
+    <a ui-sref="categories" class="idea-menu-item">Categories</a>/
+    <span class="idea-title-active idea-menu-item">Details</span>
+</p>
+
+<div class="row">
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
         <h3 class="idea-small-title">{{category.name}}</h3>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <p>{{category.description}}</p>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-        <h4 class="idea-small-title">Related Post: </h4>
-        <h6 ng-repeat="post in category.posts" class="idea-small-title">
-            <a ui-sref="post-details({id:post.id})">{{post.title}}</a>
+        <br />
+        <h5 class="idea-small-title">Related Posts: </h5>
+        <hr />
+        <h6 ng-repeat="post in category.posts">
+            <a ui-sref="post-details({id:post.id})" class="idea-menu-item">{{post.title}}</a>
         </h6>
     </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div ui-view="search"></div>
+    </div>
 </div>
+

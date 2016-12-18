@@ -1,13 +1,24 @@
 ﻿(function () {
     'use strict';
-    app.controller('HomeController', ['$scope', 'AuthService', function ($scope, AuthService) {
-        //$scope.authentication = AuthService.authentication;
-        $scope.loading = function () {
-            $scope.$parent.loading();
-        }
+    app.controller('HomeController', ['$rootScope', '$scope', '$state', 'PostService', 'CategorieService', 'TagService', function ($rootScope, $scope, $state, PostService, CategorieService, TagService) {
 
-        $scope.unload = function () {
-            $scope.$parent.unload();
+        $rootScope.$on('$viewContentLoading', function (event, viewName, viewContent) {
+
+            PostService.posts().then(function (response) {
+                $scope.posts = response;
+            }, function (error) { });
+
+            CategorieService.categories().then(function (response) {
+                $scope.categories = response;
+            }, function (error) { });
+
+            TagService.tags().then(function (response) {
+                $scope.tags = response;
+            }, function (error) { })
+        });
+
+        $scope.search = function () {
+            $state.go('search', { 'title': $scope.title })
         }
     }]);
 })();

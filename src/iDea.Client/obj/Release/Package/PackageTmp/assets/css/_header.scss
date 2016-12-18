@@ -1,4 +1,5 @@
-﻿@import "bootstrap.min.css";
+﻿@import "variables";
+@import "bootstrap.min.css";
 
 .idea-navbar {
     position: fixed;
@@ -40,7 +41,7 @@
 }
 
 .idea-badge {
-    position:absolute !important;
+    position: absolute !important;
     top: 9px;
     font-size: 9px;
     padding: 3px 8px 7px !important;
@@ -71,5 +72,40 @@
         font-size: 16px;
         color: #000000;
         cursor: pointer;
+    }
+}
+
+.idea-title {
+    width: 100%;
+    text-align: center;
+    z-index: 1030;
+
+    a {
+        color: $green-color;
+        font-family: 'UnifrakturMaguntia', cursive;
+        font-size: 80px;
+        border-bottom: 1px dotted #ccc;
+
+        span {
+            color: #000000;
+        }
+    }
+}
+
+.idea-small-title {
+    font-family: 'Coustard', serif;
+    text-transform: uppercase;
+    color: $green-color;
+}
+
+.idea-title-active {
+    color: $green-color;
+}
+
+.idea-menu-item {
+    font-family: 'Coustard', serif;
+    text-transform: uppercase;
+    &:hover {
+        color: $green-color !important;
     }
 }

@@ -1,1 +1,9 @@
-﻿<h1>Categories List</h1>
+﻿<p>
+    <a ui-sref="home" class="idea-menu-item"><i class="fa fa-home"></i></a>/
+    <span class="idea-menu-item idea-title-active">Categories</span>
+</p>
+<h1 class="idea-small-title">Recent Categories</h1>
+<hr />
+<h5 class="idea-small-title" ng-repeat="category in categories">
+    <a ui-sref="category-details({id: category.id})">{{category.name}}</a>
+</h5>

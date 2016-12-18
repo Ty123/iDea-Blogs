@@ -18,6 +18,7 @@
     <file>/modules/idea-services/idea-forget-pwd.js</file>-->
     <file>/modules/idea-services/idea-posts.js</file>
     <file>/modules/idea-services/idea-categories.js</file>
-    <file>/modules/idea-services/idea-home.js</file>
+    <file>/modules/idea-services/idea-tags.js</file>
+    <file>/modules/idea-services/idea-contacts.js</file>
   </files>
 </bundle>

@@ -1,0 +1,15 @@
+﻿
+<p>
+    <a ui-sref="home" class="idea-menu-item"><i class="fa fa-home"></i></a>/
+    <a ui-sref="categories" class="idea-menu-item">Categories</a>/
+    <span class="idea-title-active idea-menu-item">Details</span>
+</p>
+<h3 class="idea-small-title">{{category.name}}</h3>
+<p>{{category.description}}</p>
+<br />
+<h5 class="idea-small-title">Related Posts: </h5>
+<hr />
+<h6 ng-repeat="post in category.posts">
+    <a ui-sref="post-details({id:post.id})" class="idea-menu-item">{{post.title}}</a>
+</h6>
+

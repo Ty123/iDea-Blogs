@@ -10,7 +10,6 @@ using System.Web.Http;
 
 namespace iDea.DAL.Controllers
 {
-    [Authorize]
     [RoutePrefix("api/Contacts")]
     public class ContactsController : ApiController
     {
@@ -52,6 +51,7 @@ namespace iDea.DAL.Controllers
         /// <summary>
         /// Search email and orderby
         /// </summary>
+        [Authorize]
         [HttpGet]
         [Route("Search")]
         public IHttpActionResult Search(string email)
@@ -84,6 +84,8 @@ namespace iDea.DAL.Controllers
         /// <summary>
         /// Delete a tag
         /// </summary>
+        [Authorize]
+        [Authorize]
         [HttpDelete]
         [Route("Delete/{id:int}")]
         public IHttpActionResult Delete(int? id)
@@ -138,6 +140,7 @@ namespace iDea.DAL.Controllers
         /// <summary>
         /// Edit the tag
         /// </summary>
+        [Authorize]
         [HttpPost]
         [Route("Edit")]
         public IHttpActionResult Edit(ContactModel model)
@@ -175,7 +178,7 @@ namespace iDea.DAL.Controllers
         {
             if (ModelState.IsValid)
             {
-                _repos.Add(new Contact(model.Name, model.Email,model.Website,model.Subject,model.Body));
+                _repos.Add(new Contact(model.Name, model.Email, model.Website, model.Subject, model.Body));
                 _repos.Save();
 
                 return Ok();

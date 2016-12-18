@@ -1,20 +1,54 @@
-﻿<!--Admin dashboard-->
-<div class="idea-content">
-    <div class="idea-section-top">
-        <div class="container">
-            <ul>
-                <li>/</li>
-                <li><a ui-sref="home">Home</a></li>
-                <li>/</li>
-                <li>Admin</li>
-            </ul>
+﻿<p>
+    <a ui-sref="home" class="idea-menu-item"><i class="fa fa-home"></i></a>
+    <span class="idea-menu-item idea-title-active">/Admin</span>
+</p>
+<div class="row">
+    <div class="col-md-3 col-lg-3">
+        <h4 class="idea-small-title">col-md-2 col-lg-2</h4>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <h3>Stat Activities</h3>
+                    </li>
+                    <li class="list-group-item">
+                        <a>Number of posts <span class="badge pull-right">{{posts.length}}</span></a>
+                    </li>
+                    <li class="list-group-item">
+                        <a>Number of categories <span class="badge pull-right">{{categories.length}}</span></a>
+                    </li>
+                    <li class="list-group-item">
+                        Number of tags <span class="badge pull-right">{{tags.length}}</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <ul class="list-group">
+                    <li class="list-group-item active">
+                        <h5><i class="fa fa-comments-o"></i> Latest Comments</h5>
+                    </li>
+                    <li class="list-group-item">
+                        Lorem ipsum dolor sit amet, cons...
+                    </li>
+                    <li class="list-group-item">
+                        Lorem ipsum dolor sit amet, cons...
+                    </li>
+                    <li class="list-group-item">
+                        Lorem ipsum dolor sit amet, cons...
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-    <div class="idea-section-bottom">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-3 col-md-3 idea-sidenav" ui-view="sidenav"></div>
-                <div class="col-lg-9 col-md-9" ui-view></div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+        <div class="list-group">
+            <div class="list-group-item">
+                <h4 class="idea-small-title">Recent Galleries</h4>
+            </div>
+            <div class="list-group-item" ng-repeat="post in posts">
+                {{post.title}}
             </div>
         </div>
     </div>

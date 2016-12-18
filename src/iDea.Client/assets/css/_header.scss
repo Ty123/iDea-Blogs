@@ -1,5 +1,8 @@
 ﻿@import "variables";
 @import "bootstrap.min.css";
+@import "mixins";
+@import "animate.min.css";
+
 
 .idea-navbar {
     position: fixed;
@@ -103,7 +106,49 @@
 }
 
 .idea-menu-item {
+    font-family: 'Coustard', serif;
+    text-transform: uppercase;
+
     &:hover {
-        color: $green-color;
+        color: $green-color !important;
+    }
+}
+
+.idea-group-list {
+    position: absolute;
+    width: 200px;
+    top: 40px;
+    right: 0;
+
+    &.animated {
+        display: none;
+
+        &.slideInUp {
+            display: inline-block;
+        }
+    }
+
+    li {
+        &.idea-menu-item {
+            border-top: none;
+            border-bottom: none;
+            border-left: $item-border-color;
+            border-right: $item-border-color;
+        }
+
+        &:first-child {
+
+            &.idea-menu-item {
+                border-top: $item-border-color;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+        }
+
+        &:last-child {
+            &.idea-menu-item {
+                border-bottom: $item-border-color;
+            }
+        }
     }
 }

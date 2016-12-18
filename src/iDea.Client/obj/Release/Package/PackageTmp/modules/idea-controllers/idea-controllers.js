@@ -1,21 +1,32 @@
 ﻿///#source 1 1 /modules/idea-controllers/idea-home.js
 (function () {
     'use strict';
-    app.controller('HomeController', ['$scope', 'AuthService', function ($scope, AuthService) {
-        //$scope.authentication = AuthService.authentication;
-        $scope.loading = function () {
-            $scope.$parent.loading();
-        }
+    app.controller('HomeController', ['$rootScope', '$scope', '$state', 'PostService', 'CategorieService', 'TagService', function ($rootScope, $scope, $state, PostService, CategorieService, TagService) {
 
-        $scope.unload = function () {
-            $scope.$parent.unload();
+        $rootScope.$on('$viewContentLoading', function (event, viewName, viewContent) {
+
+            PostService.posts().then(function (response) {
+                $scope.posts = response;
+            }, function (error) { });
+
+            CategorieService.categories().then(function (response) {
+                $scope.categories = response;
+            }, function (error) { });
+
+            TagService.tags().then(function (response) {
+                $scope.tags = response;
+            }, function (error) { })
+        });
+
+        $scope.search = function () {
+            $state.go('search', { 'title': $scope.title })
         }
     }]);
 })();
 ///#source 1 1 /modules/idea-controllers/idea-index.js
 (function () {
     'use strict';
-    app.controller('IndexController', ['$scope', 'AuthService', '$location', '$timeout', function ($scope, AuthService, $location, $timeout) {
+    app.controller('IndexController', ['$rootScope', '$scope', 'AuthService', '$timeout', '$state', function ($rootScope, $scope, AuthService, $location, $timeout, $state) {
 
         $scope.authentication = AuthService.authentication;
 
@@ -25,263 +36,167 @@
             document.getElementById('idea-loading').classList.add('fadeIn');
         }
 
-        $scope.unload = function () {
-            document.getElementById('idea-loading').classList.remove('fadeIn');
+        $scope.unload = function (duration) {
+            (function (duration) {
+                setTimeout(function () {
+                    document.getElementById('idea-loading').classList.remove('fadeIn');
+                }, duration);
+            })(duration)
         }
 
         $scope.logout = function () {
             AuthService.logOut();
-            $location.path('#/login')
+            $state.go('home.login');
         }
-    }])
-})();
-///#source 1 1 /modules/idea-controllers/idea-login.js
-(function () {
-    'use strict';
-    app.controller('LoginController', ['$scope', '$window', '$timeout', 'AuthService', '$state', function ($scope, $window, $timeout, AuthService, $state) {
 
-        $scope.message = "";
+        $rootScope.$on('$viewContentLoading', function (event, viewName, viewContent) {
+            $scope.loading();
+        });
 
-        $scope.login = function () {
-            $scope.$parent.loading();
-            AuthService.login({ userName: $scope.username, password: $scope.password })
-                .then(function (response) {
-                    $scope.$parent.unload();
-                    $state.go('admin');
-                }, function (err) {
-                    $scope.$parent.unload();
-                    $scope.message = err.error_description;
-                });
-        };
-
-    }]);
-})();
-///#source 1 1 /modules/idea-controllers/idea-signup.js
-(function () {
-
-    app.controller('SignupController', ['$scope', '$location', '$timeout', 'AuthService', 'SendEmailService', function ($scope, $location, $timeout, AuthService, SendEmailService) {
-
-        $scope.savedSuccessfully = false;
-        $scope.message = "";
-
-        $scope.signUp = function () {
-            $scope.$parent.loading();
-            AuthService.saveRegistration({ email: $scope.username, password: $scope.password, confirmPassword: $scope.password }).then(function (response) {
-
-                var userId = response.data.userId,
-                    code = response.data.code,
-                    //callbackUrlBase = 'http://localhost:53017/#/activate/',
-                    callbackUrlBase = 'http://blog-admin.tyly.co.nz/#/activate/',
-                    destination = $scope.username;
-
-                var message = {
-                    userId: userId,
-                    callbackUrlBase: callbackUrlBase,
-                    code: code,
-                    destination: destination,
-                    subject: 'Confirm your account',
-                    body: '<p> Please confirm your account by clicking the <a href="{0}">this link</a>'
-                };
-
-                SendEmailService.send(message).then(function (response) {
-                    $scope.message = " Please check your email [ " + $scope.username + " ] activate your account.";
-
-                    $scope.savedSuccessfully = true;
-                    $scope.username = undefined;
-                    $scope.password = undefined;
-                    $scope.signupForm.$setValidity();
-                    $scope.signupForm.$setPristine();
-                    $scope.signupForm.$setUntouched();
-                    $scope.$parent.unload();
-                }, function (error) {
-                    $scope.$parent.unload();
-                });
-            }, function (response) {
-                $scope.$parent.unload();
-                var errors = [];
-                for (var key in response.data.modelState) {
-                    for (var i = 0; i < response.data.modelState[key].length; i++) {
-                        errors.push(response.data.modelState[key][i]);
-                    }
-                }
-                $scope.message = "" + errors.join(' ');
-            });
-        };
-    }]);
-})();
-///#source 1 1 /modules/idea-controllers/idea-forget.js
-(function () {
-    'use strict';
-    app.controller('ForgetController', ['$scope', 'ForgetPwdService', 'SendEmailService', function ($scope, ForgetPwdService, SendEmailService) {
-        $scope.savedSuccessfully == false;
-
-        $scope.reset = function () {
-            $scope.$parent.loading(); // display loading page.
-            ForgetPwdService.reset($scope.username).then(function (response) {
-                console.log((response));
-                var message = {
-                    userId: response.userId,
-                    destination: $scope.username,
-                    //callbackUrlBase: 'http://localhost:53017/#/reset/',
-                    callbackUrlBase : 'http://blog-admin.tyly.co.nz/#/reset/',
-                    code: response.code,
-                    subject: 'Reset your password',
-                    body: '<p> Please reset your password by clicking the <a href="{0}">this link</a>'
-                };
-
-                SendEmailService.send(message).then(function (response) {
-                    $scope.message = " Please check your email [ " + $scope.username + " ] to reset your password";
-                    $scope.savedSuccessfully = true;
-                    $scope.username = undefined;
-                    $scope.forgetForm.$setValidity();
-                    $scope.forgetForm.$setPristine();
-                    $scope.forgetForm.$setUntouched();
-                    $scope.$parent.unload();
-                }, function (error) {
-                    $scope.$parent.unload();
-                });
-            }, function (error) {
-                var errors = [];
-                if (error.data.modelState) {
-                    for (var key in error.data.modelState) {
-                        for (var i = 0; i < response.data.modelState[key].length; i++) {
-                            errors.push(response.data.modelState[key][i]);
-                        }
-                    }
-                    $scope.message = "" + errors.join(' ');
-                } else {
-                    $scope.message = error.error_description;
-                }
-            })
-        }
-    }])
-})();
-///#source 1 1 /modules/idea-controllers/idea-reset.js
-(function () {
-    app.controller('ResetController', ['$scope', 'ResetPwdService', '$stateParams', '$window', function ($scope, ResetPwdService, $stateParams, $window) {
-
-        $scope.reset = function () {
-            var data = {
-                userId: $stateParams.userId,
-                code: $stateParams.code,
-                newPassword: $scope.password
-            }
-            $scope.$parent.loading();
-            ResetPwdService.reset(data).then(function (response) {
-                $scope.$parent.unload();
-                $window.location.href = ('#/login');
-            }, function (error) {
-                alert(JSON.stringify(error));
-            })
-        }
-    }])
-})();
-///#source 1 1 /modules/idea-controllers/idea-activate.js
-(function () {
-    app.controller('ActivateController', ['$scope', '$stateParams', 'ActivateService', '$window', function ($scope, $stateParams, ActivateService, $window) {
-        $scope.userId = $stateParams.userId;
-        $scope.code = $stateParams.code;
-        $scope.activate = function () {
-            $scope.$parent.loading();
-            var data = {
-                userId: $scope.userId,
-                code: $scope.code
-            };
-
-            ActivateService.activate(data).then(function (response) {
-                $scope.$parent.unload();             
-                $window.location.href = ('#/login');
-            }, function (error) {
-                $scope.$parent.unload();
-                alert(JSON.stringify(error));
-            })
-        }
+        $rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
+            $scope.unload(2000);
+        });
     }])
 })();
 ///#source 1 1 /modules/idea-controllers/idea-posts.js
 (function () {
-    app.controller('PostController', ['$scope', 'PostService', function ($scope, PostService) {
-        $scope.$on("$routeChangeSuccess", function () {
-            PostService.allPosts().then(function (response) {
-                $scope.posts = response;
-                console.log($scope.posts);
-            }, function (error) {
+    app.controller('PostController', ['$rootScope', '$scope', '$state', 'PostService', function ($rootScope, $scope, $state, PostService) {
 
+        $rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
+            PostService.posts().then(function (response) {
+                $scope.posts = response;
+            }, function (error) {
+               
             })
         });
 
-        $scope.addPost = function () {
-
+        $scope.search = function () {
+            $state.go('search', { 'title': $scope.title })
         }
+    }])
+})();
+///#source 1 1 /modules/idea-controllers/idea-post-details.js
+(function () {
+    app.controller('PostDetailController', ['$rootScope', '$scope', 'PostService', '$stateParams', function ($rootScope, $scope, PostService, $stateParams) {
+
+        $rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
+            $scope.postId = $stateParams.id;
+
+            PostService.getById($scope.postId).then(function (response) {
+                $scope.post = response;
+            });
+
+            PostService.posts().then(function (response) {
+                $scope.posts = response;
+            });
+        });
     }])
 })();
 ///#source 1 1 /modules/idea-controllers/idea-categories.js
 (function () {
-    app.controller('CategoriesController', ['$scope', 'CategoriesService', '$window', '$timeout', function ($scope, CategoriesService, $window, $timeout) {
-        $scope.categories = [];
-        $scope.savedSuccessfully = false;
-        $scope.message = "";
+    app.controller('CategorieController', ['$rootScope', '$scope', 'CategorieService', '$stateParams', function ($rootScope, $scope, CategorieService) {
 
-        $scope.$on('$routeChangeSuccess', function () {
-
-            CategoriesService.categories().then(function (response) {
+        $rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
+            CategorieService.categories().then(function (response) {
                 $scope.categories = response;
             }, function (error) {
+                
+            })
+        });
+    }])
+})();
+///#source 1 1 /modules/idea-controllers/idea-category-details.js
+(function () {
+    app.controller('CategoryDetailController', ['$rootScope', '$scope', 'CategorieService', '$stateParams', function ($rootScope, $scope, CategorieService, $stateParams) {
 
+        $rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
+            CategorieService.getById($stateParams.id).then(function (response) {
+                $scope.category = response;
+            }, function (error) {
+               
+            })
+        });
+    }])
+})();
+///#source 1 1 /modules/idea-controllers/idea-tags.js
+(function () {
+    app.controller('TagController', ['$rootScope', '$scope', 'TagService', function ($rootScope, $scope, TagService) {
+
+        $rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
+            TagService.tags().then(function (response) {
+                $scope.tags = response;
+            }, function (error) {
+
+            })
+        });
+    }])
+})();
+///#source 1 1 /modules/idea-controllers/idea-tag-details.js
+(function () {
+    app.controller('TagDetailController', ['$rootScope', '$scope', 'TagService', '$stateParams', function ($rootScope, $scope, TagService, $stateParams) {
+
+        $rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
+            TagService.getById($stateParams.id).then(function (response) {
+                $scope.tag = response;
+            }, function (error) {
+
+            })
+        });
+    }])
+})();
+///#source 1 1 /modules/idea-controllers/idea-search.js
+(function () {
+    app.controller('SearchController', ['$rootScope', '$scope', 'PostService', '$stateParams', function ($rootScope, $scope, PostService, $stateParams) {
+        $rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
+            $scope.title = $stateParams.title;
+            PostService.getByName($scope.title).then(function (response) {
+                $scope.posts = response;
+            }, function (error) {
+                $scope.unload(2000);
             });
         });
 
-        $scope.add = function () {
+        $scope.search = function () {
+            $scope.$parent.loading();
+            PostService.getByName($scope.title).then(function (response) {
+                $scope.posts = response;
+                $scope.unload(2000);
+            }, function (error) {
+                $scope.unload(2000);
+            });
+        }
+    }])
+})();
+///#source 1 1 /modules/idea-controllers/idea-contacts.js
+(function (app) {
+    app.controller('ContactController', ['$scope', 'ContactService', function ($scope, ContactService) {
+        $scope.submit = function () {
             var data = {
-                name: $scope.category,
-                description: $scope.description
+                name: $scope.fullName,
+                email: $scope.contactEmail,
+                subject: $scope.subject,
+                website: $scope.website == undefined ? 'N/A' : $scope.website,
+                body: $scope.message
             }
 
             $scope.$parent.loading();
 
-            CategoriesService.add(data).then(function (response) {
-                $window.location.href = '#/categories';
-                $scope.$parent.unload();
-            }, function (error) {
-                $scope.$parent.unload();
-                var errors = [];
-                if (error.data.modelState) {
-                    for (var key in error.data.modelState) {
-                        for (var i = 0; i < response.data.modelState[key].length; i++) {
-                            errors.push(response.data.modelState[key][i]);
-                        }
-                    }
-                    $scope.message = "" + errors.join(' ');
-                } else {
-                    $scope.message = error.error_description;
-                }
-            });
-        }
+            ContactService.add(data).then(function (response) {
+                $scope.fullName = undefined;
+                $scope.contactEmail = undefined;
+                $scope.subject = undefined;
+                $scope.website = undefined;
+                $scope.message = undefined;
 
-        $scope.edit = function () {
-            var data = {
-                id: $scope.id,
-                name: $scope.category,
-                description: $scope.description
-            }
+                $scope.contactForm.$setValidity();
+                $scope.contactForm.$setPristine();
+                $scope.contactForm.$setUntouched();
 
-            CategoriesService.edit(data).then(function (response) {
-                $window.location.href = '#/categories';
-                $scope.$parent.unload();
+                $scope.$parent.unload(2000);
             }, function (error) {
-                $scope.$parent.unload();
-                var errors = [];
-                if (response.data.modelState) {
-                    for (var key in response.data.modelState) {
-                        for (var i = 0; i < response.data.modelState[key].length; i++) {
-                            errors.push(response.data.modelState[key][i]);
-                        }
-                    }
-                    $scope.message = "" + errors.join(' ');
-                } else {
-                    $scope.message = error.error_description;
-                }
+                console.log(error);
+                $scope.$parent.unload(2000);
             })
         }
     }])
-})();
+})(app);

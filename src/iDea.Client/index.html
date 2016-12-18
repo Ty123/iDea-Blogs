@@ -6,7 +6,7 @@
 </head>
 <body ng-app="idea-blog" ng-controller="IndexController" ng-cloak>
     <!--loading page-->
-    <div id="idea-loading" class="animated">
+    <div id="idea-loading" ng-show="isLoading">
         <div class="idea-page">
             <div class="idea-form-container">
                 <h1 class="title">Loading...</h1>
@@ -15,6 +15,37 @@
         </div>
     </div>
     <!--/loging page-->
+    <!--navigation-->
+    <nav class="navbar  navbar-fixed-top">
+        <div class="container">
+            <div class="row" style="padding: 20px 0;">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <ul class="list-inline pull-right">
+                        <li ng-if="!authentication.isAuth">
+                            <a class="idea-menu-item" ng-click="toggle()">
+                                <i class="fa fa-user-circle" style="font-size: 25px;"></i>
+                            </a>
+                            <ul class="list-group idea-group-list animated" ng-class="opening?'slideInUp':''">
+                                <li class="list-group-item idea-menu-item" ui-sref="login" ng-click="toggle()">Log In</li>
+                                <li class="list-group-item idea-menu-item" ui-sref="forget" ng-click="toggle()">Forget Password</li>
+                            </ul>
+                        </li>
+                        <li ng-if="authentication.isAuth">
+                            <a class="idea-menu-item" ng-click="toggle()" style="font-size: 25px;">
+                                <i class="fa fa-user-circle"></i>
+                            </a>
+                            <ul class="list-group idea-group-list animated" ng-class="opening?'slideInUp':'slideOutDown'">
+                                <li class="list-group-item idea-menu-item" ui-sref="login" ng-click="toggle()">Settings</li>
+                                <li class="list-group-item idea-menu-item" ng-click="logout()">Log Out</li>
+                            </ul>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--/navigation-->
     <!--blog big title-->
     <h1 class="idea-title">
         <a ui-sref="home">iDea <span>Blogs</span></a>
@@ -24,10 +55,11 @@
     <div class="container">
         <div class="row" style="padding: 50px 0;">
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-6 col-lg-offset-6 text-center">
-                <ul class="list-inline">
-                    <li><a ui-sref="posts">Posts</a></li>
-                    <li><a ui-sref="contact">Contact</a></li>
-                    <li><a ui-sref="about-me">About Me</a></li>
+                <ul class="list-inline pull-right">
+                    <li><a ui-sref="home" class="idea-menu-item">Home</a></li>
+                    <li><a ui-sref="posts" class="idea-menu-item">Posts</a></li>
+                    <li><a ui-sref="contact" class="idea-menu-item">Contact</a></li>
+                    <li><a ui-sref="about-me" class="idea-menu-item">About Me</a></li>
                 </ul>
             </div>
         </div>
@@ -41,6 +73,7 @@
     <!--/page content-->
     <script src="assets/scripts/idea-angulars.min.js"></script>
     <script src="modules/idea-app/idea-app.min.js"></script>
+    <script src="modules/idea-directives/idea-directives.min.js"></script>
     <script src="modules/idea-controllers/idea-controllers.min.js"></script>
     <script src="modules/idea-services/idea-services.min.js"></script>
 </body>

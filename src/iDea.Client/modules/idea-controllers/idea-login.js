@@ -1,16 +1,13 @@
 ﻿(function () {
     'use strict';
-    app.controller('LoginController', ['$scope', '$timeout', 'AuthService', '$state', function ($scope, $timeout, AuthService, $state) {
+    app.controller('LoginController', ['$rootScope', '$scope', '$timeout', 'AuthService', '$state', function ($rootScope, $scope, $timeout, AuthService, $state) {
 
         $scope.message = "";
 
         $scope.login = function () {
-            $scope.$parent.loading();
             AuthService.login({ userName: $scope.username, password: $scope.password }).then(function (response) {
-                $scope.$parent.unload();
                 $state.go('admin');
             }, function (err) {
-                $scope.$parent.unload();
                 $scope.message = err.error_description;
             });
         };
@@ -18,5 +15,13 @@
         $scope.forgetPwd = function () {
             $state.go('^.forget')
         }
+
+        //$rootScope.$on('$viewContentLoading', function (event, viewName, viewContent) {
+        //    $scope.$parent.loading();
+        //});
+
+        //$rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
+        //    $scope.$parent.unload(3000);
+        //});
     }]);
 })();
