@@ -92,10 +92,19 @@
     <Content Include="modules\idea-app\idea-app.min.js.gzip">
       <DependentUpon>idea-app.min.js</DependentUpon>
     </Content>
-    <Content Include="modules\idea-controllers\idea-admin.js" />
+    <Content Include="modules\idea-controllers\category\idea-category-add.js" />
+    <Content Include="modules\idea-controllers\category\idea-category-delete.js" />
+    <Content Include="modules\idea-controllers\category\idea-category-details.js" />
+    <Content Include="modules\idea-controllers\category\idea-category-edit.js" />
+    <Content Include="modules\idea-controllers\tags\idea-tag-delete.js" />
+    <Content Include="modules\idea-controllers\tags\idea-tag-edit.js" />
+    <Content Include="modules\idea-controllers\category\idea-admin-category.js" />
+    <Content Include="modules\idea-controllers\admin\idea-admin-sidenav.js" />
+    <Content Include="modules\idea-controllers\tags\idea-admin-tag.js" />
+    <Content Include="modules\idea-controllers\admin\idea-admin.js" />
     <Content Include="modules\idea-controllers\idea-categories.js" />
     <Content Include="modules\idea-controllers\idea-category-details.js" />
-    <Content Include="modules\idea-controllers\idea-contacts.js" />
+    <Content Include="modules\idea-controllers\contact\idea-contacts.js" />
     <Content Include="modules\idea-controllers\idea-controllers.js.bundle">
       <SubType>Designer</SubType>
     </Content>
@@ -106,13 +115,15 @@
       <DependentUpon>idea-controllers.min.js</DependentUpon>
     </Content>
     <Content Include="assets\css\idea-app.scss" />
+    <Content Include="modules\idea-controllers\admin\idea-admin-dash.js" />
     <Content Include="modules\idea-controllers\idea-home.js" />
     <Content Include="modules\idea-controllers\idea-index.js" />
     <Content Include="modules\idea-controllers\idea-login.js" />
     <Content Include="modules\idea-controllers\idea-post-details.js" />
     <Content Include="modules\idea-controllers\idea-posts.js" />
     <Content Include="modules\idea-controllers\idea-search.js" />
-    <Content Include="modules\idea-controllers\idea-tag-details.js" />
+    <Content Include="modules\idea-controllers\tags\idea-tag-add.js" />
+    <Content Include="modules\idea-controllers\tags\idea-tag-details.js" />
     <Content Include="modules\idea-controllers\idea-tags.js" />
     <Content Include="modules\idea-directives\idea-directives.js">
       <DependentUpon>idea-directives.js.bundle</DependentUpon>
@@ -143,6 +154,7 @@
     <Content Include="modules\idea-directives\idea-directives.min.js.gzip">
       <DependentUpon>idea-directives.min.js</DependentUpon>
     </Content>
+    <Content Include="assets\css\_admin.scss" />
     <None Include="Properties\PublishProfiles\blog-admin.tyly.co.nz - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\blog-admin.tyly.co.nz - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\idea-blog.tyly.co.nz - Web Deploy.pubxml" />
@@ -179,19 +191,36 @@
     </Content>
     <Content Include="modules\idea-services\idea-tags.js" />
     <Content Include="modules\views\about-me.html" />
-    <Content Include="modules\views\admin.html" />
+    <Content Include="modules\views\admin\admin-banner.html" />
+    <Content Include="modules\views\category\admin-category-dash.html" />
+    <Content Include="modules\views\category\admin-category.html" />
+    <Content Include="modules\views\admin-contact.html" />
+    <Content Include="modules\views\admin-post.html" />
+    <Content Include="modules\views\admin\admin-sidenav.html" />
+    <Content Include="modules\views\category\category-add.html" />
+    <Content Include="modules\views\category\category-delete.html" />
+    <Content Include="modules\views\category\category-edit.html" />
+    <Content Include="modules\views\tags\admin-tag-dash.html" />
+    <Content Include="modules\views\tags\admin-tags.html" />
+    <Content Include="modules\views\admin\admin.html" />
+    <Content Include="modules\views\tags\tag-delete.html" />
+    <Content Include="modules\views\tags\tag-edit.html" />
+    <Content Include="modules\views\shared\category-details.html" />
+    <Content Include="modules\views\shared\new-search.html" />
+    <Content Include="modules\views\shared\tag-details.html" />
     <Content Include="modules\views\categories.html" />
     <Content Include="modules\views\category-details.html" />
-    <Content Include="modules\views\contact.html" />
+    <Content Include="modules\views\contact\contact.html" />
+    <Content Include="modules\views\admin\admin-dash.html" />
     <Content Include="modules\views\home-content.html" />
     <Content Include="modules\views\home-sidebar.html" />
     <Content Include="modules\views\home.html" />
     <Content Include="modules\views\loading.html" />
     <Content Include="modules\views\login.html" />
-    <Content Include="modules\views\new-search.html" />
     <Content Include="modules\views\post-details.html" />
     <Content Include="modules\views\posts.html" />
     <Content Include="modules\views\search.html" />
+    <Content Include="modules\views\tags\tag-add.html" />
     <Content Include="modules\views\tag-details.html" />
     <Content Include="modules\views\tags.html" />
     <Content Include="Web.config" />

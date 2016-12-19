@@ -1,43 +1,11 @@
 ﻿@import "variables";
 @import "bootstrap.min.css";
+@import "mixins";
+@import "animate.min.css";
+
 
 .idea-navbar {
-    position: fixed;
-    width: 100%;
-    border: none !important;
-    background-color: transparent !important;
-    z-index: 99999;
-
-    .idea-brand {
-        font-family: 'Fjalla One', sans-serif;
-        color: #ffffff;
-        font-size: 25px;
-
-        &:focus, &:hover {
-            color: #ffffff;
-        }
-
-        span {
-            font-family: 'Alex Brush', cursive;
-            font-size: 45px;
-            color: #ff0000;
-        }
-    }
-
-    .idea-nav {
-
-        li {
-            a {
-                color: #ffffff;
-                cursor: pointer;
-                font-size: 25px;
-
-                &:focus, &:hover {
-                    color: #ffffff;
-                }
-            }
-        }
-    }
+    padding: 10px 0 0 0;
 }
 
 .idea-badge {
@@ -78,6 +46,7 @@
 .idea-title {
     width: 100%;
     text-align: center;
+    padding-top: 20px;
     z-index: 1030;
 
     a {
@@ -105,7 +74,47 @@
 .idea-menu-item {
     font-family: 'Coustard', serif;
     text-transform: uppercase;
+
     &:hover {
         color: $green-color !important;
+    }
+}
+
+.idea-group-list {
+    position: absolute;
+    width: 200px;
+    top: 40px;
+    right: 0;
+
+    &.animated {
+        display: none;
+
+        &.slideInUp {
+            display: inline-block;
+        }
+    }
+
+    li {
+        &.idea-menu-item {
+            border-top: none;
+            border-bottom: none;
+            border-left: $item-border-color;
+            border-right: $item-border-color;
+        }
+
+        &:first-child {
+
+            &.idea-menu-item {
+                border-top: $item-border-color;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+        }
+
+        &:last-child {
+            &.idea-menu-item {
+                border-bottom: $item-border-color;
+            }
+        }
     }
 }

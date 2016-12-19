@@ -1,0 +1,20 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h3 class="idea-small-title">{{tag.name}}</h3>
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+            <p>{{tag.description}}</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-if="authentication.isAuth">
+            <button class="btn idea-button" ui-sref="admin.tags.edit({id:tag.id})">Edit</button>
+            <button class="btn idea-button" ui-sref="admin.tags.delete({id:tag.id})">Delete</button>
+        </div>
+        <br />
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h5 class="idea-small-title">Related Posts: </h5>
+        <hr />
+        <h6 ng-repeat="post in tag.posts">
+            <a ui-sref="post-details({id:post.id})" class="idea-menu-item">{{post.title}}</a>
+        </h6>
+    </div>
+</div>

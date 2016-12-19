@@ -12,7 +12,8 @@
 
             TagService.tags().then(function (response) {
                 $scope.tags = response;
-            })
+                $rootScope.isLoading = false;
+            });
         });
             
     }]);

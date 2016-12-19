@@ -6,7 +6,7 @@
         $scope.animation = '';
         $scope.loading = false;
 
-        $scope.authentication = AuthService.authentication;
+        $rootScope.authentication = AuthService.authentication;
 
         $scope.regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
 

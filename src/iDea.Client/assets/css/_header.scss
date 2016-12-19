@@ -5,42 +5,7 @@
 
 
 .idea-navbar {
-    position: fixed;
-    width: 100%;
-    border: none !important;
-    background-color: transparent !important;
-    z-index: 99999;
-
-    .idea-brand {
-        font-family: 'Fjalla One', sans-serif;
-        color: #ffffff;
-        font-size: 25px;
-
-        &:focus, &:hover {
-            color: #ffffff;
-        }
-
-        span {
-            font-family: 'Alex Brush', cursive;
-            font-size: 45px;
-            color: #ff0000;
-        }
-    }
-
-    .idea-nav {
-
-        li {
-            a {
-                color: #ffffff;
-                cursor: pointer;
-                font-size: 25px;
-
-                &:focus, &:hover {
-                    color: #ffffff;
-                }
-            }
-        }
-    }
+    padding: 10px 0 0 0;
 }
 
 .idea-badge {
@@ -81,6 +46,7 @@
 .idea-title {
     width: 100%;
     text-align: center;
+    padding-top: 20px;
     z-index: 1030;
 
     a {

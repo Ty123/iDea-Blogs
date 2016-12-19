@@ -2,8 +2,15 @@
     <a ui-sref="home" class="idea-menu-item"><i class="fa fa-home"></i></a>/
     <span class="idea-menu-item idea-title-active">Categories</span>
 </p>
-<h1 class="idea-small-title">Recent Tags</h1>
-<hr />
-<h4 ng-repeat="tag in tags">
-    <a ui-sref="tag-details({id: tag.id})" class="idea-menu-item">{{tag.name}}</a>
-</h4>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <h1 class="idea-small-title">Recent Tags</h1>
+        <hr />
+        <h4 ng-repeat="tag in tags">
+            <a ui-sref="tag-details({id: tag.id})" class="idea-menu-item">{{tag.name}}</a>
+        </h4>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div ui-view="search"></div>
+    </div>
+</div>

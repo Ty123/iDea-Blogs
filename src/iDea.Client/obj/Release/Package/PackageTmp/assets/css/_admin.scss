@@ -1,0 +1,38 @@
+﻿@import "variables";
+
+// sidenav
+#sidenav {
+    height: 100%;
+    background: $black-color;
+
+    ul {
+
+        li {
+            color: $white-color;
+            border-top: none;
+            border-bottom: none;
+            border-left: $item-border-color;
+            border-right: $item-border-color;
+            background: $black-color;
+
+            i {
+                padding-right: 10px;
+            }
+
+            &:first-child {
+
+                &.idea-menu-item {
+                    border-top: $item-border-color;
+                    border-top-left-radius: 0;
+                    border-top-right-radius: 0;
+                }
+            }
+
+            &:last-child {
+                &.idea-menu-item {
+                    border-bottom: $item-border-color;
+                }
+            }
+        }
+    }
+}

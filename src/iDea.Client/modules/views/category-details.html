@@ -4,8 +4,15 @@
     <a ui-sref="categories" class="idea-menu-item">Categories</a>/
     <span class="idea-title-active idea-menu-item">Details</span>
 </p>
-
 <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <div ui-view="details"></div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div ui-view="search"></div>
+    </div>
+</div>
+<!--<div class="row">
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
         <h3 class="idea-small-title">{{category.name}}</h3>
         <p>{{category.description}}</p>
@@ -19,5 +26,5 @@
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
         <div ui-view="search"></div>
     </div>
-</div>
+</div>-->
 

@@ -1,6 +1,8 @@
-﻿(function (app) {
-    app.controller('ContactController', ['$scope', 'ContactService', function ($scope, ContactService) {
+﻿(function () {
+    app.controller('ContactController', ['$rootScope', '$scope', 'ContactService', function ($rootScope, $scope, ContactService) {
         $scope.submit = function () {
+            $rootScope.isLoading = true;
+
             var data = {
                 name: $scope.fullName,
                 email: $scope.contactEmail,
@@ -8,8 +10,6 @@
                 website: $scope.website == undefined ? 'N/A' : $scope.website,
                 body: $scope.message
             }
-
-            $scope.$parent.loading();
 
             ContactService.add(data).then(function (response) {
                 $scope.fullName = undefined;
@@ -22,11 +22,11 @@
                 $scope.contactForm.$setPristine();
                 $scope.contactForm.$setUntouched();
 
-                $scope.$parent.unload(2000);
+                $rootScope.isLoading = false;
+
             }, function (error) {
-                console.log(error);
-                $scope.$parent.unload(2000);
+                alert('Error! Unable to submit your message.');
             })
         }
     }])
-})(app);
+})();

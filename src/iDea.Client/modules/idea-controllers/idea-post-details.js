@@ -10,10 +10,12 @@
 
             PostService.posts().then(function (response) {
                 $scope.posts = response;
+                $rootScope.isLoading = false;
             });
         });
 
         $scope.search = function () {
+            $rootScope.isLoading = true;
             $state.go('search', { 'title': $scope.title })
         }
     }])

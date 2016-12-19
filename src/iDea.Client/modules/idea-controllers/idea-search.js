@@ -4,8 +4,10 @@
             $scope.title = $stateParams.title;
             PostService.getByName($scope.title).then(function (response) {
                 $scope.posts = response;
-            }, function (error) {
+                $rootScope.isLoading = false;
             });
+
+            $rootScope.isLoading = false;
         });
 
         $scope.search = function () {

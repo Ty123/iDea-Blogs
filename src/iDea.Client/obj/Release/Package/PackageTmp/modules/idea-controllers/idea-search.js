@@ -4,18 +4,19 @@
             $scope.title = $stateParams.title;
             PostService.getByName($scope.title).then(function (response) {
                 $scope.posts = response;
-            }, function (error) {
-                $scope.unload(2000);
+                $rootScope.isLoading = false;
             });
+
+            $rootScope.isLoading = false;
         });
 
         $scope.search = function () {
-            $scope.$parent.loading();
+            $rootScope.isLoading = true;
             PostService.getByName($scope.title).then(function (response) {
                 $scope.posts = response;
-                $scope.unload(2000);
+                $rootScope.isLoading = false;
             }, function (error) {
-                $scope.unload(2000);
+                $rootScope.isLoading = false;
             });
         }
     }])

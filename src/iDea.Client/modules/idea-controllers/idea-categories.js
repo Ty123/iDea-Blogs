@@ -10,6 +10,7 @@
         });
 
         $scope.search = function () {
+            $rootScope.isLoading = true;
             $state.go('search', { 'title': $scope.title })
         }
     }])

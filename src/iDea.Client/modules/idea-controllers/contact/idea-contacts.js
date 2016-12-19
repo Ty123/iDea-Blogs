@@ -1,6 +1,8 @@
 ﻿(function () {
-    app.controller('ContactController', ['$scope', 'ContactService', function ($scope, ContactService) {
+    app.controller('AddContactController', ['$rootScope', '$scope', 'ContactService', function ($rootScope, $scope, ContactService) {
         $scope.submit = function () {
+            $rootScope.isLoading = true;
+
             var data = {
                 name: $scope.fullName,
                 email: $scope.contactEmail,
@@ -20,8 +22,10 @@
                 $scope.contactForm.$setPristine();
                 $scope.contactForm.$setUntouched();
 
+                $rootScope.isLoading = false;
+
             }, function (error) {
-                console.log(error);
+                alert('Error! Unable to submit your message.');
             })
         }
     }])

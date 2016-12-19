@@ -31,18 +31,21 @@ body {
 #idea-loading {
     position: fixed;
     top: 0;
-    display: none;
     width: 100%;
     height: 100vh;
     background: $green-color;
-    z-index: -1;
-
-    &.animated {
+    z-index: 99999;
+    /*&.animated {
         &.fadeIn {
             display: inline-block;
             z-index: 99999;
         }
-    }
+    }*/
+
+    /*&.opening {
+        display: inline-block;
+        z-index: 99999;
+    }*/
 }
 
 .loader {
