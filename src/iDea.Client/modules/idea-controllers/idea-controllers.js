@@ -90,7 +90,7 @@
         }
     }])
 })();
-///#source 1 1 /modules/idea-controllers/idea-post-details.js
+///#source 1 1 /modules/idea-controllers/post/idea-post-details.js
 (function () {
     app.controller('PostDetailController', ['$rootScope', '$scope', 'PostService', '$state', '$stateParams', function ($rootScope, $scope, PostService, $state, $stateParams) {
 
@@ -113,21 +113,13 @@
         }
     }])
 })();
-///#source 1 1 /modules/idea-controllers/idea-categories.js
+///#source 1 1 /modules/idea-controllers/post/idea-admin-post.js
 (function () {
-    app.controller('CategorieController', ['$rootScope', '$scope', 'CategorieService', '$state', function ($rootScope, $scope, CategorieService, $state) {
 
-        $rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
-            CategorieService.categories().then(function (response) {
-                $scope.categories = response;
-            }, function (error) {
-                
-            })
-        });
+    app.controller('PostDashController', ['$rootScope', '$scope', '$state', 'PostService', function ($rootScope, $scope, $state, PostService) {
 
-        $scope.search = function () {
-            $rootScope.isLoading = true;
-            $state.go('search', { 'title': $scope.title })
+        $scope.addPost = function () {
+            $state.go('admin.posts.add', {})
         }
     }])
 })();
@@ -225,6 +217,24 @@
         }
     }])
 })();
+///#source 1 1 /modules/idea-controllers/category/idea-categories.js
+(function () {
+    app.controller('CategorieController', ['$rootScope', '$scope', 'CategorieService', '$state', function ($rootScope, $scope, CategorieService, $state) {
+
+        $rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
+            CategorieService.categories().then(function (response) {
+                $scope.categories = response;
+            }, function (error) {
+                
+            })
+        });
+
+        $scope.search = function () {
+            $rootScope.isLoading = true;
+            $state.go('search', { 'title': $scope.title })
+        }
+    }])
+})();
 ///#source 1 1 /modules/idea-controllers/admin/idea-admin.js
 (function () {
     app.controller('AdminController', ['$rootScope', '$scope', '$state', 'PostService', 'CategorieService', 'TagService', function ($rootScope, $scope, $state, PostService, CategorieService, TagService) {
@@ -278,25 +288,6 @@
         $rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
             $rootScope.isLoading = false;
         });
-    }])
-})();
-///#source 1 1 /modules/idea-controllers/idea-tags.js
-(function () {
-    app.controller('TagController', ['$rootScope', '$scope', 'TagService', '$state', function ($rootScope, $scope, TagService, $state) {
-
-        $rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
-            TagService.tags().then(function (response) {
-                $scope.tags = response;
-            }, function (error) {
-
-            })
-        });
-
-        $scope.search = function () {
-            $rootScope.isLoading = true;
-            $state.go('search', { 'title': $scope.title })
-        }
-
     }])
 })();
 ///#source 1 1 /modules/idea-controllers/idea-search.js
@@ -353,6 +344,32 @@
             }, function (error) {
                 alert('Error! Unable to submit your message.');
             })
+        }
+    }])
+})();
+///#source 1 1 /modules/idea-controllers/contact/idea-admin-contact.js
+(function () {
+    app.controller('ContactDashController', ['$rootScope', '$scope', '$state', 'ContactService', function ($rootScope, $scope, $state, ContactService) {
+        $scope.addReply = function () {
+            $state.go('admin.contact.reply')
+        }
+    }])
+})();
+///#source 1 1 /modules/idea-controllers/contact/idea-contact-details.js
+(function () {
+    app.controller('ContactDetailController', ['$rootScope', '$scope', 'ContactService', '$state', '$stateParams', function ($rootScope, $scope, ContactService,  $state, $stateParams) {
+
+        $rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
+            ContactService.getById($stateParams.id).then(function (response) {
+                $scope.contact = response;
+            }, function (error) {
+               
+            })
+        });
+
+        $scope.search = function () {
+            $rootScope.isLoading = true;
+            $state.go('search', { 'title': $scope.title })
         }
     }])
 })();
@@ -448,5 +465,24 @@
                 $rootScope.isLoading = false;
             })
         }
+    }])
+})();
+///#source 1 1 /modules/idea-controllers/tags/idea-tags.js
+(function () {
+    app.controller('TagController', ['$rootScope', '$scope', 'TagService', '$state', function ($rootScope, $scope, TagService, $state) {
+
+        $rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
+            TagService.tags().then(function (response) {
+                $scope.tags = response;
+            }, function (error) {
+
+            })
+        });
+
+        $scope.search = function () {
+            $rootScope.isLoading = true;
+            $state.go('search', { 'title': $scope.title })
+        }
+
     }])
 })();

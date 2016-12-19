@@ -1,0 +1,27 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Recent Activies
+            </li>
+            <li class="list-group-item">
+                Total numbers <span class="badge">{{posts.length}}</span>
+            </li>
+            <li class="list-group-item" ng-click="addTag()">
+                Write New Post
+            </li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Post Details
+            </li>
+            <li ng-repeat="post in posts" class="list-group-item" 
+                ui-sref="admin.posts.details({id:post.id})" 
+                style="cursor: pointer; padding-right: 50px;">
+                {{post.title}} <span class="badge" style="position: absolute; top: 10px; right: 10px;">New</span>
+            </li>
+        </ul>
+    </div>
+</div>

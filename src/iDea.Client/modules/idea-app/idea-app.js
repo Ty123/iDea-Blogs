@@ -16,6 +16,10 @@ var app = angular.module('idea-blog', ['ui.router', 'ngMessages', 'ngAnimate', '
         .when('/admin', ['$state', function ($state) {
             $state.go('admin.dashboard', {});
         }])
+        // route default tags
+        .when('/admin/posts', ['$state', function ($state) {
+            $state.go('admin.posts.dashboard', {});
+        }])
         // route default categories
         .when('/admin/categories', ['$state', function ($state) {
             $state.go('admin.categories.dashboard', {});
@@ -23,6 +27,10 @@ var app = angular.module('idea-blog', ['ui.router', 'ngMessages', 'ngAnimate', '
         // route default tags
         .when('/admin/tags', ['$state', function ($state) {
             $state.go('admin.tags.dashboard', {});
+        }])
+        // route default tags
+        .when('/admin/contacts', ['$state', function ($state) {
+            $state.go('admin.contacts.dashboard', {});
         }])
         .otherwise('/home');
 
@@ -136,14 +144,37 @@ var app = angular.module('idea-blog', ['ui.router', 'ngMessages', 'ngAnimate', '
         // category substate
         .state('admin.contacts', {
             url: '/contacts',
-            templateUrl: '/modules/views/admin-contact.html',
-            //controller: 'CategoryDashboard'
+            templateUrl: '/modules/views/contact/admin-contact.html',
         })
-        // dashboard
+        // category dashboard
+        .state('admin.contacts.dashboard', {
+            url: '/dashboard',
+            templateUrl: '/modules/views/contact/admin-contact-dash.html',
+            controller: 'ContactDashController'
+        })
+        //
+        .state('admin.contacts.details', {
+            url: '/details/:id',
+            templateUrl: '/modules/views/contact/contact-details.html',
+            controller: 'ContactDetailController'
+        })
+        // post substate
         .state('admin.posts', {
             url: '/posts',
-            templateUrl: '/modules/views/admin-post.html',
-            controller: 'PostController'
+            templateUrl: '/modules/views/post/admin-post.html',
+            controller: 'PostDashController'
+        })
+        // post dashboard
+        .state('admin.posts.dashboard', {
+            url: '/dashboard',
+            templateUrl: '/modules/views/post/admin-post-dash.html',
+            controller: 'PostDashController'
+        })
+        // post details
+        .state('admin.posts.details', {
+            url: '/details/:id',
+            templateUrl: '/modules/views/shared/post-details.html',
+            controller: 'PostDetailController'
         })
         // login state
         .state('login', {
@@ -276,7 +307,7 @@ var app = angular.module('idea-blog', ['ui.router', 'ngMessages', 'ngAnimate', '
     $httpProvider.interceptors.push('AuthInterceptorService');
 }])
 // configuring authentication
-.run(['AuthService', 'PostService', 'CategorieService', 'TagService', '$rootScope', function (AuthService, PostService, CategorieService, TagService, $rootScope) {
+.run(['AuthService', 'PostService', 'CategorieService', 'TagService', 'ContactService', '$rootScope', function (AuthService, PostService, CategorieService, TagService, ContactService, $rootScope) {
     AuthService.fillAuthData();
 
     $rootScope.isLoading = true;
@@ -291,6 +322,11 @@ var app = angular.module('idea-blog', ['ui.router', 'ngMessages', 'ngAnimate', '
 
     TagService.tags().then(function (response) {
         $rootScope.tags = response;
+        $rootScope.isLoading = false;
+    }, function (error) { });
+
+    ContactService.contacts().then(function (response) {
+        $rootScope.contacts = response;
         $rootScope.isLoading = false;
     }, function (error) { });
 

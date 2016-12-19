@@ -1,0 +1,34 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h3 class="idea-small-title">{{post.title}}</h3>
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <p>
+                        Category:
+                        <a class="idea-title-active" ui-sref="category-details({id:post.category.id})">
+                            <em>{{post.category.name}}</em>
+                        </a>
+                    </p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <p>
+                        Tags: <label ng-repeat="tag in post.tags" style="padding-right: 5px;">
+                            <a class="idea-title-active" ui-sref="tag-details({id:tag.id})">
+                                <span class="badge">{{tag.name}}</span>
+                            </a>
+                        </label>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" ng-if="authentication.isAuth">
+            <button class="btn idea-button" ui-sref="admin.tags.edit({id:tag.id})">Edit</button>
+            <button class="btn idea-button" ui-sref="admin.tags.delete({id:tag.id})">Delete</button>
+        </div>
+        <br />
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <p>{{post.description}}</p>
+    </div>
+</div>

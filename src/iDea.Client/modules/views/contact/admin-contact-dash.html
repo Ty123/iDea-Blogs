@@ -1,0 +1,25 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Recent Activities
+            </li>
+            <li class="list-group-item">
+                Total numbers <span class="badge">{{contacts.length}}</span>
+            </li>
+            <li class="list-group-item" ng-click="addReply()" style="cursor: pointer;">
+                Add Reply
+            </li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Incoming Messages
+            </li>
+            <li ng-repeat="contact in contacts" class="list-group-item" ui-sref="admin.contacts.details({id:contact.id})" style="cursor: pointer;">
+                {{contact.subject}} <span class="badge">New</span>
+            </li>
+        </ul>
+    </div>
+</div>
