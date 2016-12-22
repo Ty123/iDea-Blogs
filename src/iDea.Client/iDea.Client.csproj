@@ -62,6 +62,8 @@
     <Content Include="assets\css\animate.min.css" />
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\font-awesome.min.css" />
+    <Content Include="assets\css\select2.min.css" />
+    <Content Include="assets\css\textAngular.css" />
     <Content Include="assets\css\_contents.scss" />
     <Content Include="assets\css\_custom-bt.scss" />
     <Content Include="assets\css\_fonts.scss" />
@@ -73,6 +75,7 @@
     <Content Include="assets\scripts\angular-animate.min.js" />
     <Content Include="assets\scripts\angular-local-storage.min.js" />
     <Content Include="assets\scripts\angular-messages.min.js" />
+    <Content Include="assets\scripts\angular-resource.min.js" />
     <Content Include="assets\scripts\angular-route.min.js" />
     <Content Include="assets\scripts\angular-sanitize.min.js" />
     <Content Include="assets\scripts\angular-ui-router.min.js" />
@@ -84,14 +87,24 @@
     <Content Include="assets\scripts\idea-angulars.min.js.gzip">
       <DependentUpon>idea-angulars.min.js</DependentUpon>
     </Content>
+    <Content Include="assets\css\select.min.css" />
+    <Content Include="assets\scripts\select-tpls.min.js" />
+    <Content Include="assets\scripts\select.js" />
+    <Content Include="assets\scripts\select.min.js" />
+    <Content Include="assets\scripts\textAngular-rangy.min.js" />
+    <Content Include="assets\scripts\textAngular-sanitize.min.js" />
+    <Content Include="assets\scripts\textAngular.min.js" />
     <Content Include="assets\scripts\ui-bootstrap-tpls.js" />
     <Content Include="assets\scripts\ui-bootstrap.min.js" />
-    <Content Include="modules\idea-app\idea-app.min.js.map">
-      <DependentUpon>idea-app.min.js</DependentUpon>
+    <Content Include="modules\idea-app\idea-apps.js">
+      <DependentUpon>idea-apps.js.bundle</DependentUpon>
     </Content>
-    <Content Include="modules\idea-app\idea-app.min.js.gzip">
-      <DependentUpon>idea-app.min.js</DependentUpon>
+    <Content Include="modules\idea-app\idea-apps.min.js">
+      <DependentUpon>idea-apps.js</DependentUpon>
     </Content>
+    <Content Include="modules\idea-app\idea-auth-config.js" />
+    <Content Include="modules\idea-app\idea-route-config.js" />
+    <Content Include="modules\idea-app\idea-textangular-config.js" />
     <Content Include="modules\idea-controllers\category\idea-category-add.js" />
     <Content Include="modules\idea-controllers\category\idea-category-delete.js" />
     <Content Include="modules\idea-controllers\category\idea-category-details.js" />
@@ -99,6 +112,7 @@
     <Content Include="modules\idea-controllers\contact\idea-admin-contact.js" />
     <Content Include="modules\idea-controllers\contact\idea-contact-details.js" />
     <Content Include="modules\idea-controllers\post\idea-admin-post.js" />
+    <Content Include="modules\idea-controllers\post\idea-post-add.js" />
     <Content Include="modules\idea-controllers\tags\idea-tag-delete.js" />
     <Content Include="modules\idea-controllers\tags\idea-tag-edit.js" />
     <Content Include="modules\idea-controllers\category\idea-admin-category.js" />
@@ -158,9 +172,14 @@
       <DependentUpon>idea-directives.min.js</DependentUpon>
     </Content>
     <Content Include="assets\css\_admin.scss" />
-    <None Include="Properties\PublishProfiles\blog-admin.tyly.co.nz - Web Deploy %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\blog-admin.tyly.co.nz - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\idea-blog.tyly.co.nz - Web Deploy.pubxml" />
+    <Content Include="modules\idea-app\idea-apps.js.bundle" />
+    <Content Include="modules\idea-app\idea-apps.min.js.map">
+      <DependentUpon>idea-apps.min.js</DependentUpon>
+    </Content>
+    <Content Include="modules\idea-app\idea-apps.min.js.gzip">
+      <DependentUpon>idea-apps.min.js</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\blog.tyly.co.nz - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -180,9 +199,6 @@
     </Content>
     <Content Include="index.html" />
     <Content Include="modules\idea-app\idea-app.js" />
-    <Content Include="modules\idea-app\idea-app.min.js">
-      <DependentUpon>idea-app.js</DependentUpon>
-    </Content>
     <Content Include="modules\idea-controllers\idea-controllers.js">
       <DependentUpon>idea-controllers.js.bundle</DependentUpon>
     </Content>
@@ -206,6 +222,7 @@
     <Content Include="modules\views\category\category-edit.html" />
     <Content Include="modules\views\contact\contact-details.html" />
     <Content Include="modules\views\post\admin-post-dash.html" />
+    <Content Include="modules\views\post\post-add.html" />
     <Content Include="modules\views\shared\post-details.html" />
     <Content Include="modules\views\tags\admin-tag-dash.html" />
     <Content Include="modules\views\tags\admin-tags.html" />

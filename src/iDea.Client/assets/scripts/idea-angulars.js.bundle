@@ -12,9 +12,16 @@
   <files>
     <file>/assets/scripts/angular.min.js</file>
     <file>/assets/scripts/angular-ui-router.min.js</file>>
+    <!--<file>/assets/scripts/angular-sanitize.min.js</file>-->
     <file>/assets/scripts/angular-animate.min.js</file>
     <file>/assets/scripts/angular-messages.min.js</file>
     <file>/assets/scripts/angular-local-storage.min.js</file>
+    <file>/assets/scripts/angular-resource.min.js</file>
     <file>/assets/scripts/ui-bootstrap.min.js</file>
+    <file>/assets/scripts/select.min.js</file>
+    <file>/assets/scripts/select-tpls.min.js</file>
+    <file>/assets/scripts/textAngular-rangy.min.js</file>
+    <file>/assets/scripts/textAngular-sanitize.min.js</file>
+    <file>/assets/scripts/textAngular.min.js</file>
   </files>
 </bundle>

@@ -10,3 +10,9 @@ C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.Client\bin\iDea.Client.pdb
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.Client\obj\Debug\iDea.Client.dll
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.Client\obj\Debug\iDea.Client.pdb
 C:\Users\Ty Ly\Documents\GitRepo\iDea-Blogs\src\iDea.Client\obj\Debug\iDea.Client.csprojResolveAssemblyReference.cache
+C:\Users\Ty Ly\Documents\iDea\iDea-Blogs\src\iDea.Client\bin\iDea.Client.dll.config
+C:\Users\Ty Ly\Documents\iDea\iDea-Blogs\src\iDea.Client\bin\iDea.Client.dll
+C:\Users\Ty Ly\Documents\iDea\iDea-Blogs\src\iDea.Client\bin\iDea.Client.pdb
+C:\Users\Ty Ly\Documents\iDea\iDea-Blogs\src\iDea.Client\obj\Debug\iDea.Client.csprojResolveAssemblyReference.cache
+C:\Users\Ty Ly\Documents\iDea\iDea-Blogs\src\iDea.Client\obj\Debug\iDea.Client.dll
+C:\Users\Ty Ly\Documents\iDea\iDea-Blogs\src\iDea.Client\obj\Debug\iDea.Client.pdb

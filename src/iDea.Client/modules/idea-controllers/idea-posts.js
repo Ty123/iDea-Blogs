@@ -10,7 +10,9 @@
         });
 
         $scope.search = function () {
-            $state.go('search', { 'title': $scope.title })
+            $state.go('search', {
+                'title': $scope.title
+            })
         }
     }])
 })();

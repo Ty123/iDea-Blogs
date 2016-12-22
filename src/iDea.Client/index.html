@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>iDea-Blogs</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
     <link href="assets/css/idea-app.min.css" rel="stylesheet" />
 </head>
 <body ng-app="idea-blog" ng-controller="IndexController" ng-cloak>
@@ -31,14 +32,14 @@
                             </ul>
                         </li>
                         <li ng-if="authentication.isAuth">
-                            <a class="idea-menu-item" ng-click="toggle()" style="font-size: 25px;">
+                            <a class="idea-menu-item" ng-click="toggle()" 
+                               style="font-size: 25px;">
                                 <i class="fa fa-user-circle"></i>
                             </a>
                             <ul class="list-group idea-group-list animated" ng-class="opening?'slideInUp':'slideOutDown'">
                                 <li class="list-group-item idea-menu-item" ui-sref="admin" ng-click="toggle()">Admin Area</li>
-                                <li class="list-group-item idea-menu-item" ng-click="logout()">Log Out</li>
+                                <li class="list-group-item idea-menu-item" ui-sref="home" ng-click="logout()">Log Out</li>
                             </ul>
-
                         </li>
                     </ul>
                 </div>
@@ -64,7 +65,6 @@
             </div>
         </div>
     </div>
-
     <!--/navigation bar-->
     <!--page content-->
     <div class="container">
@@ -72,7 +72,7 @@
     </div>
     <!--/page content-->
     <script src="assets/scripts/idea-angulars.min.js"></script>
-    <script src="modules/idea-app/idea-app.min.js"></script>
+    <script src="modules/idea-app/idea-apps.min.js"></script>
     <script src="modules/idea-directives/idea-directives.min.js"></script>
     <script src="modules/idea-controllers/idea-controllers.min.js"></script>
     <script src="modules/idea-services/idea-services.min.js"></script>

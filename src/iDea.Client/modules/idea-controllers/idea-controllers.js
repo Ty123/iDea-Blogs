@@ -1,9 +1,7 @@
 ﻿///#source 1 1 /modules/idea-controllers/idea-home.js
 (function () {
     'use strict';
-    app.controller('HomeController', ['$rootScope', '$scope', '$state', 'PostService', 'CategorieService', 'TagService', function ($rootScope, $scope, $state, PostService, CategorieService, TagService) {
-
-        $rootScope.$on('$viewContentLoading', function (event, viewName, viewContent) { });
+    app.controller('HomeController', ['$rootScope', '$scope', '$state', function ($rootScope, $scope, $state) {
 
         $scope.search = function () {
             $rootScope.isLoading = true;
@@ -15,7 +13,7 @@
 ///#source 1 1 /modules/idea-controllers/idea-index.js
 (function () {
     'use strict';
-    app.controller('IndexController', ['$rootScope', '$scope', 'AuthService', '$timeout', '$state', function ($rootScope, $scope, AuthService, $location, $timeout, $state) {
+    app.controller('IndexController', ['$rootScope', '$scope', 'AuthService', '$state', function ($rootScope, $scope, AuthService, $location, $state) {
 
         $scope.opening = false;
         $scope.animation = '';
@@ -27,19 +25,11 @@
 
         $scope.logout = function () {
             AuthService.logOut();
-            $state.go('home');
         }
 
         $scope.toggle = function () {
             $scope.opening = $scope.opening == true ? false : true;
         }
-
-        $rootScope.$on('$viewContentLoading', function (event, viewName, viewContent) {
-            
-        });
-
-        $rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
-        });
 
     }])
 })();
@@ -63,14 +53,6 @@
         $scope.forgetPwd = function () {
             $state.go('^.forget')
         }
-
-        //$rootScope.$on('$viewContentLoading', function (event, viewName, viewContent) {
-        //    $scope.$parent.loading();
-        //});
-
-        //$rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
-        //    $scope.$parent.unload(3000);
-        //});
     }]);
 })();
 ///#source 1 1 /modules/idea-controllers/idea-posts.js
@@ -86,7 +68,9 @@
         });
 
         $scope.search = function () {
-            $state.go('search', { 'title': $scope.title })
+            $state.go('search', {
+                'title': $scope.title
+            })
         }
     }])
 })();
@@ -123,6 +107,27 @@
         }
     }])
 })();
+///#source 1 1 /modules/idea-controllers/post/idea-post-add.js
+(function () {
+    app.controller('AddPostController', ['$rootScope', '$scope', 'PostService', 'CategorieService', 'TagService', '$state', function AddPostController($rootScope, $scope, PostService, CategorieService, TagService, $state) {
+
+        $scope.selectTags = [];
+        $scope.selectCategory = {};
+
+        $scope.body = '<h2>Try me!</h2><p>textAngular is a super cool WYSIWYG Text Editor directive for AngularJS</p><p><b>Features:</b></p><ol><li>Automatic Seamless Two-Way-Binding</li><li style="color: blue;">Super Easy <b>Theming</b> Options</li><li>Simple Editor Instance Creation</li><li>Safely Parses Html for Custom Toolbar Icons</li><li>Doesn&apos;t Use an iFrame</li><li>Works with Firefox, Chrome, and IE9+</li></ol><p><b>Code at GitHub:</b> <a href="https://github.com/fraywing/textAngular">Here</a> </p>';
+
+        $rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
+            TagService.tags().then(function (response) {
+                $rootScope.tags = response;
+            });
+
+            CategorieService.categories().then(function (response) {
+                $rootScope.categories = response;
+            });
+        });
+    }])
+})();
+
 ///#source 1 1 /modules/idea-controllers/category/idea-admin-category.js
 (function () {
     app.controller('CategoryDashController', ['$rootScope', '$scope', 'CategorieService', '$state', function ($rootScope, $scope, CategorieService, $state) {
@@ -238,21 +243,6 @@
 ///#source 1 1 /modules/idea-controllers/admin/idea-admin.js
 (function () {
     app.controller('AdminController', ['$rootScope', '$scope', '$state', 'PostService', 'CategorieService', 'TagService', function ($rootScope, $scope, $state, PostService, CategorieService, TagService) {
-
-        //$rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
-        //    PostService.posts().then(function (respone) {
-        //        $scope.posts = respone;
-        //    });
-
-        //    CategorieService.categories().then(function (response) {
-        //        $scope.categories = response;
-        //    });
-
-        //    TagService.tags().then(function (response) {
-        //        $scope.tags = response;
-        //        $rootScope.isLoading = false;
-        //    });
-        //});
             
     }]);
 })();
@@ -283,10 +273,26 @@
 })();
 ///#source 1 1 /modules/idea-controllers/admin/idea-admin-dash.js
 (function () {
-    app.controller('DashboardController', ['$scope', '$rootScope', function ($scope, $rootScope) {
+    app.controller('DashboardController', ['$rootScope', '$scope', '$state', 'PostService', 'CategorieService', 'TagService', 'ContactService', function ($rootScope, $scope, $state, PostService, CategorieService, TagService, ContactService) {
 
         $rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
-            $rootScope.isLoading = false;
+            //$rootScope.isLoading = false;
+            PostService.posts().then(function (response) {
+                $rootScope.posts = response;
+            });
+
+            CategorieService.categories().then(function (response) {
+                $rootScope.categories = response;
+            });
+
+            TagService.tags().then(function (response) {
+                $rootScope.tags = response;
+            });
+
+            ContactService.contacts().then(function (response) {
+                $rootScope.contacts = response;
+                $rootScope.isLoading = false;
+            })
         });
     }])
 })();
@@ -375,7 +381,13 @@
 })();
 ///#source 1 1 /modules/idea-controllers/tags/idea-admin-tag.js
 (function () {
-    app.controller('TagDashController', ['$rootScope', '$scope', 'TagService', '$state', '$stateParams', function ($rootScope, $scope, TagService, $state, $stateParams) {
+    app.controller('TagDashController', ['$rootScope', '$scope', 'TagService', '$state', '$stateParams', '$log', function ($rootScope, $scope, TagService, $state, $stateParams, $log) {
+
+        $rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
+            TagService.tags().then(function (response) {
+                $rootScope.tags = response;
+            })
+        });
 
         $scope.addTag = function () {
             $state.go('admin.tags.add')
@@ -395,6 +407,7 @@
 
             TagService.add(data).then(function (response) {
                 $state.go('admin.tags');
+                $rootScope.isLoading = false;
             }, function (error) {
                 $rootScope.isLoading = false;
             })
@@ -413,10 +426,10 @@
             })
         });
 
-        $scope.search = function () {
-            $rootScope.isLoading = true;
-            $state.go('search', { 'title': $scope.title })
-        }
+        //$scope.search = function () {
+        //    $rootScope.isLoading = true;
+        //    $state.go('search', { 'title': $scope.title })
+        //}
     }])
 })();
 ///#source 1 1 /modules/idea-controllers/tags/idea-tag-edit.js
@@ -440,6 +453,7 @@
             }
 
             TagService.edit(data).then(function (response) {
+                $rootScope.isLoading = false;
                 $state.go('admin.tags');
             }, function (error) {
                 $rootScope.isLoading = false;
@@ -460,7 +474,7 @@
 
             TagService.delete($scope.id).then(function (response) {
                 $rootScope.isLoading = false;
-                $state.go('admin.tags');
+                $state.transitionTo('admin.tags');
             }, function (error) {
                 $rootScope.isLoading = false;
             })

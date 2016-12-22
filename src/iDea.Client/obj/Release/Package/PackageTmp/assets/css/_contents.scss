@@ -35,17 +35,6 @@ body {
     height: 100vh;
     background: $green-color;
     z-index: 99999;
-    /*&.animated {
-        &.fadeIn {
-            display: inline-block;
-            z-index: 99999;
-        }
-    }*/
-
-    /*&.opening {
-        display: inline-block;
-        z-index: 99999;
-    }*/
 }
 
 .loader {
@@ -176,7 +165,30 @@ body {
         }
 
         textarea {
-            min-height: 100px;
+           &.ta-editor  {
+               width: 100%;
+           }
+        }
+
+        oi-select {
+
+            .select-search {
+                width: 100%;
+                box-shadow: none !important;
+                background: transparent !important;
+                border-color: transparent !important;
+                border-radius: 0;
+            }
+
+            &.focused {
+                .select-search {
+                    width: 100%;
+                    box-shadow: none !important;
+                    background: transparent !important;
+                    border-color: transparent !important;
+                    border-radius: 0;
+                }
+            }
         }
     }
 

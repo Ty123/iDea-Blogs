@@ -1,0 +1,25 @@
+﻿<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Recent Categories
+            </li>
+            <li class="list-group-item">
+                Total numbers <span class="badge">{{categories.length}}</span>
+            </li>
+            <li class="list-group-item" ng-click="addCategory()" style="cursor: pointer;">
+                New Category
+            </li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                Category Lists
+            </li>
+            <li ng-repeat="category in categories" class="list-group-item" ui-sref="admin.categories.details({id:category.id})" style="cursor: pointer;">
+                {{category.name}} <span class="badge">{{category.posts.length}}</span>
+            </li>
+        </ul>
+    </div>
+</div>

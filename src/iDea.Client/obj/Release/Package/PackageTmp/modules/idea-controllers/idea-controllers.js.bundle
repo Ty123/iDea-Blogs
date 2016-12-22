@@ -17,18 +17,34 @@
     <file>/modules/idea-controllers/idea-forget.js</file>
     <file>/modules/idea-controllers/idea-reset.js</file>
     <file>/modules/idea-controllers/idea-activate.js</file>-->
+    <!--Post Modules-->
     <file>/modules/idea-controllers/idea-posts.js</file>
-    <file>/modules/idea-controllers/idea-post-details.js</file>
-    <file>/modules/idea-controllers/idea-categories.js</file>
-    <file>/modules/idea-controllers/idea-admin-category.js</file>
-    <file>/modules/idea-controllers/idea-category-details.js</file>
-    <file>/modules/idea-controllers/idea-admin.js</file>
-    <file>/modules/idea-controllers/idea-admin-sidenav.js</file>
-    <file>/modules/idea-controllers/idea-admin-dash.js</file>
-    <file>/modules/idea-controllers/idea-tags.js</file>
-    <file>/modules/idea-controllers/idea-tag-details.js</file>
-    <file>/modules/idea-controllers/idea-tag-add.js</file>
+    <file>/modules/idea-controllers/post/idea-post-details.js</file>
+    <file>/modules/idea-controllers/post/idea-admin-post.js</file>
+    <file>/modules/idea-controllers/post/idea-post-add.js</file>
+    <!--Category Modules-->
+    <file>/modules/idea-controllers/category/idea-admin-category.js</file>
+    <file>/modules/idea-controllers/category/idea-category-details.js</file>
+    <file>/modules/idea-controllers/category/idea-category-delete.js</file>
+    <file>/modules/idea-controllers/category/idea-category-edit.js</file>
+    <file>/modules/idea-controllers/category/idea-category-add.js</file>
+    <file>/modules/idea-controllers/category/idea-categories.js</file>
+
+    <!--Admin Modules-->
+    <file>/modules/idea-controllers/admin/idea-admin.js</file>
+    <file>/modules/idea-controllers/admin/idea-admin-sidenav.js</file>
+    <file>/modules/idea-controllers/admin/idea-admin-dash.js</file>
     <file>/modules/idea-controllers/idea-search.js</file>
-    <file>/modules/idea-controllers/idea-contacts.js</file>
+    <!--Contact Modules-->
+    <file>/modules/idea-controllers/contact/idea-contacts.js</file>
+    <file>/modules/idea-controllers/contact/idea-admin-contact.js</file>
+    <file>/modules/idea-controllers/contact/idea-contact-details.js</file>
+    <!--Tag Modules-->
+    <file>/modules/idea-controllers/tags/idea-admin-tag.js</file>
+    <file>/modules/idea-controllers/tags/idea-tag-add.js</file>
+    <file>/modules/idea-controllers/tags/idea-tag-details.js</file>
+    <file>/modules/idea-controllers/tags/idea-tag-edit.js</file>
+    <file>/modules/idea-controllers/tags/idea-tag-delete.js</file>
+    <file>/modules/idea-controllers/tags/idea-tags.js</file>
   </files>
 </bundle>

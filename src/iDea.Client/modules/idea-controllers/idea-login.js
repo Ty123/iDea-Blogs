@@ -17,13 +17,5 @@
         $scope.forgetPwd = function () {
             $state.go('^.forget')
         }
-
-        //$rootScope.$on('$viewContentLoading', function (event, viewName, viewContent) {
-        //    $scope.$parent.loading();
-        //});
-
-        //$rootScope.$on('$viewContentLoaded', function (event, viewName, viewContent) {
-        //    $scope.$parent.unload(3000);
-        //});
     }]);
 })();

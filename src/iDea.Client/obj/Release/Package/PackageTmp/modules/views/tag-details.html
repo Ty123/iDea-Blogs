@@ -5,20 +5,7 @@
 </p>
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h3 class="idea-small-title">{{tag.name}}</h3>
-                <p>{{tag.description}}</p>
-                <br />
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h5 class="idea-small-title">Related Posts: </h5>
-                <hr />
-                <h6 ng-repeat="post in tag.posts">
-                    <a ui-sref="post-details({id:post.id})" class="idea-menu-item">{{post.title}}</a>
-                </h6>
-            </div>
-        </div>
+        <div ui-view="details"></div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
         <div ui-view="search"></div>

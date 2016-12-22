@@ -59,7 +59,7 @@
             return deferred.promise;
         }
 
-        service.posts = function () {
+        service.contacts = function () {
             var deferred = $q.defer();
             $http.get(url + 'api/Contacts/').success(function (response) {
                 deferred.resolve(response);

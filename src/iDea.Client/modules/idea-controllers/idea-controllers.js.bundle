@@ -21,6 +21,7 @@
     <file>/modules/idea-controllers/idea-posts.js</file>
     <file>/modules/idea-controllers/post/idea-post-details.js</file>
     <file>/modules/idea-controllers/post/idea-admin-post.js</file>
+    <file>/modules/idea-controllers/post/idea-post-add.js</file>
     <!--Category Modules-->
     <file>/modules/idea-controllers/category/idea-admin-category.js</file>
     <file>/modules/idea-controllers/category/idea-category-details.js</file>
